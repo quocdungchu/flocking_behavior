@@ -17,6 +17,9 @@
 		AB1867111F779D9F000E0864 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB18670F1F779D9F000E0864 /* LaunchScreen.storyboard */; };
 		AB18671C1F779D9F000E0864 /* FlockingBehaviorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB18671B1F779D9F000E0864 /* FlockingBehaviorTests.swift */; };
 		AB1867271F779D9F000E0864 /* FlockingBehaviorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1867261F779D9F000E0864 /* FlockingBehaviorUITests.swift */; };
+		AB6349491F77A639002F5587 /* Agent.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6349481F77A639002F5587 /* Agent.swift */; };
+		AB63494C1F77A66C002F5587 /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB63494B1F77A66C002F5587 /* Math.swift */; };
+		AB63494E1F77A746002F5587 /* Behavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB63494D1F77A746002F5587 /* Behavior.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +56,9 @@
 		AB1867221F779D9F000E0864 /* FlockingBehaviorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlockingBehaviorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB1867261F779D9F000E0864 /* FlockingBehaviorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlockingBehaviorUITests.swift; sourceTree = "<group>"; };
 		AB1867281F779D9F000E0864 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AB6349481F77A639002F5587 /* Agent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Agent.swift; sourceTree = "<group>"; };
+		AB63494B1F77A66C002F5587 /* Math.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Math.swift; sourceTree = "<group>"; };
+		AB63494D1F77A746002F5587 /* Behavior.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Behavior.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +109,8 @@
 		AB1866FF1F779D9F000E0864 /* FlockingBehavior */ = {
 			isa = PBXGroup;
 			children = (
+				AB63494A1F77A65C002F5587 /* Math */,
+				AB6349471F77A619002F5587 /* Core */,
 				AB1867001F779D9F000E0864 /* AppDelegate.swift */,
 				AB1867021F779D9F000E0864 /* GameScene.sks */,
 				AB1867041F779D9F000E0864 /* Actions.sks */,
@@ -132,6 +140,23 @@
 				AB1867281F779D9F000E0864 /* Info.plist */,
 			);
 			path = FlockingBehaviorUITests;
+			sourceTree = "<group>";
+		};
+		AB6349471F77A619002F5587 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				AB6349481F77A639002F5587 /* Agent.swift */,
+				AB63494D1F77A746002F5587 /* Behavior.swift */,
+			);
+			name = Core;
+			sourceTree = "<group>";
+		};
+		AB63494A1F77A65C002F5587 /* Math */ = {
+			isa = PBXGroup;
+			children = (
+				AB63494B1F77A66C002F5587 /* Math.swift */,
+			);
+			name = Math;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -273,8 +298,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB1867071F779D9F000E0864 /* GameScene.swift in Sources */,
+				AB6349491F77A639002F5587 /* Agent.swift in Sources */,
 				AB1867091F779D9F000E0864 /* GameViewController.swift in Sources */,
+				AB63494E1F77A746002F5587 /* Behavior.swift in Sources */,
 				AB1867011F779D9F000E0864 /* AppDelegate.swift in Sources */,
+				AB63494C1F77A66C002F5587 /* Math.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -527,6 +555,7 @@
 				AB18672D1F779D9F000E0864 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		AB18672E1F779D9F000E0864 /* Build configuration list for PBXNativeTarget "FlockingBehaviorTests" */ = {
 			isa = XCConfigurationList;
@@ -535,6 +564,7 @@
 				AB1867301F779D9F000E0864 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		AB1867311F779D9F000E0864 /* Build configuration list for PBXNativeTarget "FlockingBehaviorUITests" */ = {
 			isa = XCConfigurationList;
@@ -543,6 +573,7 @@
 				AB1867331F779D9F000E0864 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
