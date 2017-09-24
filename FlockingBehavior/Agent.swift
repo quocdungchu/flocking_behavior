@@ -11,6 +11,7 @@ import Foundation
 protocol AgentDelegate {
     func findSeekingPosition(by agent: Agent) -> Vect2?
     func findOtherAgentsPositions(within visibleDistance: Float, by agent: Agent) -> [Vect2]
+    func findOtherAgentsVelocities(within visibleDistance: Float, by agent: Agent) -> [Vect2]
     func canStop(agent: Agent) -> Bool
 }
 
@@ -96,8 +97,11 @@ class Agent {
                 visibleDistance: visibleDistance
             ))
             
-        default:
-            return velocity
+        case .alignment (let weight, let visibleDistance):
+            return compute(velocity: velocity, withOther: calculateAlignment(
+                weight: weight,
+                visibleDistance: visibleDistance
+            ))
         }
     }
     
@@ -148,8 +152,15 @@ class Agent {
         weight: Float,
         visibleDistance: Float) -> Vect2
     {
-        //TODO
-        return Vect2.zero
+        if let otherAgentVelocities = delegate?.findOtherAgentsVelocities(
+            within:visibleDistance, by: self)
+        {
+            let averageVelocity = average(of: otherAgentVelocities)
+            return averageVelocity * weight
+            
+        } else {
+            return Vect2.zero
+        }
     }
         
     

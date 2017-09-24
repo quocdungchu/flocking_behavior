@@ -19,8 +19,8 @@ class GameScene: SKScene {
     
     override func didMove(to view: SKView) {
         
-        for rangIndex in -0...1 {
-            for colIndex in -0...1 {
+        for rangIndex in -2...2 {
+            for colIndex in -2...2 {
                 
                 let position = Vect2.zero + (Vect2(Float(rangIndex), Float(colIndex)) * 50)
                 let agentNode = AgentNode(position: position)
@@ -59,6 +59,12 @@ extension GameScene: AgentDelegate {
             .map { $0.agent.position }
     }
     
+    func findOtherAgentsVelocities(within visibleDistance: Float, by agent: Agent) -> [Vect2] {
+        return agentNodes.filter { $0.agent !== agent }
+            .filter { agent.position.distance(to: $0.agent.position) <= visibleDistance }
+            .map { $0.agent.velocity }
+    }
+    
     func canStop(agent: Agent) -> Bool {
         
         guard let seekingPosition = seekingPosition else {
@@ -67,6 +73,6 @@ extension GameScene: AgentDelegate {
         
         let allPositions = agentNodes.map { $0.agent.position }
         let center = average(of: allPositions)
-        return center.distance(to: seekingPosition) < 2
+        return center.distance(to: seekingPosition) < 30
     }
 }
