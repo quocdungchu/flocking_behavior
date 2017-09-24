@@ -25,12 +25,24 @@ struct Vect2 {
         return Vect2(left.x + right.x, left.y + right.y)
     }
     
+    static func += (left: inout Vect2, right: Vect2) {
+        left = left + right
+    }
+    
     static func * (vector: Vect2, value: Float) -> Vect2 {
         return Vect2(vector.x * value, vector.y * value)
     }
     
+    static func *= (left: inout Vect2, value: Float) {
+        left = left * value
+    }
+    
     static func / (vector: Vect2, value: Float) -> Vect2 {
         return Vect2(vector.x / value, vector.y / value)
+    }
+    
+    static func /= (left: inout Vect2, value: Float) {
+        left = left / value
     }
     
     func distance(to vector: Vect2) -> Float {

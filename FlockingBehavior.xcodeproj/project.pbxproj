@@ -20,6 +20,7 @@
 		AB6349491F77A639002F5587 /* Agent.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6349481F77A639002F5587 /* Agent.swift */; };
 		AB63494C1F77A66C002F5587 /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB63494B1F77A66C002F5587 /* Math.swift */; };
 		AB63494E1F77A746002F5587 /* Behavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB63494D1F77A746002F5587 /* Behavior.swift */; };
+		AB6349501F77AB5D002F5587 /* AgentNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB63494F1F77AB5D002F5587 /* AgentNode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		AB6349481F77A639002F5587 /* Agent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Agent.swift; sourceTree = "<group>"; };
 		AB63494B1F77A66C002F5587 /* Math.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Math.swift; sourceTree = "<group>"; };
 		AB63494D1F77A746002F5587 /* Behavior.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Behavior.swift; sourceTree = "<group>"; };
+		AB63494F1F77AB5D002F5587 /* AgentNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgentNode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 				AB63494A1F77A65C002F5587 /* Math */,
 				AB6349471F77A619002F5587 /* Core */,
 				AB1867001F779D9F000E0864 /* AppDelegate.swift */,
+				AB63494F1F77AB5D002F5587 /* AgentNode.swift */,
 				AB1867021F779D9F000E0864 /* GameScene.sks */,
 				AB1867041F779D9F000E0864 /* Actions.sks */,
 				AB1867061F779D9F000E0864 /* GameScene.swift */,
@@ -303,6 +306,7 @@
 				AB63494E1F77A746002F5587 /* Behavior.swift in Sources */,
 				AB1867011F779D9F000E0864 /* AppDelegate.swift in Sources */,
 				AB63494C1F77A66C002F5587 /* Math.swift in Sources */,
+				AB6349501F77AB5D002F5587 /* AgentNode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
