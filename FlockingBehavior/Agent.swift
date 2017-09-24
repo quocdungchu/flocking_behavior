@@ -59,49 +59,61 @@ class Agent {
         if delegate.canStop(agent: self) {
             speed = 0
         } else {
-            let newVelocity = compute(velocity: velocity, withBehaviors: behaviors)
+            let newVelocity = compute(velocity: velocity, behaviors: behaviors)
             velocity = newVelocity
             position += velocity
         }
     }
     
-    private func compute(velocity: Vect2, withOther other: Vect2) -> Vect2 {
+    private func compute(velocity: Vect2, other: Vect2) -> Vect2 {
         let newVelocity = velocity + other
         return clamp(velocity: newVelocity)
     }
     
     
-    private func compute(velocity: Vect2, withBehaviors behaviors: [Behavior]) -> Vect2 {
+    private func compute(velocity: Vect2, behaviors: [Behavior]) -> Vect2 {
         return behaviors.reduce(velocity) {
-            compute(velocity: $0, withBehavior: $1)
+            compute(velocity: $0, behavior: $1)
         }
     }
     
-    private func compute(velocity: Vect2, withBehavior behavior: Behavior) -> Vect2 {
+    private func compute(velocity: Vect2, behavior: Behavior) -> Vect2 {
         switch behavior {
         case .seeking (let weight, let visibleDistance):
-            return compute(velocity: velocity, withOther: calculateSeeking(
-                weight: weight,
-                visibleDistance: visibleDistance
-            ))
+            return compute(
+                velocity: velocity,
+                other: calculateSeeking(
+                    weight: weight,
+                    visibleDistance: visibleDistance
+                )
+            )
             
         case .cohesion (let weight, let visibleDistance):
-            return compute(velocity: velocity, withOther: calculateCohesion(
-                weight: weight,
-                visibleDistance: visibleDistance
-            ))
+            return compute(
+                velocity: velocity,
+                other: calculateCohesion(
+                    weight: weight,
+                    visibleDistance: visibleDistance
+                )
+            )
             
         case .separation (let weight, let visibleDistance):
-            return compute(velocity: velocity, withOther: calculateSeparation(
-                weight: weight,
-                visibleDistance: visibleDistance
-            ))
+            return compute(
+                velocity: velocity,
+                other: calculateSeparation(
+                    weight: weight,
+                    visibleDistance: visibleDistance
+                )
+            )
             
         case .alignment (let weight, let visibleDistance):
-            return compute(velocity: velocity, withOther: calculateAlignment(
-                weight: weight,
-                visibleDistance: visibleDistance
-            ))
+            return compute(
+                velocity: velocity,
+                other: calculateAlignment(
+                    weight: weight,
+                    visibleDistance: visibleDistance
+                )
+            )
         }
     }
     

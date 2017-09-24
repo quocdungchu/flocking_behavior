@@ -58,16 +58,7 @@ class AgentNode: SKShapeNode {
         agent.update()
      
         self.position = CGPoint(agent.position)
-        self.zRotation = CGFloat(agent.rotation.angle - Float.pi / 2)
-
-//        if frameCount % 3 == 0 {
-//            run(SKAction.rotate(
-//                toAngle: CGFloat(agent.rotation.angle - Float.pi / 2),
-//                duration: 0.25,
-//                shortestUnitArc: true
-//            ))
-//        }
-        
+        self.zRotation = CGFloat(agent.rotation.angle - Float.pi / 2)        
     }
 }
 
