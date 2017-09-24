@@ -9,7 +9,8 @@
 import Foundation
 
 protocol AgentDelegate {
-    func seekingPosition(for agent: Agent) -> Vect2?
+    func findSeekingPosition(by agent: Agent) -> Vect2?
+    func findOtherAgentsPositions(within visibleDistance: Float, by agent: Agent) -> [Vect2]
 }
 
 class Agent {
@@ -79,6 +80,12 @@ class Agent {
                 visibleDistance: visibleDistance
             ))
             
+        case .cohesion (let weight, let visibleDistance):
+            return compute(velocity: velocity, withOther: calculateCohesion(
+                weight: weight,
+                visibleDistance: visibleDistance
+            ))
+            
         default:
             return velocity
         }
@@ -88,7 +95,7 @@ class Agent {
         weight: Float,
         visibleDistance: Float) -> Vect2
     {
-        if let seekingPosition = delegate?.seekingPosition(for: self),
+        if let seekingPosition = delegate?.findSeekingPosition(by: self),
             visibleDistance > position.distance(to: seekingPosition)
         {
             return vectorTo(point: seekingPosition) * weight
@@ -96,6 +103,38 @@ class Agent {
             return Vect2.zero
         }
     }
+    
+    private func calculateCohesion(
+        weight: Float,
+        visibleDistance: Float) -> Vect2
+    {
+        if let otherAgentPositions = delegate?.findOtherAgentsPositions(
+            within:visibleDistance, by: self)
+        {
+            let vectorToCenter = vectorToCenterPoint(of: otherAgentPositions)
+            return vectorToCenter * weight
+            
+        } else {
+            return Vect2.zero
+        }
+    }
+    
+    private func calculateSeparation(
+        weight: Float,
+        visibleDistance: Float) -> Vect2
+    {
+        //TODO
+        return Vect2.zero
+    }
+    
+    private func calculateAlignment(
+        weight: Float,
+        visibleDistance: Float) -> Vect2
+    {
+        //TODO
+        return Vect2.zero
+    }
+        
     
     private func clamp(velocity: Vect2) -> Vect2 {
         let speed = velocity.length

@@ -49,7 +49,13 @@ class GameScene: SKScene {
 }
 
 extension GameScene: AgentDelegate {
-    func seekingPosition(for agent: Agent) -> Vect2? {
+    func findSeekingPosition(by agent: Agent) -> Vect2? {
         return seekingPosition
+    }
+    
+    func findOtherAgentsPositions(within visibleDistance: Float, by agent: Agent) -> [Vect2] {
+        return agentNodes.filter { $0.agent !== agent }
+            .filter { agent.position.distance(to: $0.agent.position) <= visibleDistance }
+            .map { $0.agent.position }
     }
 }

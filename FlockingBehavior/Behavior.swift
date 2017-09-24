@@ -7,8 +7,8 @@
 //
 
 enum Behavior {
-    case cohesion
-    case separation
-    case alignment
+    case cohesion (weight: Float, visibleDistance: Float)
+    case separation (weight: Float, visibleDistance: Float)
+    case alignment (weight: Float, visibleDistance: Float)
     case seeking (weight: Float, visibleDistance: Float)
 }
