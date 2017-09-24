@@ -15,12 +15,12 @@ class AgentNode: SKShapeNode {
     
     override init() {
         self.agent = Agent(
-            position: Vect2.zero,
-            rotation: Vect2(0, 1),
-            speed: 0,
             behaviors: [
                 .seeking(weight: 0.5, visibleDistance: 1000)
             ],
+            position: Vect2.zero,
+            rotation: Vect2(0, 1),
+            speed: 0,
             maximumSpeed: 2.5,
             minimumSpeed: 2
         )

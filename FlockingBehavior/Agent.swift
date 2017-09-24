@@ -13,11 +13,10 @@ protocol AgentDelegate {
 }
 
 class Agent {
-    var position: Vect2
     let behaviors: [Behavior]
     let maximumSpeed: Float
     let minimumSpeed: Float
-    
+    var position: Vect2
     var rotation: Vect2
     var speed: Float
     var velocity: Vect2 {
@@ -31,14 +30,13 @@ class Agent {
         }
     }
     
-    
     var delegate: AgentDelegate?
     
     init(
+        behaviors: [Behavior],
         position: Vect2,
         rotation: Vect2,
         speed: Float,
-        behaviors: [Behavior],
         maximumSpeed: Float,
         minimumSpeed: Float)
     {
