@@ -15,6 +15,8 @@ class GameScene: SKScene {
     
     var agentNode: AgentNode!
     
+    var frameCount = 0
+    
     override func didMove(to view: SKView) {
         self.agentNode = AgentNode()
         agentNode.agent.delegate = self
@@ -52,7 +54,9 @@ class GameScene: SKScene {
     
     
     override func update(_ currentTime: TimeInterval) {
-        agentNode.update(elapsedTime: currentTime)
+        agentNode.update(elapsedTime: currentTime, frameCount: frameCount)
+        
+        frameCount += 1
     }
 }
 

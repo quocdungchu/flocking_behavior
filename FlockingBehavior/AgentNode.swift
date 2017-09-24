@@ -16,12 +16,13 @@ class AgentNode: SKShapeNode {
     override init() {
         self.agent = Agent(
             position: Vect2.zero,
-            velocity: Vect2.zero,
+            rotation: Vect2(0, 1),
+            speed: 0,
             behaviors: [
-                .seeking(weight: 0.5, visibleDistance: 1000, achievedDistance: 0)
+                .seeking(weight: 0.5, visibleDistance: 1000)
             ],
             maximumSpeed: 2.5,
-            minimumDistanceToMove: 2
+            minimumSpeed: 2
         )
         super.init()
         
@@ -44,12 +45,14 @@ class AgentNode: SKShapeNode {
         self.lineWidth = 2
     }
     
-    func update(elapsedTime: TimeInterval){
+    func update(elapsedTime: TimeInterval, frameCount: Int){
         agent.position = Vect2(position)
-        
         agent.update()
-        
         position = CGPoint(agent.position)
+        zRotation = CGFloat(agent.rotation.angle - Float.pi / 2)
+    }
+    
+    private func updateRenderer(elapsedTime: TimeInterval, frameCount: Int){
     }
 }
 
@@ -64,3 +67,4 @@ extension CGPoint {
         self.init(x: CGFloat(vector.x), y: CGFloat(vector.y))
     }
 }
+

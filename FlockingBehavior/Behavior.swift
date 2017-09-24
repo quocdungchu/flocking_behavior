@@ -10,5 +10,5 @@ enum Behavior {
     case cohesion
     case separation
     case alignment
-    case seeking (weight: Float, visibleDistance: Float, achievedDistance: Float)
+    case seeking (weight: Float, visibleDistance: Float)
 }

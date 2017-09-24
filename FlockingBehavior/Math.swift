@@ -24,6 +24,10 @@ struct Vect2 {
         return length == 0 ? Vect2.zero: self / length
     }
     
+    var angle: Float {
+        return atan2(y, x)
+    }
+    
     init(_ x: Float, _ y: Float){
         self.x = x
         self.y = y
@@ -77,3 +81,17 @@ func average(of vectors: [Vect2]) -> Vect2 {
         Vect2.zero:
         sum(of: vectors) / Float(vectors.count)
 }
+
+func shortestAngleBetween(_ angle1: Float, angle2: Float) -> Float {
+    let pi = Float.pi
+    let twoPi = pi * 2.0
+    var angle = (angle2 - angle1).truncatingRemainder(dividingBy: twoPi)
+    if (angle >= pi) {
+        angle = angle - twoPi
+    }
+    if (angle <= -pi) {
+        angle = angle + twoPi
+    }
+    return angle
+}
+

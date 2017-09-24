@@ -14,65 +14,84 @@ protocol AgentDelegate {
 
 class Agent {
     var position: Vect2
-    var velocity: Vect2
     let behaviors: [Behavior]
     let maximumSpeed: Float
-    let minimumDistanceToMove: Float
+    let minimumSpeed: Float
+    
+    var rotation: Vect2
+    var speed: Float
+    var velocity: Vect2 {
+        get {
+            return rotation.normalized * speed
+        }
+        
+        set {
+            rotation = newValue.normalized
+            speed = newValue.length
+        }
+    }
+    
     
     var delegate: AgentDelegate?
     
     init(
         position: Vect2,
-        velocity: Vect2,
+        rotation: Vect2,
+        speed: Float,
         behaviors: [Behavior],
         maximumSpeed: Float,
-        minimumDistanceToMove: Float)
+        minimumSpeed: Float)
     {
         self.position = position
-        self.velocity = velocity
+        self.rotation = rotation
+        self.speed = speed
         self.behaviors = behaviors
         self.maximumSpeed = maximumSpeed
-        self.minimumDistanceToMove = minimumDistanceToMove
+        self.minimumSpeed = minimumSpeed
     }
     
     func update(){
-        behaviors.forEach { compute(for: $0) }
-        
-        if velocity.length >= minimumDistanceToMove {
+        let newVelocity = compute(velocity: velocity, withBehaviors: behaviors)
+        if newVelocity.length >= minimumSpeed {
+            velocity = newVelocity
             position += velocity
             
         } else {
-            velocity = Vect2.zero
+            speed = 0
         }
     }
     
-    private func computeVelocity(with newVelocity: Vect2) {
-        velocity += newVelocity
-        clampVelocity()
+    private func compute(velocity: Vect2, withOther other: Vect2) -> Vect2 {
+        let newVelocity = velocity + other
+        return clamp(velocity: newVelocity)
     }
     
-    private func compute(for behavior: Behavior) {
+    
+    private func compute(velocity: Vect2, withBehaviors behaviors: [Behavior]) -> Vect2 {
+        return behaviors.reduce(velocity) {
+            compute(velocity: $0, withBehavior: $1)
+        }
+    }
+    
+    private func compute(velocity: Vect2, withBehavior behavior: Behavior) -> Vect2 {
         switch behavior {
-        case .seeking (let weight, let visibleDistance, let achievedDistance):
-            computeVelocity(with: calculateSeeking(
+        case .seeking (let weight, let visibleDistance):
+            return compute(velocity: velocity, withOther: calculateSeeking(
                 weight: weight,
-                visibleDistance: visibleDistance,
-                achievedDistance: achievedDistance
+                visibleDistance: visibleDistance
             ))
             
         default:
-            break
+            return velocity
         }
     }
     
     private func calculateSeeking(
         weight: Float,
-        visibleDistance: Float,
-        achievedDistance: Float) -> Vect2
+        visibleDistance: Float) -> Vect2
     {
         if let seekingPosition = delegate?.seekingPosition(for: self),
-            visibleDistance > position.distance(to: seekingPosition),
-            achievedDistance < position.distance(to: seekingPosition)
+            visibleDistance > position.distance(to: seekingPosition)
         {
             return vectorTo(point: seekingPosition) * weight
         } else {
@@ -80,10 +99,13 @@ class Agent {
         }
     }
     
-    private func clampVelocity() {
+    private func clamp(velocity: Vect2) -> Vect2 {
         let speed = velocity.length
         if speed > maximumSpeed {
-            velocity = velocity.normalized * maximumSpeed
+            return velocity.normalized * maximumSpeed
+            
+        } else {
+            return velocity
         }
     }
     
