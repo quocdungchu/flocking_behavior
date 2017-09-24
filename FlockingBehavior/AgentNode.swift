@@ -18,20 +18,21 @@ class AgentNode: SKShapeNode {
     init(position: Vect2) {
         self.agent = Agent(
             behaviors: [
-                .seeking(weight: Float(1.0/100.0), visibleDistance: 1000),
-                .cohesion(weight: Float(1.0/1000.0), visibleDistance: 160),
-                .separation(weight: Float(0.8), visibleDistance: 60),
-                .alignment(weight: Float(1.0/50.0), visibleDistance: 160)
+                .seeking(weight: 0.004, visibleDistance: 1000),
+                .cohesion(weight: 0.001, visibleDistance: 90),
+                .separation(weight: 0.005, visibleDistance: 33),
+                .alignment(weight: 0.08, visibleDistance: 90)
             ],
             position: position,
             rotation: Vect2(0, 1),
             speed: 0,
-            maximumSpeed: 2.5,
+            maximumSpeed: 1.5,
             minimumSpeed: 2
         )
         super.init()
         
-        updateFromAgent()
+        self.position = CGPoint(agent.position)
+        self.zRotation = CGFloat(agent.rotation.angle - Float.pi / 2)
         
         draw()
     }
@@ -56,12 +57,17 @@ class AgentNode: SKShapeNode {
         agent.position = Vect2(position)
         agent.update()
      
-        updateFromAgent()
-    }
-    
-    private func updateFromAgent(){
         self.position = CGPoint(agent.position)
         self.zRotation = CGFloat(agent.rotation.angle - Float.pi / 2)
+
+//        if frameCount % 3 == 0 {
+//            run(SKAction.rotate(
+//                toAngle: CGFloat(agent.rotation.angle - Float.pi / 2),
+//                duration: 0.25,
+//                shortestUnitArc: true
+//            ))
+//        }
+        
     }
 }
 

@@ -17,6 +17,7 @@
 		AB1867111F779D9F000E0864 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB18670F1F779D9F000E0864 /* LaunchScreen.storyboard */; };
 		AB18671C1F779D9F000E0864 /* FlockingBehaviorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB18671B1F779D9F000E0864 /* FlockingBehaviorTests.swift */; };
 		AB1867271F779D9F000E0864 /* FlockingBehaviorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1867261F779D9F000E0864 /* FlockingBehaviorUITests.swift */; };
+		AB28D3961F7838A700BB1542 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB28D3951F7838A700BB1542 /* Constants.swift */; };
 		AB6349491F77A639002F5587 /* Agent.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6349481F77A639002F5587 /* Agent.swift */; };
 		AB63494C1F77A66C002F5587 /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB63494B1F77A66C002F5587 /* Math.swift */; };
 		AB63494E1F77A746002F5587 /* Behavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB63494D1F77A746002F5587 /* Behavior.swift */; };
@@ -57,6 +58,7 @@
 		AB1867221F779D9F000E0864 /* FlockingBehaviorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlockingBehaviorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB1867261F779D9F000E0864 /* FlockingBehaviorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlockingBehaviorUITests.swift; sourceTree = "<group>"; };
 		AB1867281F779D9F000E0864 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AB28D3951F7838A700BB1542 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		AB6349481F77A639002F5587 /* Agent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Agent.swift; sourceTree = "<group>"; };
 		AB63494B1F77A66C002F5587 /* Math.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Math.swift; sourceTree = "<group>"; };
 		AB63494D1F77A746002F5587 /* Behavior.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Behavior.swift; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 				AB1867041F779D9F000E0864 /* Actions.sks */,
 				AB1867061F779D9F000E0864 /* GameScene.swift */,
 				AB1867081F779D9F000E0864 /* GameViewController.swift */,
+				AB28D3951F7838A700BB1542 /* Constants.swift */,
 				AB18670A1F779D9F000E0864 /* Main.storyboard */,
 				AB18670D1F779D9F000E0864 /* Assets.xcassets */,
 				AB18670F1F779D9F000E0864 /* LaunchScreen.storyboard */,
@@ -307,6 +310,7 @@
 				AB1867011F779D9F000E0864 /* AppDelegate.swift in Sources */,
 				AB63494C1F77A66C002F5587 /* Math.swift in Sources */,
 				AB6349501F77AB5D002F5587 /* AgentNode.swift in Sources */,
+				AB28D3961F7838A700BB1542 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
