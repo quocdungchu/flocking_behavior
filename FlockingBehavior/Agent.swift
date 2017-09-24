@@ -86,6 +86,12 @@ class Agent {
                 visibleDistance: visibleDistance
             ))
             
+        case .separation (let weight, let visibleDistance):
+            return compute(velocity: velocity, withOther: calculateSeparation(
+                weight: weight,
+                visibleDistance: visibleDistance
+            ))
+            
         default:
             return velocity
         }
@@ -123,8 +129,15 @@ class Agent {
         weight: Float,
         visibleDistance: Float) -> Vect2
     {
-        //TODO
-        return Vect2.zero
+        if let otherAgentPositions = delegate?.findOtherAgentsPositions(
+            within:visibleDistance, by: self)
+        {
+            let vectorToCenter = vectorToCenterPoint(of: otherAgentPositions) * (-1)
+            return vectorToCenter * weight
+            
+        } else {
+            return Vect2.zero
+        }
     }
     
     private func calculateAlignment(

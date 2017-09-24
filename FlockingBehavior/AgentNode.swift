@@ -18,8 +18,9 @@ class AgentNode: SKShapeNode {
     init(position: Vect2) {
         self.agent = Agent(
             behaviors: [
-                .seeking(weight: 0.5, visibleDistance: 1000),
-                .cohesion(weight: 0.1, visibleDistance: 250)
+                .seeking(weight: 1.0, visibleDistance: 1000),
+                .cohesion(weight: 0.05, visibleDistance: 250),
+                .separation(weight: 0.25, visibleDistance: 40)
             ],
             position: position,
             rotation: Vect2(0, 1),

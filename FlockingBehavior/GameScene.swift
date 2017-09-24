@@ -19,8 +19,8 @@ class GameScene: SKScene {
     
     override func didMove(to view: SKView) {
         
-        for rangIndex in -2...2 {
-            for colIndex in -2...2 {
+        for rangIndex in -0...1 {
+            for colIndex in -0...1 {
                 
                 let position = Vect2.zero + (Vect2(Float(rangIndex), Float(colIndex)) * 50)
                 let agentNode = AgentNode(position: position)
