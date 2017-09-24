@@ -18,8 +18,10 @@ class AgentNode: SKShapeNode {
             position: Vect2.zero,
             velocity: Vect2.zero,
             behaviors: [
-                Behavior(type: .cohesion, visibleDistance: 160, weight: 1000)
-            ]
+                .seeking(weight: 10, visibleDistance: 1000, achievedDistance: 0)
+            ],
+            maximumSpeed: 1.5,
+            minimumDistanceToMove: 1
         )
         super.init()
         
@@ -42,7 +44,7 @@ class AgentNode: SKShapeNode {
         self.lineWidth = 2
     }
     
-    func update(elapsedTime: Float){
+    func update(elapsedTime: TimeInterval){
         agent.position = Vect2(position)
         
         agent.update()

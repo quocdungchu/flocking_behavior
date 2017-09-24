@@ -6,12 +6,9 @@
 //  Copyright © 2017 quoc. All rights reserved.
 //
 
-struct Behavior {
-    enum `Type` {
-        case cohesion, separation, alignment
-    }
-    
-    let type: Type
-    let visibleDistance: Float
-    let weight: Float
+enum Behavior {
+    case cohesion
+    case separation
+    case alignment
+    case seeking (weight: Float, visibleDistance: Float, achievedDistance: Float)
 }

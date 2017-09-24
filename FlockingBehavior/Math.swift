@@ -16,6 +16,14 @@ struct Vect2 {
         return Vect2(0,0)
     }
     
+    var length: Float {
+        return sqrtf(x * x + y * y)
+    }
+    
+    var normalized: Vect2 {
+        return length == 0 ? Vect2.zero: self / length
+    }
+    
     init(_ x: Float, _ y: Float){
         self.x = x
         self.y = y
@@ -27,6 +35,14 @@ struct Vect2 {
     
     static func += (left: inout Vect2, right: Vect2) {
         left = left + right
+    }
+    
+    static func - (left: Vect2, right: Vect2) -> Vect2 {
+        return Vect2(left.x - right.x, left.y - right.y)
+    }
+    
+    static func -= (left: inout Vect2, right: Vect2) {
+        left = left - right
     }
     
     static func * (vector: Vect2, value: Float) -> Vect2 {

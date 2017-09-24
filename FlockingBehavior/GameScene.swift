@@ -11,17 +11,18 @@ import GameplayKit
 
 class GameScene: SKScene {
     
-    private var label : SKLabelNode?
-    private var spinnyNode : SKShapeNode?
+    var seekingPosition: Vect2?
+    
+    var agentNode: AgentNode!
     
     override func didMove(to view: SKView) {
-        let agentNode = AgentNode()
+        self.agentNode = AgentNode()
+        agentNode.agent.delegate = self
         addChild(agentNode)
     }
     
     
     func touchDown(atPoint pos : CGPoint) {
-        
     }
     
     func touchMoved(toPoint pos : CGPoint) {
@@ -40,6 +41,10 @@ class GameScene: SKScene {
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard let touch = touches.first else {
+            return
+        }
+        seekingPosition = Vect2(touch.location(in: self))
     }
     
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -47,6 +52,12 @@ class GameScene: SKScene {
     
     
     override func update(_ currentTime: TimeInterval) {
-        // Called before each frame is rendered
+        agentNode.update(elapsedTime: currentTime)
+    }
+}
+
+extension GameScene: AgentDelegate {
+    func seekingPosition(for agent: Agent) -> Vect2? {
+        return seekingPosition
     }
 }
