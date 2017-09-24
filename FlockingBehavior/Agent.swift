@@ -47,13 +47,8 @@ class Agent {
     }
     
     private func computeVelocity(with newVelocity: Vect2) {
-        print("current speed \(velocity.length)")
         velocity += newVelocity
-        print("new speed \(velocity.length)")
-
         clampVelocity()
-        print("after clamp speed \(velocity.length)")
-
     }
     
     private func compute(for behavior: Behavior) {
@@ -79,7 +74,6 @@ class Agent {
             visibleDistance > position.distance(to: seekingPosition),
             achievedDistance < position.distance(to: seekingPosition)
         {
-            print("distance \(position.distance(to: seekingPosition))")
             return vectorTo(point: seekingPosition) * weight
         } else {
             return Vect2.zero

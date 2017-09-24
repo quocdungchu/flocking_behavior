@@ -18,10 +18,10 @@ class AgentNode: SKShapeNode {
             position: Vect2.zero,
             velocity: Vect2.zero,
             behaviors: [
-                .seeking(weight: 10, visibleDistance: 1000, achievedDistance: 0)
+                .seeking(weight: 0.5, visibleDistance: 1000, achievedDistance: 0)
             ],
-            maximumSpeed: 1.5,
-            minimumDistanceToMove: 1
+            maximumSpeed: 2.5,
+            minimumDistanceToMove: 2
         )
         super.init()
         
@@ -50,10 +50,6 @@ class AgentNode: SKShapeNode {
         agent.update()
         
         position = CGPoint(agent.position)
-    }
-    
-    func move(to: CGPoint) {
-        
     }
 }
 
