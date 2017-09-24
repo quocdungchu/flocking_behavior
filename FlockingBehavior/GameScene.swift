@@ -58,4 +58,15 @@ extension GameScene: AgentDelegate {
             .filter { agent.position.distance(to: $0.agent.position) <= visibleDistance }
             .map { $0.agent.position }
     }
+    
+    func canStop(agent: Agent) -> Bool {
+        
+        guard let seekingPosition = seekingPosition else {
+            return true
+        }
+        
+        let allPositions = agentNodes.map { $0.agent.position }
+        let center = average(of: allPositions)
+        return center.distance(to: seekingPosition) < 2
+    }
 }

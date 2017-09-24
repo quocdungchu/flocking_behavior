@@ -11,6 +11,7 @@ import Foundation
 protocol AgentDelegate {
     func findSeekingPosition(by agent: Agent) -> Vect2?
     func findOtherAgentsPositions(within visibleDistance: Float, by agent: Agent) -> [Vect2]
+    func canStop(agent: Agent) -> Bool
 }
 
 class Agent {
@@ -50,13 +51,16 @@ class Agent {
     }
     
     func update(){
-        let newVelocity = compute(velocity: velocity, withBehaviors: behaviors)
-        if newVelocity.length >= minimumSpeed {
+        guard let delegate = delegate else {
+            return
+        }
+        
+        if delegate.canStop(agent: self) {
+            speed = 0
+        } else {
+            let newVelocity = compute(velocity: velocity, withBehaviors: behaviors)
             velocity = newVelocity
             position += velocity
-            
-        } else {
-            speed = 0
         }
     }
     
