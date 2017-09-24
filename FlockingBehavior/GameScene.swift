@@ -13,33 +13,23 @@ class GameScene: SKScene {
     
     var seekingPosition: Vect2?
     
-    var agentNode: AgentNode!
+    var agentNodes = [AgentNode]()
     
     var frameCount = 0
     
     override func didMove(to view: SKView) {
-        self.agentNode = AgentNode()
-        agentNode.agent.delegate = self
-        addChild(agentNode)
-    }
-    
-    
-    func touchDown(atPoint pos : CGPoint) {
-    }
-    
-    func touchMoved(toPoint pos : CGPoint) {
         
-    }
-    
-    func touchUp(atPoint pos : CGPoint) {
-        
-    }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
-    }
-    
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        for rangIndex in -2...2 {
+            for colIndex in -2...2 {
+                
+                let position = Vect2.zero + (Vect2(Float(rangIndex), Float(colIndex)) * 50)
+                let agentNode = AgentNode(position: position)
+                agentNode.agent.delegate = self
+                addChild(agentNode)
+                
+                agentNodes.append(agentNode)
+            }
+        }
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -49,12 +39,10 @@ class GameScene: SKScene {
         seekingPosition = Vect2(touch.location(in: self))
     }
     
-    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-    }
-    
-    
     override func update(_ currentTime: TimeInterval) {
-        agentNode.update(elapsedTime: currentTime, frameCount: frameCount)
+        agentNodes.forEach {
+            $0.update(elapsedTime: currentTime, frameCount: frameCount)
+        }
         
         frameCount += 1
     }

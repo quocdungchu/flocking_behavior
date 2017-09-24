@@ -11,20 +11,24 @@ import SpriteKit
 
 class AgentNode: SKShapeNode {
     
+    let size: CGFloat = 30
+    
     var agent: Agent
     
-    override init() {
+    init(position: Vect2) {
         self.agent = Agent(
             behaviors: [
                 .seeking(weight: 0.5, visibleDistance: 1000)
             ],
-            position: Vect2.zero,
+            position: position,
             rotation: Vect2(0, 1),
             speed: 0,
             maximumSpeed: 2.5,
             minimumSpeed: 2
         )
         super.init()
+        
+        updateFromAgent()
         
         draw()
     }
@@ -35,9 +39,9 @@ class AgentNode: SKShapeNode {
     
     private func draw(){
         let path = UIBezierPath()
-        path.move(to: CGPoint(x: 0, y: 50))
-        path.addLine(to: CGPoint(x: 30, y: -30))
-        path.addLine(to: CGPoint(x: -30, y: -30))
+        path.move(to: CGPoint(x: 0, y: size * 0.5))
+        path.addLine(to: CGPoint(x: size * 0.5, y: -size * 0.5))
+        path.addLine(to: CGPoint(x: -size * 0.5, y: -size * 0.5))
         path.close()
         
         self.path = path.cgPath
@@ -48,11 +52,13 @@ class AgentNode: SKShapeNode {
     func update(elapsedTime: TimeInterval, frameCount: Int){
         agent.position = Vect2(position)
         agent.update()
-        position = CGPoint(agent.position)
-        zRotation = CGFloat(agent.rotation.angle - Float.pi / 2)
+     
+        updateFromAgent()
     }
     
-    private func updateRenderer(elapsedTime: TimeInterval, frameCount: Int){
+    private func updateFromAgent(){
+        self.position = CGPoint(agent.position)
+        self.zRotation = CGFloat(agent.rotation.angle - Float.pi / 2)
     }
 }
 
