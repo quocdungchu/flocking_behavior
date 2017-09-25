@@ -59,20 +59,17 @@ class Agent {
         if delegate.canStop(agent: self) {
             speed = 0
         } else {
-            let newVelocity = compute(velocity: velocity, behaviors: behaviors)
-            velocity = newVelocity
+            velocity = desiredVelocity().limit(in: maximumSpeed)
             position += velocity
         }
     }
     
     private func compute(velocity: Vect2, other: Vect2) -> Vect2 {
-        let newVelocity = velocity + other
-        return clamp(velocity: newVelocity)
+        return (velocity + other)
     }
     
-    
-    private func compute(velocity: Vect2, behaviors: [Behavior]) -> Vect2 {
-        return behaviors.reduce(velocity) {
+    private func desiredVelocity() -> Vect2 {
+        return behaviors.reduce(Vect2.zero) {
             compute(velocity: $0, behavior: $1)
         }
     }
@@ -124,7 +121,18 @@ class Agent {
         if let seekingPosition = delegate?.findSeekingPosition(by: self),
             visibleDistance > position.distance(to: seekingPosition)
         {
-            return vectorTo(point: seekingPosition) * weight
+            //TODO
+            let radius: Float = 100
+            
+            let distance = position.distance(to: seekingPosition)
+            
+            if distance < radius {
+                return vectorTo(point: seekingPosition) * (weight * (distance/radius))
+
+            } else {
+                return vectorTo(point: seekingPosition) * weight
+            }
+            
         } else {
             return Vect2.zero
         }
@@ -172,16 +180,6 @@ class Agent {
             
         } else {
             return Vect2.zero
-        }
-    }
-    
-    private func clamp(velocity: Vect2) -> Vect2 {
-        let speed = velocity.length
-        if speed > maximumSpeed {
-            return velocity.normalized * maximumSpeed
-            
-        } else {
-            return velocity
         }
     }
     

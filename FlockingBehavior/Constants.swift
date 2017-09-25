@@ -7,3 +7,5 @@
 //
 
 let MaximumDistanceToStop: Float = 10
+let MaximumBoundingToStop: Float = 80
+
