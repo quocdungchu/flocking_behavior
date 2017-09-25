@@ -174,7 +174,6 @@ class Agent {
             return Vect2.zero
         }
     }
-        
     
     private func clamp(velocity: Vect2) -> Vect2 {
         let speed = velocity.length
