@@ -18,10 +18,12 @@ class AgentNode: SKShapeNode {
     init(position: Vect2) {
         self.agent = Agent(
             behaviors: [
-                .seeking(weight: 0.004, visibleDistance: 1000),
-                .cohesion(weight: 0.001, visibleDistance: 50),
-                .separation(weight: 0.01, visibleDistance: 33),
-                .alignment(weight: 0.008, visibleDistance: 50)
+                .seeking(weight: 0.004, visibleDistance: 10000),
+                .seeking(weight: 0.01, visibleDistance: 300),
+                .cohesion(weight: 0.001, visibleDistance: 100),
+                .separation(weight: 0.015, visibleDistance: 66),
+                .separation(weight: 0.2, visibleDistance: 30),
+                .alignment(weight: 0.008, visibleDistance: 150)
             ],
             position: position,
             rotation: Vect2(0, 1),
@@ -58,8 +60,10 @@ class AgentNode: SKShapeNode {
         agent.update()
      
         self.position = CGPoint(agent.position)
-        
-        self.zRotation = CGFloat(agent.rotation.angle - Float.pi / 2)
+      
+        if frameCount % 15 == 0 {
+            self.zRotation = CGFloat(agent.rotation.angle - Float.pi / 2)
+        }
     }
 }
 

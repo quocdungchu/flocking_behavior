@@ -70,10 +70,6 @@ extension GameScene: AgentDelegate {
         guard let seekingPosition = seekingPosition else {
             return true
         }
-        
-        let allPositions = agentNodes.map { $0.agent.position }
-        
-        let center = average(of: allPositions)
-        return center.distance(to: seekingPosition) < MaximumDistanceToStop
+        return agent.position.distance(to: seekingPosition) < MaximumDistanceToStop
     }
 }
