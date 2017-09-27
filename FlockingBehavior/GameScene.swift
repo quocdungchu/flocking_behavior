@@ -19,7 +19,7 @@ class GameScene: SKScene {
     
     override func didMove(to view: SKView) {
         
-        for rangIndex in -1...1 {
+        for rangIndex in -2...1 {
             for colIndex in -1...1 {
                 
                 let position = Vect2.zero + (Vect2(Float(rangIndex), Float(colIndex)) * 50)
@@ -70,6 +70,12 @@ extension GameScene: AgentDelegate {
         guard let seekingPosition = seekingPosition else {
             return true
         }
-        return agent.position.distance(to: seekingPosition) < MaximumDistanceToStop
+        
+        if agent.position.distance(to: seekingPosition) < MaximumBoundingToStop {
+            return agent.speed < 0.1
+            
+        } else {
+            return false
+        }
     }
 }

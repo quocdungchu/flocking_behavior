@@ -70,6 +70,15 @@ struct Vect2 {
         let dy = y - vector.y
         return sqrtf(dx * dx + dy * dy)
     }
+    
+    func limit(in maximumLength: Float) -> Vect2 {
+        if length > maximumLength {
+            return normalized * maximumLength
+            
+        } else {
+            return self
+        }
+    }
 }
 
 func sum(of vectors: [Vect2]) -> Vect2 {
