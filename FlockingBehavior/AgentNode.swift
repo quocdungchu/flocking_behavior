@@ -17,6 +17,7 @@ class AgentNode: SKShapeNode {
     
     init(position: Vect2) {
         self.agent = SteeringAgent(
+            id: UUID().hashValue,
             behaviors: [
                 .seeking(weight: 0.004, visibleDistance: 10000),
                 .seeking(weight: 0.01, visibleDistance: 300),
@@ -55,9 +56,9 @@ class AgentNode: SKShapeNode {
         self.lineWidth = 2
     }
     
-    func update(elapsedTime: TimeInterval, frameCount: Int){
+    func update(currentTime: TimeInterval, frameCount: Int){
         agent.position = Vect2(position)
-        agent.update()
+        agent.update(currentTime)
      
         self.position = CGPoint(agent.position)
       

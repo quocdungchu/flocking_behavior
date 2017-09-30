@@ -9,30 +9,38 @@ import Foundation
 
 class SteeringManager {
     
-    fileprivate var agents = [SteeringAgent]()
-    
+    private var agents = [Int: SteeringAgent]()
     private var groups = [SteeringGroup]()
     
-    func add(agent: SteeringAgent) {
-        if !agents.contains(where: { $0 === agent }) {
-            agents.append(agent)
-        }
-    }
-    
-    func remove(agent: SteeringAgent) {
-        if let index = agents.index(where: { $0 === agent}) {
-            agents.remove(at: index)
-        }
-    }
-    
     func move(agents: [SteeringAgent], to destination: Vect2) {
-        if let group = SteeringGroup(agents: agents, destination: destination) {
+        if let group = SteeringGroup(
+            id: UUID().hashValue,
+            agents: agents,
+            destination: destination)
+        {
+            
+            for agent in agents {
+                if let oldGroup = findGroupThatContains(agent: agent) {
+                    oldGroup.remove(agent: agent)
+                }
+            }
+            
             groups.append(group)
         }
     }
     
-    func update(_ currentTime: TimeInterval) {
-        self.groups = groups.filter { !$0.isEmpty }
+    func add(agent: SteeringAgent) {
+        self.agents[agent.id] = agent
+    }
+    
+    func remove(agent: SteeringAgent) {
+        self.agents.removeValue(forKey: agent.id)
+    }
+    
+    private func findGroupThatContains(agent: SteeringAgent) -> SteeringGroup? {
+        return groups.first(where: {
+            $0.contain(agent: agent)
+        })
     }
 }
 
@@ -51,5 +59,13 @@ extension SteeringManager: SteeringAgentDelegate {
     
     func canStop(agent: SteeringAgent) -> Bool {
         return true
+    }
+}
+
+extension SteeringManager: Updatable {
+    func update(_ currentTime: TimeInterval) {
+        self.groups = groups.filter { !$0.isEmpty }
+        
+        groups.forEach { $0.update(currentTime) }
     }
 }

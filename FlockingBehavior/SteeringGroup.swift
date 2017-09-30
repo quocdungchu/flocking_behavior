@@ -6,9 +6,11 @@
 //  Copyright © 2017 quoc. All rights reserved.
 //
 
+import Foundation
+
 class SteeringGroup {
-    
-    private var agents: [SteeringAgent]
+    private let id: Int
+    private var agents: [Int: SteeringAgent]
     private let destination: Vect2
     private var leader: SteeringAgent?
     
@@ -16,30 +18,41 @@ class SteeringGroup {
         return agents.isEmpty
     }
     
-    init?(agents: [SteeringAgent], destination: Vect2) {
+    init?(id: Int, agents: [SteeringAgent], destination: Vect2) {
         guard !agents.isEmpty else {
             return nil
         }
-        self.agents = agents
+        self.id = id
+        
+        var theAgents = [Int: SteeringAgent]()
+        agents.forEach { theAgents[$0.id] = $0 }
+        self.agents = theAgents
+        
         self.destination = destination
         self.leader = findLeader()
     }
     
     func add(agent: SteeringAgent) {
-        if !agents.contains(where: { $0 === agent }) {
-            agents.append(agent)
-        }
+        self.agents[agent.id] = agent
     }
     
     func remove(agent: SteeringAgent) {
-        if let index = agents.index(where: { $0 === agent}) {
-            agents.remove(at: index)
-            self.leader = findLeader()
-        }
+        self.agents.removeValue(forKey: agent.id)
+        self.leader = findLeader()
+    }
+    
+    func contain(agent: SteeringAgent) -> Bool {
+        return agents[agent.id] != nil
     }
     
     // TODO find the better method for leader
     private func findLeader() -> SteeringAgent? {
-        return agents.first
+        return agents.first?.value
+    }
+}
+
+extension SteeringGroup: Updatable {
+    func update(_ currentTime: TimeInterval) {
+        agents.forEach { $1.update(currentTime) }
     }
 }

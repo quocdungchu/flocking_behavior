@@ -16,6 +16,7 @@ protocol SteeringAgentDelegate {
 }
 
 class SteeringAgent {
+    let id: Int
     let behaviors: [SteeringBehavior]
     let maximumSpeed: Float
     let minimumSpeed: Float
@@ -36,6 +37,7 @@ class SteeringAgent {
     var delegate: SteeringAgentDelegate?
     
     init(
+        id: Int,
         behaviors: [SteeringBehavior],
         position: Vect2,
         rotation: Vect2,
@@ -43,26 +45,13 @@ class SteeringAgent {
         maximumSpeed: Float,
         minimumSpeed: Float)
     {
+        self.id = id
         self.position = position
         self.rotation = rotation
         self.speed = speed
         self.behaviors = behaviors
         self.maximumSpeed = maximumSpeed
         self.minimumSpeed = minimumSpeed
-    }
-    
-    func update(){
-        guard let delegate = delegate else {
-            return
-        }
-        
-        if delegate.canStop(agent: self) {
-            speed = 0
-        } else {
-            let newVelocity = compute(velocity: velocity, behaviors: behaviors)
-            velocity = newVelocity
-            position += velocity
-        }
     }
     
     private func compute(velocity: Vect2, other: Vect2) -> Vect2 {
@@ -193,5 +182,21 @@ class SteeringAgent {
     
     private func vectorTo(point: Vect2) -> Vect2 {
         return point - position
+    }
+}
+
+extension SteeringAgent: Updatable {
+    func update(_ currentTime: TimeInterval) {
+        guard let delegate = delegate else {
+            return
+        }
+        
+        if delegate.canStop(agent: self) {
+            speed = 0
+        } else {
+            let newVelocity = compute(velocity: velocity, behaviors: behaviors)
+            velocity = newVelocity
+            position += velocity
+        }
     }
 }

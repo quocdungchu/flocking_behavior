@@ -70,6 +70,16 @@ struct Vect2 {
         let dy = y - vector.y
         return sqrtf(dx * dx + dy * dy)
     }
+    
+    func vector(to other: Vect2) -> Vect2 {
+        return other - self
+    }
+    
+    func vectorToCenter(of points: [Vect2]) -> Vect2 {
+        return points.isEmpty ?
+            Vect2.zero:
+            vector(to: average(of: points))
+    }
 }
 
 func sum(of vectors: [Vect2]) -> Vect2 {

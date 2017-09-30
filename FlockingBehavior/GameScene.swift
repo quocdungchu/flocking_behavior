@@ -41,7 +41,7 @@ class GameScene: SKScene {
     
     override func update(_ currentTime: TimeInterval) {
         agentNodes.forEach {
-            $0.update(elapsedTime: currentTime, frameCount: frameCount)
+            $0.update(currentTime: currentTime, frameCount: frameCount)
         }
         
         frameCount += 1
