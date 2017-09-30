@@ -188,7 +188,7 @@ extension SteeringAgent: Updatable {
     func update(_ currentTime: TimeInterval) {        
         updateDelegate?.willAgentUpdate(agent: self)
         
-        velocity = compute(velocity: velocity, behaviors: behaviors)
+        velocity = compute(velocity: Vect2.zero, behaviors: behaviors)
         position += velocity
         
         if let stoppingDelegate = stoppingDelegate {
