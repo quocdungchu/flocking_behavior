@@ -8,15 +8,15 @@
 
 import Foundation
 
-protocol AgentDelegate {
-    func findSeekingPosition(by agent: Agent) -> Vect2?
-    func findOtherAgentsPositions(within visibleDistance: Float, by agent: Agent) -> [Vect2]
-    func findOtherAgentsVelocities(within visibleDistance: Float, by agent: Agent) -> [Vect2]
-    func canStop(agent: Agent) -> Bool
+protocol SteeringAgentDelegate {
+    func findSeekingPosition(by agent: SteeringAgent) -> Vect2?
+    func findOtherAgentsPositions(within visibleDistance: Float, by agent: SteeringAgent) -> [Vect2]
+    func findOtherAgentsVelocities(within visibleDistance: Float, by agent: SteeringAgent) -> [Vect2]
+    func canStop(agent: SteeringAgent) -> Bool
 }
 
-class Agent {
-    let behaviors: [Behavior]
+class SteeringAgent {
+    let behaviors: [SteeringBehavior]
     let maximumSpeed: Float
     let minimumSpeed: Float
     var position: Vect2
@@ -33,10 +33,10 @@ class Agent {
         }
     }
     
-    var delegate: AgentDelegate?
+    var delegate: SteeringAgentDelegate?
     
     init(
-        behaviors: [Behavior],
+        behaviors: [SteeringBehavior],
         position: Vect2,
         rotation: Vect2,
         speed: Float,
@@ -71,13 +71,13 @@ class Agent {
     }
     
     
-    private func compute(velocity: Vect2, behaviors: [Behavior]) -> Vect2 {
+    private func compute(velocity: Vect2, behaviors: [SteeringBehavior]) -> Vect2 {
         return behaviors.reduce(velocity) {
             compute(velocity: $0, behavior: $1)
         }
     }
     
-    private func compute(velocity: Vect2, behavior: Behavior) -> Vect2 {
+    private func compute(velocity: Vect2, behavior: SteeringBehavior) -> Vect2 {
         switch behavior {
         case .seeking (let weight, let visibleDistance):
             return compute(

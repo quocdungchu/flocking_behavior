@@ -48,24 +48,24 @@ class GameScene: SKScene {
     }
 }
 
-extension GameScene: AgentDelegate {
-    func findSeekingPosition(by agent: Agent) -> Vect2? {
+extension GameScene: SteeringAgentDelegate {
+    func findSeekingPosition(by agent: SteeringAgent) -> Vect2? {
         return seekingPosition
     }
     
-    func findOtherAgentsPositions(within visibleDistance: Float, by agent: Agent) -> [Vect2] {
+    func findOtherAgentsPositions(within visibleDistance: Float, by agent: SteeringAgent) -> [Vect2] {
         return agentNodes.filter { $0.agent !== agent }
             .filter { agent.position.distance(to: $0.agent.position) <= visibleDistance }
             .map { $0.agent.position }
     }
     
-    func findOtherAgentsVelocities(within visibleDistance: Float, by agent: Agent) -> [Vect2] {
+    func findOtherAgentsVelocities(within visibleDistance: Float, by agent: SteeringAgent) -> [Vect2] {
         return agentNodes.filter { $0.agent !== agent }
             .filter { agent.position.distance(to: $0.agent.position) <= visibleDistance }
             .map { $0.agent.velocity }
     }
     
-    func canStop(agent: Agent) -> Bool {
+    func canStop(agent: SteeringAgent) -> Bool {
         
         guard let seekingPosition = seekingPosition else {
             return true

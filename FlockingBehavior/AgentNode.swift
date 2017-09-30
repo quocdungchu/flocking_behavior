@@ -13,10 +13,10 @@ class AgentNode: SKShapeNode {
     
     let size: CGFloat = 30
     
-    var agent: Agent
+    var agent: SteeringAgent
     
     init(position: Vect2) {
-        self.agent = Agent(
+        self.agent = SteeringAgent(
             behaviors: [
                 .seeking(weight: 0.004, visibleDistance: 10000),
                 .seeking(weight: 0.01, visibleDistance: 300),
