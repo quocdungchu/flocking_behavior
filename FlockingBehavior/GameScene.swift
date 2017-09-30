@@ -10,9 +10,7 @@ import SpriteKit
 import GameplayKit
 
 class GameScene: SKScene {
-    
-    var seekingPosition: Vect2?
-    
+        
     let steeringManager = SteeringManager()
     
     var agentNodes = [AgentNode]()
@@ -39,7 +37,6 @@ class GameScene: SKScene {
         guard let touch = touches.first else {
             return
         }
-        //seekingPosition = Vect2(touch.location(in: self))
         
         steeringManager.move(
             agents: agentNodes.map { $0.agent },
@@ -55,31 +52,5 @@ class GameScene: SKScene {
         steeringManager.update(currentTime)
         
         frameCount += 1
-    }
-}
-
-extension GameScene {
-    func findSeekingPosition(by agent: SteeringAgent) -> Vect2? {
-        return seekingPosition
-    }
-    
-    func findOtherAgentsPositions(within visibleDistance: Float, by agent: SteeringAgent) -> [Vect2] {
-        return agentNodes.filter { $0.agent !== agent }
-            .filter { agent.position.distance(to: $0.agent.position) <= visibleDistance }
-            .map { $0.agent.position }
-    }
-    
-    func findOtherAgentsVelocities(within visibleDistance: Float, by agent: SteeringAgent) -> [Vect2] {
-        return agentNodes.filter { $0.agent !== agent }
-            .filter { agent.position.distance(to: $0.agent.position) <= visibleDistance }
-            .map { $0.agent.velocity }
-    }
-    
-    func canStop(agent: SteeringAgent) -> Bool {
-        
-        guard let seekingPosition = seekingPosition else {
-            return true
-        }
-        return agent.position.distance(to: seekingPosition) < MaximumDistanceToStop
     }
 }
