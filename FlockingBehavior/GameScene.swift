@@ -13,6 +13,8 @@ class GameScene: SKScene {
     
     var seekingPosition: Vect2?
     
+    let steeringManager = SteeringManager()
+    
     var agentNodes = [AgentNode]()
     
     var frameCount = 0
@@ -24,10 +26,11 @@ class GameScene: SKScene {
                 
                 let position = Vect2.zero + (Vect2(Float(rangIndex), Float(colIndex)) * 50)
                 let agentNode = AgentNode(position: position)
-                agentNode.agent.delegate = self
                 addChild(agentNode)
                 
                 agentNodes.append(agentNode)
+                
+                steeringManager.add(agent: agentNode.agent)
             }
         }
     }
@@ -36,7 +39,12 @@ class GameScene: SKScene {
         guard let touch = touches.first else {
             return
         }
-        seekingPosition = Vect2(touch.location(in: self))
+        //seekingPosition = Vect2(touch.location(in: self))
+        
+        steeringManager.move(
+            agents: agentNodes.map { $0.agent },
+            to: Vect2(touch.location(in: self))
+        )
     }
     
     override func update(_ currentTime: TimeInterval) {
@@ -44,11 +52,13 @@ class GameScene: SKScene {
             $0.update(currentTime: currentTime, frameCount: frameCount)
         }
         
+        steeringManager.update(currentTime)
+        
         frameCount += 1
     }
 }
 
-extension GameScene: SteeringAgentDelegate {
+extension GameScene {
     func findSeekingPosition(by agent: SteeringAgent) -> Vect2? {
         return seekingPosition
     }

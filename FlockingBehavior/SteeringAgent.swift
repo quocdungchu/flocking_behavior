@@ -8,11 +8,29 @@
 
 import Foundation
 
-protocol SteeringAgentDelegate {
-    func findSeekingPosition(by agent: SteeringAgent) -> Vect2?
-    func findOtherAgentsPositions(within visibleDistance: Float, by agent: SteeringAgent) -> [Vect2]
-    func findOtherAgentsVelocities(within visibleDistance: Float, by agent: SteeringAgent) -> [Vect2]
+protocol SteeringAgentSeekingDelegate {
+    func findSeekingPosition(by agent: SteeringAgent, boundingDistance: Float) -> Vect2?
+}
+
+protocol SteeringAgentCohesionDelegate {
+    func findOtherAgentPositionsForCohesion(by agent: SteeringAgent, boundingDistance: Float) -> [Vect2]
+}
+
+protocol SteeringAgentSeparationDelegate {
+    func findOtherAgentPositionsForSeparation(by agent: SteeringAgent, boundingDistance: Float) -> [Vect2]
+}
+
+protocol SteeringAgentAlignmentDelegate {
+    func findOtherAgentVelocitiesForAlignment(by agent: SteeringAgent, boundingDistance: Float) -> [Vect2]
+}
+
+protocol SteeringAgentStoppingDelegate {
     func canStop(agent: SteeringAgent) -> Bool
+}
+
+protocol SteeringAgentUpdateDelegate {
+    func willAgentUpdate(agent: SteeringAgent)
+    func didAgentUpdate(agent: SteeringAgent)
 }
 
 class SteeringAgent {
@@ -33,8 +51,13 @@ class SteeringAgent {
         }
     }
     
-    var delegate: SteeringAgentDelegate?
-    
+    var updateDelegate: SteeringAgentUpdateDelegate?
+    var seekingDelegate: SteeringAgentSeekingDelegate?
+    var cohesionDelegate: SteeringAgentCohesionDelegate?
+    var separationDelegate: SteeringAgentSeparationDelegate?
+    var alignmentDelegate: SteeringAgentAlignmentDelegate?
+    var stoppingDelegate: SteeringAgentStoppingDelegate?
+
     init(
         id: Int,
         behaviors: [SteeringBehavior],
@@ -105,8 +128,9 @@ class SteeringAgent {
         weight: Float,
         boundingDistance: Float) -> Vect2
     {
-        if let seekingPosition = delegate?.findSeekingPosition(by: self),
-            boundingDistance > position.distance(to: seekingPosition)
+        if let seekingPosition = seekingDelegate?.findSeekingPosition(
+            by: self,
+            boundingDistance: boundingDistance)
         {
             return position.vector(to: seekingPosition) * weight
         } else {
@@ -118,8 +142,9 @@ class SteeringAgent {
         weight: Float,
         boundingDistance: Float) -> Vect2
     {
-        if let otherAgentPositions = delegate?.findOtherAgentsPositions(
-            within:boundingDistance, by: self)
+        if let otherAgentPositions = cohesionDelegate?.findOtherAgentPositionsForCohesion(
+            by: self,
+            boundingDistance: boundingDistance)
         {
             return position.vectorToCenter(of: otherAgentPositions) * weight
             
@@ -132,8 +157,9 @@ class SteeringAgent {
         weight: Float,
         boundingDistance: Float) -> Vect2
     {
-        if let otherAgentPositions = delegate?.findOtherAgentsPositions(
-            within:boundingDistance, by: self)
+        if let otherAgentPositions = separationDelegate?.findOtherAgentPositionsForSeparation(
+            by: self,
+            boundingDistance: boundingDistance)
         {
             return position.vectorToCenter(of: otherAgentPositions) * weight * (-1)
             
@@ -146,8 +172,9 @@ class SteeringAgent {
         weight: Float,
         boundingDistance: Float) -> Vect2
     {
-        if let otherAgentVelocities = delegate?.findOtherAgentsVelocities(
-            within:boundingDistance, by: self)
+        if let otherAgentVelocities = alignmentDelegate?.findOtherAgentVelocitiesForAlignment(
+            by: self,
+            boundingDistance: boundingDistance)
         {
             return average(of: otherAgentVelocities) * weight
             
@@ -158,17 +185,19 @@ class SteeringAgent {
 }
 
 extension SteeringAgent: Updatable {
-    func update(_ currentTime: TimeInterval) {
-        guard let delegate = delegate else {
-            return
-        }
-        
-        if delegate.canStop(agent: self) {
+    func update(_ currentTime: TimeInterval) {        
+        updateDelegate?.willAgentUpdate(agent: self)
+       
+        if let stoppingDelegate = stoppingDelegate,
+            stoppingDelegate.canStop(agent: self)
+        {
             speed = 0
+            
         } else {
-            let newVelocity = compute(velocity: velocity, behaviors: behaviors)
-            velocity = newVelocity
+            velocity = compute(velocity: velocity, behaviors: behaviors)
             position += velocity
         }
+                
+        updateDelegate?.didAgentUpdate(agent: self)
     }
 }

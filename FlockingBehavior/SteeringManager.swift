@@ -23,6 +23,11 @@ class SteeringManager {
                 if let oldGroup = findGroupThatContains(agent: agent) {
                     oldGroup.remove(agent: agent)
                 }
+                agent.seekingDelegate = group
+                agent.cohesionDelegate = group
+                agent.alignmentDelegate = group
+                agent.separationDelegate = group
+                agent.stoppingDelegate = group
             }
             
             groups.append(group)
@@ -41,24 +46,6 @@ class SteeringManager {
         return groups.first(where: {
             $0.contain(agent: agent)
         })
-    }
-}
-
-extension SteeringManager: SteeringAgentDelegate {
-    func findSeekingPosition(by agent: SteeringAgent) -> Vect2? {
-        return Vect2.zero
-    }
-    
-    func findOtherAgentsPositions(within visibleDistance: Float, by agent: SteeringAgent) -> [Vect2] {
-        return []
-    }
-    
-    func findOtherAgentsVelocities(within visibleDistance: Float, by agent: SteeringAgent) -> [Vect2] {
-        return []
-    }
-    
-    func canStop(agent: SteeringAgent) -> Bool {
-        return true
     }
 }
 
