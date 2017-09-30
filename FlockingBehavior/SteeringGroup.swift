@@ -43,7 +43,7 @@ class SteeringGroup {
         return agents[agent.id] != nil
     }
     
-    fileprivate func setAchivement(agent: SteeringAgent) {
+    fileprivate func setAchievement(agent: SteeringAgent) {
         achievedAgent[agent.id] = agent
     }
     
@@ -106,6 +106,9 @@ extension SteeringGroup: SteeringAgentCohesionDelegate {
         by agent: SteeringAgent,
         boundingDistance: Float) -> [Vect2]
     {
+        guard !isAchieved(agent: agent) else {
+            return []
+        }
         return findOtherAgentPositions(by: agent, boundingDistance: boundingDistance)
     }
 }
@@ -124,16 +127,17 @@ extension SteeringGroup: SteeringAgentAlignmentDelegate {
         by agent: SteeringAgent,
         boundingDistance: Float) -> [Vect2]
     {
+        guard !isAchieved(agent: agent) else {
+            return []
+        }
         return findOtherAgentVelocities(by: agent, boundingDistance: boundingDistance)
     }
 }
 
 extension SteeringGroup: SteeringAgentStoppingDelegate {
-    func canStop(agent: SteeringAgent) -> Bool {
-        return agent.position.distance(to: destination) < MaximumDistanceToStop
-    }
-    
-    func didAgentStop(agent: SteeringAgent) {
-        setAchivement(agent: agent)
+    func validateToAchieve(agent: SteeringAgent) {
+        if agent.position.distance(to: destination) <= MaximumDistanceToStop {
+            setAchievement(agent: agent)
+        }
     }
 }
