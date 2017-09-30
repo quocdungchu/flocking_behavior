@@ -29,8 +29,7 @@ class AgentNode: SKShapeNode {
             position: position,
             rotation: Vect2(0, 1),
             speed: 0,
-            maximumSpeed: 1.5,
-            minimumSpeed: 2
+            maximumSpeed: 1.5
         )
         super.init()
         

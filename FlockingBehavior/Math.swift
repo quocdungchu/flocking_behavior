@@ -80,6 +80,15 @@ struct Vect2 {
             Vect2.zero:
             vector(to: average(of: points))
     }
+    
+    func limitedVector(maximumLength: Float) -> Vect2 {
+        if length > maximumLength {
+            return normalized * maximumLength
+            
+        } else {
+            return self
+        }
+    }
 }
 
 func sum(of vectors: [Vect2]) -> Vect2 {

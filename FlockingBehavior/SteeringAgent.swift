@@ -19,7 +19,6 @@ class SteeringAgent {
     let id: Int
     let behaviors: [SteeringBehavior]
     let maximumSpeed: Float
-    let minimumSpeed: Float
     var position: Vect2
     var rotation: Vect2
     var speed: Float
@@ -42,8 +41,7 @@ class SteeringAgent {
         position: Vect2,
         rotation: Vect2,
         speed: Float,
-        maximumSpeed: Float,
-        minimumSpeed: Float)
+        maximumSpeed: Float)
     {
         self.id = id
         self.position = position
@@ -51,14 +49,11 @@ class SteeringAgent {
         self.speed = speed
         self.behaviors = behaviors
         self.maximumSpeed = maximumSpeed
-        self.minimumSpeed = minimumSpeed
     }
     
     private func compute(velocity: Vect2, other: Vect2) -> Vect2 {
-        let newVelocity = velocity + other
-        return clamp(velocity: newVelocity)
+        return (velocity + other).limitedVector(maximumLength: maximumSpeed)
     }
-    
     
     private func compute(velocity: Vect2, behaviors: [SteeringBehavior]) -> Vect2 {
         return behaviors.reduce(velocity) {
@@ -71,117 +66,94 @@ class SteeringAgent {
         case .seeking (let weight, let visibleDistance):
             return compute(
                 velocity: velocity,
-                other: calculateSeeking(
+                other: desiredVelocityForSeeking(
                     weight: weight,
-                    visibleDistance: visibleDistance
+                    boundingDistance: visibleDistance
                 )
             )
             
         case .cohesion (let weight, let visibleDistance):
             return compute(
                 velocity: velocity,
-                other: calculateCohesion(
+                other: desiredVelocityForCohesion(
                     weight: weight,
-                    visibleDistance: visibleDistance
+                    boundingDistance: visibleDistance
                 )
             )
             
         case .separation (let weight, let visibleDistance):
             return compute(
                 velocity: velocity,
-                other: calculateSeparation(
+                other: desiredVelocityForSeparation(
                     weight: weight,
-                    visibleDistance: visibleDistance
+                    boundingDistance: visibleDistance
                 )
             )
             
         case .alignment (let weight, let visibleDistance):
             return compute(
                 velocity: velocity,
-                other: calculateAlignment(
+                other: desiredVelocityForAlignment(
                     weight: weight,
-                    visibleDistance: visibleDistance
+                    boundingDistance: visibleDistance
                 )
             )
         }
     }
     
-    private func calculateSeeking(
+    private func desiredVelocityForSeeking(
         weight: Float,
-        visibleDistance: Float) -> Vect2
+        boundingDistance: Float) -> Vect2
     {
         if let seekingPosition = delegate?.findSeekingPosition(by: self),
-            visibleDistance > position.distance(to: seekingPosition)
+            boundingDistance > position.distance(to: seekingPosition)
         {
-            return vectorTo(point: seekingPosition) * weight
+            return position.vector(to: seekingPosition) * weight
         } else {
             return Vect2.zero
         }
     }
     
-    private func calculateCohesion(
+    private func desiredVelocityForCohesion(
         weight: Float,
-        visibleDistance: Float) -> Vect2
+        boundingDistance: Float) -> Vect2
     {
         if let otherAgentPositions = delegate?.findOtherAgentsPositions(
-            within:visibleDistance, by: self)
+            within:boundingDistance, by: self)
         {
-            let vectorToCenter = vectorToCenterPoint(of: otherAgentPositions)
-            return vectorToCenter * weight
+            return position.vectorToCenter(of: otherAgentPositions) * weight
             
         } else {
             return Vect2.zero
         }
     }
     
-    private func calculateSeparation(
+    private func desiredVelocityForSeparation(
         weight: Float,
-        visibleDistance: Float) -> Vect2
+        boundingDistance: Float) -> Vect2
     {
         if let otherAgentPositions = delegate?.findOtherAgentsPositions(
-            within:visibleDistance, by: self)
+            within:boundingDistance, by: self)
         {
-            let vectorToCenter = vectorToCenterPoint(of: otherAgentPositions) * (-1)
-            return vectorToCenter * weight
+            return position.vectorToCenter(of: otherAgentPositions) * weight * (-1)
             
         } else {
             return Vect2.zero
         }
     }
     
-    private func calculateAlignment(
+    private func desiredVelocityForAlignment(
         weight: Float,
-        visibleDistance: Float) -> Vect2
+        boundingDistance: Float) -> Vect2
     {
         if let otherAgentVelocities = delegate?.findOtherAgentsVelocities(
-            within:visibleDistance, by: self)
+            within:boundingDistance, by: self)
         {
-            let averageVelocity = average(of: otherAgentVelocities)
-            return averageVelocity * weight
+            return average(of: otherAgentVelocities) * weight
             
         } else {
             return Vect2.zero
         }
-    }
-    
-    private func clamp(velocity: Vect2) -> Vect2 {
-        let speed = velocity.length
-        if speed > maximumSpeed {
-            return velocity.normalized * maximumSpeed
-            
-        } else {
-            return velocity
-        }
-    }
-    
-    private func vectorToCenterPoint(of points: [Vect2]) -> Vect2 {
-        return points.isEmpty ?
-            Vect2.zero:
-            vectorTo(point: average(of: points))
-    }
-    
-    private func vectorTo(point: Vect2) -> Vect2 {
-        return point - position
     }
 }
 
