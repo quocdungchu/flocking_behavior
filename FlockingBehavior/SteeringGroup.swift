@@ -11,6 +11,7 @@ import Foundation
 class SteeringGroup {
     private let id: Int
     private var agents: [Int: SteeringAgent]
+    private var achievedAgent: [Int: SteeringAgent]
     private let destination: Vect2
     private var leader: SteeringAgent?
     
@@ -28,6 +29,7 @@ class SteeringGroup {
         agents.forEach { theAgents[$0.id] = $0 }
         self.agents = theAgents
         
+        self.achievedAgent = [Int: SteeringAgent]()
         self.destination = destination
         self.leader = findLeader()
     }
@@ -39,6 +41,14 @@ class SteeringGroup {
     
     func contain(agent: SteeringAgent) -> Bool {
         return agents[agent.id] != nil
+    }
+    
+    fileprivate func setAchivement(agent: SteeringAgent) {
+        achievedAgent[agent.id] = agent
+    }
+    
+    fileprivate func isAchieved(agent: SteeringAgent) -> Bool {
+        return achievedAgent[agent.id] != nil
     }
     
     // TODO find the better method for leader
@@ -71,7 +81,9 @@ extension SteeringGroup: Updatable {
 
 extension SteeringGroup: SteeringAgentSeekingDelegate {
     func findSeekingPosition(by agent: SteeringAgent, boundingDistance: Float) -> Vect2? {
-        if agent.position.distance(to: destination) <= boundingDistance {
+        if !isAchieved(agent: agent)
+            && agent.position.distance(to: destination) <= boundingDistance
+        {
             return destination
             
         } else {
@@ -101,5 +113,9 @@ extension SteeringGroup: SteeringAgentAlignmentDelegate {
 extension SteeringGroup: SteeringAgentStoppingDelegate {
     func canStop(agent: SteeringAgent) -> Bool {
         return agent.position.distance(to: destination) < MaximumDistanceToStop
+    }
+    
+    func didAgentStop(agent: SteeringAgent) {
+        setAchivement(agent: agent)
     }
 }

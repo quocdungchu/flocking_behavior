@@ -26,6 +26,7 @@ protocol SteeringAgentAlignmentDelegate {
 
 protocol SteeringAgentStoppingDelegate {
     func canStop(agent: SteeringAgent) -> Bool
+    func didAgentStop(agent: SteeringAgent)
 }
 
 protocol SteeringAgentUpdateDelegate {
@@ -192,6 +193,7 @@ extension SteeringAgent: Updatable {
             stoppingDelegate.canStop(agent: self)
         {
             speed = 0
+            stoppingDelegate.didAgentStop(agent: self)
             
         } else {
             velocity = compute(velocity: velocity, behaviors: behaviors)
