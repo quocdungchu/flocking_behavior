@@ -23,11 +23,7 @@ class SteeringManager {
                 if let oldGroup = findGroupThatContains(agent: agent) {
                     oldGroup.remove(agent: agent)
                 }
-                agent.seekingDelegate = group
-                agent.cohesionDelegate = group
-                agent.alignmentDelegate = group
-                agent.separationDelegate = group
-                agent.stoppingDelegate = group
+                agent.groupDelegate = group
             }
             
             groups.append(group)
@@ -51,7 +47,7 @@ class SteeringManager {
 
 extension SteeringManager: Updatable {
     func update(_ currentTime: TimeInterval) {
-        self.groups = groups.filter { !$0.isEmpty }
+        self.groups = groups.filter { !$0.hasAchievedToDestination }
         
         groups.forEach { $0.update(currentTime) }
     }
