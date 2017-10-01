@@ -6,7 +6,7 @@
 //  Copyright © 2017 quoc. All rights reserved.
 //
 
-enum Behavior {
+enum SteeringBehavior {
     case cohesion (weight: Float, visibleDistance: Float)
     case separation (weight: Float, visibleDistance: Float)
     case alignment (weight: Float, visibleDistance: Float)

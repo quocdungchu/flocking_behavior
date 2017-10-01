@@ -71,7 +71,17 @@ struct Vect2 {
         return sqrtf(dx * dx + dy * dy)
     }
     
-    func limit(in maximumLength: Float) -> Vect2 {
+    func vector(to other: Vect2) -> Vect2 {
+        return other - self
+    }
+    
+    func vectorToCenter(of points: [Vect2]) -> Vect2 {
+        return points.isEmpty ?
+            Vect2.zero:
+            vector(to: average(of: points))
+    }
+    
+    func limitedVector(maximumLength: Float) -> Vect2 {
         if length > maximumLength {
             return normalized * maximumLength
             

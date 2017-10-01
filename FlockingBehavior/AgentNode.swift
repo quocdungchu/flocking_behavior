@@ -13,10 +13,13 @@ class AgentNode: SKShapeNode {
     
     let size: CGFloat = 30
     
-    var agent: Agent
+    var agent: SteeringAgent
+    
+    var frameCount: Int = 0
     
     init(position: Vect2) {
-        self.agent = Agent(
+        self.agent = SteeringAgent(
+            id: UUID().hashValue,
             behaviors: [
                 .seeking(weight: 0.004, visibleDistance: 10000),
                 .seeking(weight: 0.012, visibleDistance: 300),
@@ -28,11 +31,11 @@ class AgentNode: SKShapeNode {
             position: position,
             rotation: Vect2(0, 1),
             speed: 0,
-            maximumSpeed: 1.5,
-            minimumSpeed: 2
+            maximumSpeed: 1.5
         )
         super.init()
         
+        agent.updateDelegate = self
         self.position = CGPoint(agent.position)
         self.zRotation = CGFloat(agent.rotation.angle - Float.pi / 2)
         
@@ -55,12 +58,19 @@ class AgentNode: SKShapeNode {
         self.lineWidth = 2
     }
     
-    func update(elapsedTime: TimeInterval, frameCount: Int){
+    func update(currentTime: TimeInterval, frameCount: Int){
+        self.frameCount = frameCount
+    }
+}
+
+extension AgentNode: SteeringAgentUpdateDelegate {
+    func willAgentUpdate(agent: SteeringAgent) {
         agent.position = Vect2(position)
-        agent.update()
-     
+    }
+    
+    func didAgentUpdate(agent: SteeringAgent) {
         self.position = CGPoint(agent.position)
-      
+        
         if frameCount % 15 == 0 {
             self.zRotation = CGFloat(agent.rotation.angle - Float.pi / 2)
         }

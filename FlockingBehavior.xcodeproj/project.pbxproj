@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7246E84A1F7FF2B500343083 /* Updatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7246E8491F7FF2B400343083 /* Updatable.swift */; };
+		72A184971F7FE49200BB16DB /* SteeringManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72A184961F7FE49100BB16DB /* SteeringManager.swift */; };
+		72A184991F7FE4F100BB16DB /* SteeringGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72A184981F7FE4F100BB16DB /* SteeringGroup.swift */; };
 		AB1867011F779D9F000E0864 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1867001F779D9F000E0864 /* AppDelegate.swift */; };
 		AB1867031F779D9F000E0864 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = AB1867021F779D9F000E0864 /* GameScene.sks */; };
 		AB1867051F779D9F000E0864 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = AB1867041F779D9F000E0864 /* Actions.sks */; };
@@ -18,9 +21,9 @@
 		AB18671C1F779D9F000E0864 /* FlockingBehaviorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB18671B1F779D9F000E0864 /* FlockingBehaviorTests.swift */; };
 		AB1867271F779D9F000E0864 /* FlockingBehaviorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1867261F779D9F000E0864 /* FlockingBehaviorUITests.swift */; };
 		AB28D3961F7838A700BB1542 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB28D3951F7838A700BB1542 /* Constants.swift */; };
-		AB6349491F77A639002F5587 /* Agent.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6349481F77A639002F5587 /* Agent.swift */; };
+		AB6349491F77A639002F5587 /* SteeringAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6349481F77A639002F5587 /* SteeringAgent.swift */; };
 		AB63494C1F77A66C002F5587 /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB63494B1F77A66C002F5587 /* Math.swift */; };
-		AB63494E1F77A746002F5587 /* Behavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB63494D1F77A746002F5587 /* Behavior.swift */; };
+		AB63494E1F77A746002F5587 /* SteeringBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB63494D1F77A746002F5587 /* SteeringBehavior.swift */; };
 		AB6349501F77AB5D002F5587 /* AgentNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB63494F1F77AB5D002F5587 /* AgentNode.swift */; };
 /* End PBXBuildFile section */
 
@@ -42,6 +45,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7246E8491F7FF2B400343083 /* Updatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Updatable.swift; sourceTree = "<group>"; };
+		72A184961F7FE49100BB16DB /* SteeringManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SteeringManager.swift; sourceTree = "<group>"; };
+		72A184981F7FE4F100BB16DB /* SteeringGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SteeringGroup.swift; sourceTree = "<group>"; };
 		AB1866FD1F779D9F000E0864 /* FlockingBehavior.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlockingBehavior.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB1867001F779D9F000E0864 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AB1867021F779D9F000E0864 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -59,9 +65,9 @@
 		AB1867261F779D9F000E0864 /* FlockingBehaviorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlockingBehaviorUITests.swift; sourceTree = "<group>"; };
 		AB1867281F779D9F000E0864 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AB28D3951F7838A700BB1542 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		AB6349481F77A639002F5587 /* Agent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Agent.swift; sourceTree = "<group>"; };
+		AB6349481F77A639002F5587 /* SteeringAgent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SteeringAgent.swift; sourceTree = "<group>"; };
 		AB63494B1F77A66C002F5587 /* Math.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Math.swift; sourceTree = "<group>"; };
-		AB63494D1F77A746002F5587 /* Behavior.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Behavior.swift; sourceTree = "<group>"; };
+		AB63494D1F77A746002F5587 /* SteeringBehavior.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SteeringBehavior.swift; sourceTree = "<group>"; };
 		AB63494F1F77AB5D002F5587 /* AgentNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgentNode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -151,8 +157,11 @@
 		AB6349471F77A619002F5587 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				AB6349481F77A639002F5587 /* Agent.swift */,
-				AB63494D1F77A746002F5587 /* Behavior.swift */,
+				72A184961F7FE49100BB16DB /* SteeringManager.swift */,
+				AB6349481F77A639002F5587 /* SteeringAgent.swift */,
+				AB63494D1F77A746002F5587 /* SteeringBehavior.swift */,
+				72A184981F7FE4F100BB16DB /* SteeringGroup.swift */,
+				7246E8491F7FF2B400343083 /* Updatable.swift */,
 			);
 			name = Core;
 			sourceTree = "<group>";
@@ -233,17 +242,20 @@
 				TargetAttributes = {
 					AB1866FC1F779D9F000E0864 = {
 						CreatedOnToolsVersion = 8.3.3;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
 					AB1867161F779D9F000E0864 = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = 2U9LJ49V7G;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 						TestTargetID = AB1866FC1F779D9F000E0864;
 					};
 					AB1867211F779D9F000E0864 = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = 2U9LJ49V7G;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 						TestTargetID = AB1866FC1F779D9F000E0864;
 					};
@@ -304,9 +316,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB1867071F779D9F000E0864 /* GameScene.swift in Sources */,
-				AB6349491F77A639002F5587 /* Agent.swift in Sources */,
+				AB6349491F77A639002F5587 /* SteeringAgent.swift in Sources */,
+				72A184971F7FE49200BB16DB /* SteeringManager.swift in Sources */,
+				7246E84A1F7FF2B500343083 /* Updatable.swift in Sources */,
+				72A184991F7FE4F100BB16DB /* SteeringGroup.swift in Sources */,
 				AB1867091F779D9F000E0864 /* GameViewController.swift in Sources */,
-				AB63494E1F77A746002F5587 /* Behavior.swift in Sources */,
+				AB63494E1F77A746002F5587 /* SteeringBehavior.swift in Sources */,
 				AB1867011F779D9F000E0864 /* AppDelegate.swift in Sources */,
 				AB63494C1F77A66C002F5587 /* Math.swift in Sources */,
 				AB6349501F77AB5D002F5587 /* AgentNode.swift in Sources */,
@@ -469,7 +484,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.quoc.FlockingBehavior;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -482,7 +498,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.quoc.FlockingBehavior;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -496,7 +513,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.quoc.FlockingBehaviorTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FlockingBehavior.app/FlockingBehavior";
 			};
 			name = Debug;
@@ -511,7 +529,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.quoc.FlockingBehaviorTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FlockingBehavior.app/FlockingBehavior";
 			};
 			name = Release;
@@ -525,7 +544,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.quoc.FlockingBehaviorUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_TARGET_NAME = FlockingBehavior;
 			};
 			name = Debug;
@@ -539,7 +559,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.quoc.FlockingBehaviorUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_TARGET_NAME = FlockingBehavior;
 			};
 			name = Release;
