@@ -15,8 +15,8 @@ class SteeringGroup {
     private let destination: Vect2
     private var leader: SteeringAgent?
     
-    var isEmpty: Bool {
-        return agents.isEmpty
+    var hasAchievedToDestination: Bool {
+        return achievedAgent.count == agents.count
     }
     
     init?(id: Int, agents: [SteeringAgent], destination: Vect2) {
@@ -36,6 +36,7 @@ class SteeringGroup {
     
     func remove(agent: SteeringAgent) {
         self.agents.removeValue(forKey: agent.id)
+        achievedAgent.removeValue(forKey: agent.id)
         self.leader = findLeader()
     }
     
@@ -45,15 +46,30 @@ class SteeringGroup {
     
     fileprivate func markAsAchieved(agent: SteeringAgent) {
         achievedAgent[agent.id] = agent
+        self.leader = findLeader()
     }
     
     fileprivate func isMarkedAsAchieved(agent: SteeringAgent) -> Bool {
         return achievedAgent[agent.id] != nil
     }
     
-    // TODO find the better method for leader
     private func findLeader() -> SteeringAgent? {
-        return agents.first?.value
+        
+        let nonAchievedAgents = agents.values.filter { !isMarkedAsAchieved(agent: $0) }
+        
+        guard !nonAchievedAgents.isEmpty else {
+            return nil
+        }
+        
+        let theLeader = nonAchievedAgents.reduce(nonAchievedAgents[0]) {
+            if $0.position.distance(to: destination) > $1.position.distance(to: destination) {
+                return $1
+            } else {
+                return $0
+            }
+        }
+        
+        return theLeader
     }
     
     private func findOtherAgents(

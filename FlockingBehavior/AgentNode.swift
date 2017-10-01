@@ -78,12 +78,12 @@ extension AgentNode: SteeringAgenetBehaviorsDataSource {
         switch (isGroupLeader, hasAchieved) {
         case (_, true):
             return [
-                .separation(weight: 0.4, visibleDistance: 66),
+                .separation(weight: 0.4, visibleDistance: 33),
             ]
             
         case (true, _):
             return [
-                .seeking(weight: 0.012, visibleDistance: 10000),
+                .seeking(weight: 0.4, visibleDistance: 10000),
 //                .seeking(weight: 0.012, visibleDistance: 300),
                 .cohesion(weight: 0.001, visibleDistance: 100),
                 .separation(weight: 0.015, visibleDistance: 66),

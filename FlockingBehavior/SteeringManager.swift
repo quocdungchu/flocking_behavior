@@ -47,7 +47,7 @@ class SteeringManager {
 
 extension SteeringManager: Updatable {
     func update(_ currentTime: TimeInterval) {
-        self.groups = groups.filter { !$0.isEmpty }
+        self.groups = groups.filter { !$0.hasAchievedToDestination }
         
         groups.forEach { $0.update(currentTime) }
     }
