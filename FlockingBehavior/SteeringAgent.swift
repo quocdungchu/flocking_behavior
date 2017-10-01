@@ -8,35 +8,28 @@
 
 import Foundation
 
-protocol SteeringAgentSeekingDelegate {
+protocol SteeringAgenetBehaviorsDataSource: class {
+    func behaviors(of agent: SteeringAgent, isGroupLeader: Bool, hasAchieved: Bool) -> [SteeringBehavior]
+}
+
+protocol SteeringAgentGroupDelegate: class {
     func findSeekingPosition(by agent: SteeringAgent, boundingDistance: Float) -> Vect2?
-}
-
-protocol SteeringAgentCohesionDelegate {
     func findOtherAgentPositionsForCohesion(by agent: SteeringAgent, boundingDistance: Float) -> [Vect2]
-}
-
-protocol SteeringAgentSeparationDelegate {
     func findOtherAgentPositionsForSeparation(by agent: SteeringAgent, boundingDistance: Float) -> [Vect2]
-}
-
-protocol SteeringAgentAlignmentDelegate {
     func findOtherAgentVelocitiesForAlignment(by agent: SteeringAgent, boundingDistance: Float) -> [Vect2]
-}
-
-protocol SteeringAgentStoppingDelegate {
     func validateToAchieve(agent: SteeringAgent)
+    func isGroupLeader(agent: SteeringAgent) -> Bool
+    func hasAchieved(agent: SteeringAgent) -> Bool
 }
 
-protocol SteeringAgentUpdateDelegate {
+protocol SteeringAgentUpdatingDelegate: class {
     func willAgentUpdate(agent: SteeringAgent)
     func didAgentUpdate(agent: SteeringAgent)
 }
 
 class SteeringAgent {
     let id: Int
-    let behaviors: [SteeringBehavior]
-    let maximumSpeed: Float
+    private let maximumSpeed: Float
     var position: Vect2
     var rotation: Vect2
     var speed: Float
@@ -51,16 +44,12 @@ class SteeringAgent {
         }
     }
     
-    var updateDelegate: SteeringAgentUpdateDelegate?
-    var seekingDelegate: SteeringAgentSeekingDelegate?
-    var cohesionDelegate: SteeringAgentCohesionDelegate?
-    var separationDelegate: SteeringAgentSeparationDelegate?
-    var alignmentDelegate: SteeringAgentAlignmentDelegate?
-    var stoppingDelegate: SteeringAgentStoppingDelegate?
+    weak var behaviorsDataSource: SteeringAgenetBehaviorsDataSource?
+    weak var updatingDelegate: SteeringAgentUpdatingDelegate?
+    weak var groupDelegate: SteeringAgentGroupDelegate?
 
     init(
         id: Int,
-        behaviors: [SteeringBehavior],
         position: Vect2,
         rotation: Vect2,
         speed: Float,
@@ -70,7 +59,6 @@ class SteeringAgent {
         self.position = position
         self.rotation = rotation
         self.speed = speed
-        self.behaviors = behaviors
         self.maximumSpeed = maximumSpeed
     }
     
@@ -128,7 +116,7 @@ class SteeringAgent {
         weight: Float,
         boundingDistance: Float) -> Vect2
     {
-        if let seekingPosition = seekingDelegate?.findSeekingPosition(
+        if let seekingPosition = groupDelegate?.findSeekingPosition(
             by: self,
             boundingDistance: boundingDistance)
         {
@@ -142,7 +130,7 @@ class SteeringAgent {
         weight: Float,
         boundingDistance: Float) -> Vect2
     {
-        if let otherAgentPositions = cohesionDelegate?.findOtherAgentPositionsForCohesion(
+        if let otherAgentPositions = groupDelegate?.findOtherAgentPositionsForCohesion(
             by: self,
             boundingDistance: boundingDistance)
         {
@@ -157,7 +145,7 @@ class SteeringAgent {
         weight: Float,
         boundingDistance: Float) -> Vect2
     {
-        if let otherAgentPositions = separationDelegate?.findOtherAgentPositionsForSeparation(
+        if let otherAgentPositions = groupDelegate?.findOtherAgentPositionsForSeparation(
             by: self,
             boundingDistance: boundingDistance)
         {
@@ -172,7 +160,7 @@ class SteeringAgent {
         weight: Float,
         boundingDistance: Float) -> Vect2
     {
-        if let otherAgentVelocities = alignmentDelegate?.findOtherAgentVelocitiesForAlignment(
+        if let otherAgentVelocities = groupDelegate?.findOtherAgentVelocitiesForAlignment(
             by: self,
             boundingDistance: boundingDistance)
         {
@@ -185,16 +173,31 @@ class SteeringAgent {
 }
 
 extension SteeringAgent: Updatable {
-    func update(_ currentTime: TimeInterval) {        
-        updateDelegate?.willAgentUpdate(agent: self)
+    func update(_ currentTime: TimeInterval) {
+        
+        guard let groupDelegate = groupDelegate else {
+            assertionFailure("groupDelegate must be not nil")
+            return
+        }
+        
+        guard let behaviorsDataSource = behaviorsDataSource else {
+            assertionFailure("behaviorsDataSource must be not nil")
+            return
+        }
+        
+        updatingDelegate?.willAgentUpdate(agent: self)
+        
+        let behaviors = behaviorsDataSource.behaviors(
+            of: self,
+            isGroupLeader: groupDelegate.isGroupLeader(agent: self),
+            hasAchieved: groupDelegate.hasAchieved(agent: self)
+        )
         
         velocity = compute(velocity: Vect2.zero, behaviors: behaviors)
         position += velocity
         
-        if let stoppingDelegate = stoppingDelegate {
-            stoppingDelegate.validateToAchieve(agent: self)
-        }
+        groupDelegate.validateToAchieve(agent: self)
                 
-        updateDelegate?.didAgentUpdate(agent: self)
+        updatingDelegate?.didAgentUpdate(agent: self)
     }
 }

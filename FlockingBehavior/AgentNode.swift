@@ -20,14 +20,6 @@ class AgentNode: SKShapeNode {
     init(position: Vect2) {
         self.agent = SteeringAgent(
             id: UUID().hashValue,
-            behaviors: [
-                .seeking(weight: 0.004, visibleDistance: 10000),
-                .seeking(weight: 0.012, visibleDistance: 300),
-                .cohesion(weight: 0.001, visibleDistance: 100),
-                .separation(weight: 0.015, visibleDistance: 66),
-                .separation(weight: 0.2, visibleDistance: 33),
-                .alignment(weight: 0.008, visibleDistance: 150)
-            ],
             position: position,
             rotation: Vect2(0, 1),
             speed: 0,
@@ -35,7 +27,8 @@ class AgentNode: SKShapeNode {
         )
         super.init()
         
-        agent.updateDelegate = self
+        agent.behaviorsDataSource = self
+        agent.updatingDelegate = self
         self.position = CGPoint(agent.position)
         self.zRotation = CGFloat(agent.rotation.angle - Float.pi / 2)
         
@@ -63,7 +56,7 @@ class AgentNode: SKShapeNode {
     }
 }
 
-extension AgentNode: SteeringAgentUpdateDelegate {
+extension AgentNode: SteeringAgentUpdatingDelegate {
     func willAgentUpdate(agent: SteeringAgent) {
         agent.position = Vect2(position)
     }
@@ -73,6 +66,39 @@ extension AgentNode: SteeringAgentUpdateDelegate {
         
         if frameCount % 15 == 0 {
             self.zRotation = CGFloat(agent.rotation.angle - Float.pi / 2)
+        }
+    }
+}
+
+extension AgentNode: SteeringAgenetBehaviorsDataSource {
+    func behaviors(of agent: SteeringAgent, isGroupLeader: Bool, hasAchieved: Bool)
+        -> [SteeringBehavior]
+    {
+        
+        switch (isGroupLeader, hasAchieved) {
+        case (_, true):
+            return [
+                .separation(weight: 0.4, visibleDistance: 66),
+            ]
+            
+        case (true, _):
+            return [
+                .seeking(weight: 0.012, visibleDistance: 10000),
+//                .seeking(weight: 0.012, visibleDistance: 300),
+                .cohesion(weight: 0.001, visibleDistance: 100),
+                .separation(weight: 0.015, visibleDistance: 66),
+                .separation(weight: 0.2, visibleDistance: 33),
+                .alignment(weight: 0.008, visibleDistance: 150)
+            ]
+        default:
+            return [
+                .seeking(weight: 0.004, visibleDistance: 10000),
+                .seeking(weight: 0.012, visibleDistance: 300),
+                .cohesion(weight: 0.001, visibleDistance: 100),
+                .separation(weight: 0.015, visibleDistance: 66),
+                .separation(weight: 0.2, visibleDistance: 33),
+                .alignment(weight: 0.008, visibleDistance: 150)
+            ]
         }
     }
 }

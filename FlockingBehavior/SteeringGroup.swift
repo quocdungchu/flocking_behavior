@@ -43,11 +43,11 @@ class SteeringGroup {
         return agents[agent.id] != nil
     }
     
-    fileprivate func setAchievement(agent: SteeringAgent) {
+    fileprivate func markAsAchieved(agent: SteeringAgent) {
         achievedAgent[agent.id] = agent
     }
     
-    fileprivate func isAchieved(agent: SteeringAgent) -> Bool {
+    fileprivate func isMarkedAsAchieved(agent: SteeringAgent) -> Bool {
         return achievedAgent[agent.id] != nil
     }
     
@@ -88,10 +88,10 @@ extension SteeringGroup: Updatable {
     }
 }
 
-extension SteeringGroup: SteeringAgentSeekingDelegate {
+extension SteeringGroup: SteeringAgentGroupDelegate {
+    
     func findSeekingPosition(by agent: SteeringAgent, boundingDistance: Float) -> Vect2? {
-        if !isAchieved(agent: agent)
-            && agent.position.distance(to: destination) <= boundingDistance
+        if agent.position.distance(to: destination) <= boundingDistance
         {
             return destination
             
@@ -99,45 +99,39 @@ extension SteeringGroup: SteeringAgentSeekingDelegate {
             return nil
         }
     }
-}
-
-extension SteeringGroup: SteeringAgentCohesionDelegate {
+    
     func findOtherAgentPositionsForCohesion(
         by agent: SteeringAgent,
         boundingDistance: Float) -> [Vect2]
     {
-        guard !isAchieved(agent: agent) else {
-            return []
-        }
         return findOtherAgentPositions(by: agent, boundingDistance: boundingDistance)
     }
-}
-
-extension SteeringGroup: SteeringAgentSeparationDelegate {
+    
     func findOtherAgentPositionsForSeparation(
         by agent: SteeringAgent,
         boundingDistance: Float) -> [Vect2]
     {
         return findOtherAgentPositions(by: agent, boundingDistance: boundingDistance)
     }
-}
-
-extension SteeringGroup: SteeringAgentAlignmentDelegate {
+    
     func findOtherAgentVelocitiesForAlignment(
         by agent: SteeringAgent,
         boundingDistance: Float) -> [Vect2]
     {
-        guard !isAchieved(agent: agent) else {
-            return []
-        }
         return findOtherAgentVelocities(by: agent, boundingDistance: boundingDistance)
     }
-}
-
-extension SteeringGroup: SteeringAgentStoppingDelegate {
+    
     func validateToAchieve(agent: SteeringAgent) {
         if agent.position.distance(to: destination) <= MaximumDistanceToStop {
-            setAchievement(agent: agent)
+            markAsAchieved(agent: agent)
         }
+    }
+    
+    func isGroupLeader(agent: SteeringAgent) -> Bool {
+        return agent === leader
+    }
+    
+    func hasAchieved(agent: SteeringAgent) -> Bool {
+        return isMarkedAsAchieved(agent: agent)
     }
 }
