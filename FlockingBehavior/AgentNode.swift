@@ -17,11 +17,11 @@ class AgentNode: SKShapeNode {
     
     var frameCount: Int = 0
     
-    init(position: Vect2) {
+    init(position: Vector) {
         self.agent = SteeringAgent(
             id: UUID().hashValue,
             position: position,
-            rotation: Vect2(0, 1),
+            rotation: Vector(0, 1),
             speed: 0,
             maximumSpeed: 1.5
         )
@@ -58,7 +58,7 @@ class AgentNode: SKShapeNode {
 
 extension AgentNode: SteeringAgentUpdatingDelegate {
     func willAgentUpdate(agent: SteeringAgent) {
-        agent.position = Vect2(position)
+        agent.position = Vector(position)
     }
     
     func didAgentUpdate(agent: SteeringAgent) {
@@ -99,14 +99,14 @@ extension AgentNode: SteeringAgenetBehaviorsDataSource {
     }
 }
 
-extension Vect2 {
+extension Vector {
     init(_ point: CGPoint) {
         self.init(Float(point.x), Float(point.y))
     }
 }
 
 extension CGPoint {
-    init(_ vector: Vect2) {
+    init(_ vector: Vector) {
         self.init(x: CGFloat(vector.x), y: CGFloat(vector.y))
     }
 }

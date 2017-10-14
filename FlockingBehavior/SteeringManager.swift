@@ -12,7 +12,7 @@ class SteeringManager {
     private var agents = [Int: SteeringAgent]()
     private var groups = [SteeringGroup]()
     
-    func move(agents: [SteeringAgent], to destination: Vect2) {
+    func move(agents: [SteeringAgent], to destination: Vector) {
         if let group = SteeringGroup(
             id: UUID().hashValue,
             agents: agents,
