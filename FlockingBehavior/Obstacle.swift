@@ -7,10 +7,11 @@
 //
 
 class Obstacle {
-    let point: Vector
+    private (set) var point = Vector.zero
     private (set) var next: Obstacle?
     private (set) var previous: Obstacle?
     private (set) var convexe: Bool = false
+    private (set) var pointCount: Int = 0
     
     static func buildObstacle(vertices: [Vector]) -> Obstacle? {
         guard vertices.count >= 2 else {
@@ -23,7 +24,10 @@ class Obstacle {
         
         for i in 0..<vertices.count {
             let currentPoint = vertices[i]
-            current = Obstacle(point: currentPoint)
+            
+            current = Obstacle()
+            current?.point = currentPoint
+            current?.pointCount = vertices.count
             
             current?.previous = previous
             previous?.next = current
@@ -45,9 +49,5 @@ class Obstacle {
             previous = current
         }
         return first
-    }
-    
-    private init(point: Vector){
-        self.point = point
     }
 }

@@ -24,6 +24,7 @@ class ObstacleTests: XCTestCase {
         XCTAssertNotNil(obstacle1)
         XCTAssertEqual(obstacle1!.point, vertices[0])
         XCTAssertTrue(obstacle1!.convexe)
+        XCTAssertEqual(obstacle1!.pointCount, vertices.count)
         
         let obstacle2 = obstacle1?.next
         
