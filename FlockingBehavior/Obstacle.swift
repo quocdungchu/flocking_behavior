@@ -50,4 +50,12 @@ class Obstacle {
         }
         return first
     }
+    
+    func enumerate(body: (Obstacle) -> Void){
+        var current: Obstacle = self
+        for _ in 0...(pointCount - 1) {
+            body(current)
+            current = current.next!
+        }
+    }
 }
