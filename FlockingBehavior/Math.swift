@@ -24,6 +24,18 @@ func leftOf(start: Vector, end: Vector, point: Vector) -> Float {
     return determinant(of: start - point, and: end - start)
 }
 
+func intersection(start1: Vector, end1: Vector, start2: Vector, end2: Vector) -> Vector? {
+    let det2 = determinant(of: (end1 - start1), and: (start2 - end2))
+    
+    guard det2 != 0 else {
+        return nil
+    }
+    
+    let det1 = determinant(of: (end1 - start1), and: (start2 - start1))
+    
+    return start2 + (end2 - start2) * (det1/det2)
+}
+
 func shortestAngleBetween(_ angle1: Float, angle2: Float) -> Float {
     let pi = Float.pi
     let twoPi = pi * 2.0
