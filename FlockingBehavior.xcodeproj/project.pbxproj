@@ -15,6 +15,7 @@
 		72B0CE7A1F9226BE0082CF46 /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B0CE791F9226BE0082CF46 /* Math.swift */; };
 		72B0CE7C1F92271F0082CF46 /* PointLineRelativePositionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B0CE7B1F92271F0082CF46 /* PointLineRelativePositionTests.swift */; };
 		72B0CE7E1F925D550082CF46 /* ObstacleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B0CE7D1F925D550082CF46 /* ObstacleTests.swift */; };
+		72B0CE801F92646D0082CF46 /* RVOSimulator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B0CE7F1F92646D0082CF46 /* RVOSimulator.swift */; };
 		AB1867011F779D9F000E0864 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1867001F779D9F000E0864 /* AppDelegate.swift */; };
 		AB1867031F779D9F000E0864 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = AB1867021F779D9F000E0864 /* GameScene.sks */; };
 		AB1867051F779D9F000E0864 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = AB1867041F779D9F000E0864 /* Actions.sks */; };
@@ -57,6 +58,7 @@
 		72B0CE791F9226BE0082CF46 /* Math.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Math.swift; sourceTree = "<group>"; };
 		72B0CE7B1F92271F0082CF46 /* PointLineRelativePositionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointLineRelativePositionTests.swift; sourceTree = "<group>"; };
 		72B0CE7D1F925D550082CF46 /* ObstacleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObstacleTests.swift; sourceTree = "<group>"; };
+		72B0CE7F1F92646D0082CF46 /* RVOSimulator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RVOSimulator.swift; sourceTree = "<group>"; };
 		AB1866FD1F779D9F000E0864 /* FlockingBehavior.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlockingBehavior.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB1867001F779D9F000E0864 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AB1867021F779D9F000E0864 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				72B0CE731F921B3E0082CF46 /* Obstacle.swift */,
+				72B0CE7F1F92646D0082CF46 /* RVOSimulator.swift */,
 			);
 			name = RVO;
 			sourceTree = "<group>";
@@ -347,6 +350,7 @@
 				AB63494E1F77A746002F5587 /* SteeringBehavior.swift in Sources */,
 				AB1867011F779D9F000E0864 /* AppDelegate.swift in Sources */,
 				AB6349501F77AB5D002F5587 /* AgentNode.swift in Sources */,
+				72B0CE801F92646D0082CF46 /* RVOSimulator.swift in Sources */,
 				AB28D3961F7838A700BB1542 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
