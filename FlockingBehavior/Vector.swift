@@ -91,3 +91,9 @@ struct Vector {
     }
 }
 
+extension Vector: Equatable {
+    static func == (lhs: Vector, rhs: Vector) -> Bool {
+        return lhs.x == rhs.x && lhs.y == rhs.y
+    }
+}
+
