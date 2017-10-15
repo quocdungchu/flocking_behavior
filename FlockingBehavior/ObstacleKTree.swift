@@ -10,6 +10,8 @@ import Foundation
 
 class ObstacleKTree {
     
+    typealias OnObstacleQueried = (Obstacle) -> Void
+    
     class Node {
         let obstacle: Obstacle
         let left: Node?
@@ -33,14 +35,9 @@ class ObstacleKTree {
         let right: Obstacle
     }
     
-    let obstacles: [Obstacle]
-    fileprivate (set)  var node: Node?
+    let node: Node?
     
     init(obstacles: [Obstacle]) {
-        self.obstacles = obstacles
-    }
-    
-    func build(){
         self.node = ObstacleKTree.buildRecursive(obstacles: obstacles)
     }
     
@@ -170,6 +167,38 @@ class ObstacleKTree {
         }
         
         return OptimalSplit(index: optimalSplitIndex, leftCount: minLeft, rightCount: minRight)
+    }
+    
+    func query(origin: Vector, range: Float, onObstacleQueried: OnObstacleQueried) {
+        return ObstacleKTree.queryRecursive(
+            origin: origin,
+            range: range,
+            node: node,
+            onObstacleQueried: onObstacleQueried
+        )
+    }
+    
+    static func queryRecursive(
+        origin: Vector,
+        range: Float,
+        node: Node?,
+        onObstacleQueried: OnObstacleQueried)
+    {
+        guard let node = node else {
+            return
+        }
+        
+        let obstacle1 = node.obstacle
+        let obstacle2 = obstacle1.next!
+        
+        let leftOfLine = leftOf(start: obstacle1.point, end: obstacle2.point, point: origin)
+        
+        queryRecursive(
+            origin: origin,
+            range: range,
+            node: leftOfLine >= 0 ? node.left: node.right,
+            onObstacleQueried: onObstacleQueried
+        )
     }
 }
 
