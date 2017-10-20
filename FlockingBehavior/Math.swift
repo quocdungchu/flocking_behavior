@@ -36,6 +36,25 @@ func intersection(start1: Vector, end1: Vector, start2: Vector, end2: Vector) ->
     return start2 + (end2 - start2) * (det1/det2)
 }
 
+func squaredDistance(point: Vector, segmentStart start: Vector, segmentEnd end: Vector) -> Float {
+    let r = ((point - start) * (end - start)) / (end - start).squaredLength
+    
+    if r < 0.0 {
+        return (point - start).squaredLength
+        
+    } else if r > 1.0 {
+        return (point - end).squaredLength
+        
+    } else {
+        return (point - (start + (end - start) * r)).squaredLength
+    }
+}
+
+func squaredDistance(point: Vector, lineStart start: Vector, lineEnd end: Vector) -> Float {
+    let r = ((point - start) * (end - start)) / (end - start).squaredLength
+    return (point - (start + (end - start) * r)).squaredLength
+}
+
 func shortestAngleBetween(_ angle1: Float, angle2: Float) -> Float {
     let pi = Float.pi
     let twoPi = pi * 2.0

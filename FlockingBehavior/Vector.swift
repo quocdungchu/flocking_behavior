@@ -17,7 +17,11 @@ struct Vector {
     }
     
     var length: Float {
-        return sqrtf(x * x + y * y)
+        return sqrtf(squaredLength)
+    }
+    
+    var squaredLength: Float {
+        return self * self
     }
     
     var normalized: Vector {
@@ -63,6 +67,10 @@ struct Vector {
     
     static func /= (left: inout Vector, value: Float) {
         left = left / value
+    }
+    
+    static func * (vector1: Vector, vector2: Vector) -> Float {
+        return vector1.x * vector2.x + vector1.y * vector2.y
     }
     
     func distance(to vector: Vector) -> Float {
