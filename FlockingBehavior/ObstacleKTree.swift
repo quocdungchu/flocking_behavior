@@ -207,7 +207,7 @@ class ObstacleKTree {
         ))
         
         if distanceFromOriginToLine < range {
-            if leftOfLine < 0.0 {
+            if leftOfLine > 0.0 {
                 onObstacleQueried(node.obstacle)
             }
             
