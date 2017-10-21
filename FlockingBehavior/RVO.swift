@@ -6,4 +6,8 @@
 //  Copyright © 2017 quoc. All rights reserved.
 //
 
-let RVO_EPSILON: Float = 0.00001
+enum RVOConstants {
+    static let epsilon: Float = 0.00001
+}
+
+

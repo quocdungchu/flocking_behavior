@@ -67,10 +67,10 @@ class ObstacleKTree {
             let j1LeftOfI = leftOf(start: obstacleI1.point, end: obstacleI2.point, point: obstacleJ1.point)
             let j2LeftOfI = leftOf(start: obstacleI1.point, end: obstacleI2.point, point: obstacleJ2.point)
             
-            if j1LeftOfI >= -RVO_EPSILON && j2LeftOfI >= -RVO_EPSILON {
+            if j1LeftOfI >= -RVOConstants.epsilon && j2LeftOfI >= -RVOConstants.epsilon {
                 leftObstacles.append(obstacleJ1)
                 
-            } else if j1LeftOfI <= RVO_EPSILON && j2LeftOfI <= RVO_EPSILON {
+            } else if j1LeftOfI <= RVOConstants.epsilon && j2LeftOfI <= RVOConstants.epsilon {
                 rightObstacles.append(obstacleJ1)
 
             } else {
@@ -135,10 +135,10 @@ class ObstacleKTree {
                 let j1LeftOfI = leftOf(start: obstacleI1.point, end: obstacleI2.point, point: obstacleJ1.point)
                 let j2LeftOfI = leftOf(start: obstacleI1.point, end: obstacleI2.point, point: obstacleJ2.point)
 
-                if j1LeftOfI >= -RVO_EPSILON && j2LeftOfI >= -RVO_EPSILON {
+                if j1LeftOfI >= -RVOConstants.epsilon && j2LeftOfI >= -RVOConstants.epsilon {
                     leftSize += 1
                     
-                } else if j1LeftOfI <= RVO_EPSILON && j2LeftOfI <= RVO_EPSILON {
+                } else if j1LeftOfI <= RVOConstants.epsilon && j2LeftOfI <= RVOConstants.epsilon {
                     rightSize += 1
                     
                 } else {
@@ -199,6 +199,25 @@ class ObstacleKTree {
             node: leftOfLine >= 0 ? node.left: node.right,
             onObstacleQueried: onObstacleQueried
         )
+        
+        let distanceFromOriginToLine = sqrtf(squaredDistance(
+            point: origin,
+            lineStart: obstacle1.point,
+            lineEnd: obstacle2.point
+        ))
+        
+        if distanceFromOriginToLine < range {
+            if leftOfLine < 0.0 {
+                onObstacleQueried(node.obstacle)
+            }
+            
+            queryRecursive(
+                origin: origin,
+                range: range,
+                node: leftOfLine >= 0 ? node.right: node.left,
+                onObstacleQueried: onObstacleQueried
+            )
+        }
     }
 }
 

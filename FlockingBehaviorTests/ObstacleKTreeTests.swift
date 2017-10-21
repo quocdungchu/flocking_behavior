@@ -12,25 +12,25 @@ import XCTest
 class ObstacleKTreeTests: XCTestCase {
     
     func testFindingOptimalSplit() {
-        let simulator = RVOSimulator()
+        let obstacleBuilder = ObstacleBuilder()
 
-        simulator.addObstacle(with: [
+        obstacleBuilder.addObstacle(with: [
             Vector(0,0),
             Vector(0,1),
             Vector(1,0),
         ])
         
-        simulator.addObstacle(with: [
+        obstacleBuilder.addObstacle(with: [
             Vector(0,0),
             Vector(0,-1),
             Vector(-1,0),
         ])
         
-        let optimalSplit = ObstacleKTree.findOptimalSplitIndex(obstacles: simulator.obstacles)
+        let optimalSplit = ObstacleKTree.findOptimalSplitIndex(obstacles: obstacleBuilder.obstacles)
         
         XCTAssertNotNil(optimalSplit)
-        XCTAssertEqual(optimalSplit!.leftCount, 2)
-        XCTAssertEqual(optimalSplit!.rightCount, 3)
-        XCTAssertEqual(optimalSplit!.index, 1)
+        XCTAssertEqual(optimalSplit!.leftCount, 3)
+        XCTAssertEqual(optimalSplit!.rightCount, 2)
+        XCTAssertEqual(optimalSplit!.index, 0)
     }
 }
