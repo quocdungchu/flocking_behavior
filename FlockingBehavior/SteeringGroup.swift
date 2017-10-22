@@ -12,14 +12,14 @@ class SteeringGroup {
     private let id: Int
     private var agents: [Int: SteeringAgent]
     private var achievedAgent: [Int: SteeringAgent]
-    private let destination: Vect2
+    private let destination: Vector
     private var leader: SteeringAgent?
     
     var hasAchievedToDestination: Bool {
         return achievedAgent.count == agents.count
     }
     
-    init?(id: Int, agents: [SteeringAgent], destination: Vect2) {
+    init?(id: Int, agents: [SteeringAgent], destination: Vector) {
         guard !agents.isEmpty else {
             return nil
         }
@@ -83,7 +83,7 @@ class SteeringGroup {
     
     fileprivate func findOtherAgentPositions(
         by agent: SteeringAgent,
-        boundingDistance: Float) -> [Vect2]
+        boundingDistance: Float) -> [Vector]
     {
         return findOtherAgents(by: agent, boundingDistance: boundingDistance)
             .map { $0.position }
@@ -91,7 +91,7 @@ class SteeringGroup {
     
     fileprivate func findOtherAgentVelocities(
         by agent: SteeringAgent,
-        boundingDistance: Float) -> [Vect2]
+        boundingDistance: Float) -> [Vector]
     {
         return findOtherAgents(by: agent, boundingDistance: boundingDistance)
             .map { $0.velocity }
@@ -106,7 +106,7 @@ extension SteeringGroup: Updatable {
 
 extension SteeringGroup: SteeringAgentGroupDelegate {
     
-    func findSeekingPosition(by agent: SteeringAgent, boundingDistance: Float) -> Vect2? {
+    func findSeekingPosition(by agent: SteeringAgent, boundingDistance: Float) -> Vector? {
         if agent.position.distance(to: destination) <= boundingDistance
         {
             return destination
@@ -118,21 +118,21 @@ extension SteeringGroup: SteeringAgentGroupDelegate {
     
     func findOtherAgentPositionsForCohesion(
         by agent: SteeringAgent,
-        boundingDistance: Float) -> [Vect2]
+        boundingDistance: Float) -> [Vector]
     {
         return findOtherAgentPositions(by: agent, boundingDistance: boundingDistance)
     }
     
     func findOtherAgentPositionsForSeparation(
         by agent: SteeringAgent,
-        boundingDistance: Float) -> [Vect2]
+        boundingDistance: Float) -> [Vector]
     {
         return findOtherAgentPositions(by: agent, boundingDistance: boundingDistance)
     }
     
     func findOtherAgentVelocitiesForAlignment(
         by agent: SteeringAgent,
-        boundingDistance: Float) -> [Vect2]
+        boundingDistance: Float) -> [Vector]
     {
         return findOtherAgentVelocities(by: agent, boundingDistance: boundingDistance)
     }

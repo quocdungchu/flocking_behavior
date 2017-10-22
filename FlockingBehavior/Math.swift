@@ -2,103 +2,57 @@
 //  Math.swift
 //  FlockingBehavior
 //
-//  Created by Quoc Dung Chu on 9/24/17.
+//  Created by Quoc Dung Chu on 14/10/2017.
 //  Copyright © 2017 quoc. All rights reserved.
 //
 
-import Foundation
-
-struct Vect2 {
-    let x: Float
-    let y: Float
-    
-    static var zero: Vect2 {
-        return Vect2(0,0)
-    }
-    
-    var length: Float {
-        return sqrtf(x * x + y * y)
-    }
-    
-    var normalized: Vect2 {
-        return length == 0 ? Vect2.zero: self / length
-    }
-    
-    var angle: Float {
-        return atan2(y, x)
-    }
-    
-    init(_ x: Float, _ y: Float){
-        self.x = x
-        self.y = y
-    }
-    
-    static func + (left: Vect2, right: Vect2) -> Vect2 {
-        return Vect2(left.x + right.x, left.y + right.y)
-    }
-    
-    static func += (left: inout Vect2, right: Vect2) {
-        left = left + right
-    }
-    
-    static func - (left: Vect2, right: Vect2) -> Vect2 {
-        return Vect2(left.x - right.x, left.y - right.y)
-    }
-    
-    static func -= (left: inout Vect2, right: Vect2) {
-        left = left - right
-    }
-    
-    static func * (vector: Vect2, value: Float) -> Vect2 {
-        return Vect2(vector.x * value, vector.y * value)
-    }
-    
-    static func *= (left: inout Vect2, value: Float) {
-        left = left * value
-    }
-    
-    static func / (vector: Vect2, value: Float) -> Vect2 {
-        return Vect2(vector.x / value, vector.y / value)
-    }
-    
-    static func /= (left: inout Vect2, value: Float) {
-        left = left / value
-    }
-    
-    func distance(to vector: Vect2) -> Float {
-        let dx = x - vector.x
-        let dy = y - vector.y
-        return sqrtf(dx * dx + dy * dy)
-    }
-    
-    func vector(to other: Vect2) -> Vect2 {
-        return other - self
-    }
-    
-    func vectorToCenter(of points: [Vect2]) -> Vect2 {
-        return points.isEmpty ?
-            Vect2.zero:
-            vector(to: average(of: points))
-    }
-    
-    func limitedVector(maximumLength: Float) -> Vect2 {
-        if length > maximumLength {
-            return normalized * maximumLength
-            
-        } else {
-            return self
-        }
-    }
+func sum(of vectors: [Vector]) -> Vector {
+    return vectors.reduce(Vector.zero) { $0 + $1 }
 }
 
-func sum(of vectors: [Vect2]) -> Vect2 {
-    return vectors.reduce(Vect2.zero) { $0 + $1 }
-}
-
-func average(of vectors: [Vect2]) -> Vect2 {
+func average(of vectors: [Vector]) -> Vector {
     return vectors.isEmpty ?
-        Vect2.zero:
+        Vector.zero:
         sum(of: vectors) / Float(vectors.count)
+}
+
+func determinant(of vector1: Vector, and vector2: Vector) -> Float {
+    return vector1.x * vector2.y - vector1.y * vector2.x
+}
+
+func leftOf(start: Vector, end: Vector, point: Vector) -> Float {
+    return determinant(of: start - point, and: end - start)
+}
+
+func intersection(start1: Vector, end1: Vector, start2: Vector, end2: Vector) -> Vector? {
+    let det2 = determinant(of: (end1 - start1), and: (start2 - end2))
+    
+    guard det2 != 0 else {
+        return nil
+    }
+    
+    let det1 = determinant(of: (end1 - start1), and: (start2 - start1))
+    
+    return start2 + (end2 - start2) * (det1/det2)
+}
+
+func squaredDistance(point: Vector, segmentStart start: Vector, segmentEnd end: Vector) -> Float {
+    let r = ((point - start) * (end - start)) / (end - start).squaredLength
+    
+    if r < 0.0 {
+        return (point - start).squaredLength
+        
+    } else if r > 1.0 {
+        return (point - end).squaredLength
+        
+    } else {
+        return (point - (start + (end - start) * r)).squaredLength
+    }
+}
+
+func squaredDistance(point: Vector, lineStart start: Vector, lineEnd end: Vector) -> Float {
+    let r = ((point - start) * (end - start)) / (end - start).squaredLength
+    return (point - (start + (end - start) * r)).squaredLength
 }
 
 func shortestAngleBetween(_ angle1: Float, angle2: Float) -> Float {
@@ -114,3 +68,6 @@ func shortestAngleBetween(_ angle1: Float, angle2: Float) -> Float {
     return angle
 }
 
+func sqr(_ value: Float) -> Float {
+    return value * value
+}

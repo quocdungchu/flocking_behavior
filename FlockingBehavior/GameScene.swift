@@ -22,7 +22,7 @@ class GameScene: SKScene {
         for rangIndex in -1...2 {
             for colIndex in -1...2 {
                 
-                let position = Vect2.zero + (Vect2(Float(rangIndex), Float(colIndex)) * 50)
+                let position = Vector.zero + (Vector(Float(rangIndex), Float(colIndex)) * 50)
                 let agentNode = AgentNode(position: position)
                 addChild(agentNode)
                 
@@ -40,7 +40,7 @@ class GameScene: SKScene {
         
         steeringManager.move(
             agents: agentNodes.map { $0.agent },
-            to: Vect2(touch.location(in: self))
+            to: Vector(touch.location(in: self))
         )
     }
     

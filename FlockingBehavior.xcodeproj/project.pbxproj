@@ -8,8 +8,23 @@
 
 /* Begin PBXBuildFile section */
 		7246E84A1F7FF2B500343083 /* Updatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7246E8491F7FF2B400343083 /* Updatable.swift */; };
+		726340511F9B3919009D91A4 /* ObstacleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726340501F9B3918009D91A4 /* ObstacleBuilder.swift */; };
+		726340541F9B3923009D91A4 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726340521F9B3923009D91A4 /* main.swift */; };
+		726340551F9B3923009D91A4 /* TestingAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726340531F9B3923009D91A4 /* TestingAppDelegate.swift */; };
+		726340591F9B557A009D91A4 /* AgentKTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726340581F9B5579009D91A4 /* AgentKTree.swift */; };
+		7263405B1F9B55CB009D91A4 /* Agent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7263405A1F9B55CB009D91A4 /* Agent.swift */; };
+		7263405D1F9BAFA1009D91A4 /* AgentKTreeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7263405C1F9BAFA1009D91A4 /* AgentKTreeTests.swift */; };
 		72A184971F7FE49200BB16DB /* SteeringManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72A184961F7FE49100BB16DB /* SteeringManager.swift */; };
 		72A184991F7FE4F100BB16DB /* SteeringGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72A184981F7FE4F100BB16DB /* SteeringGroup.swift */; };
+		72B0CE741F921B3E0082CF46 /* Obstacle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B0CE731F921B3E0082CF46 /* Obstacle.swift */; };
+		72B0CE781F92269B0082CF46 /* Vector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B0CE771F92269B0082CF46 /* Vector.swift */; };
+		72B0CE7A1F9226BE0082CF46 /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B0CE791F9226BE0082CF46 /* Math.swift */; };
+		72B0CE7C1F92271F0082CF46 /* PointLineRelativePositionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B0CE7B1F92271F0082CF46 /* PointLineRelativePositionTests.swift */; };
+		72B0CE7E1F925D550082CF46 /* ObstacleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B0CE7D1F925D550082CF46 /* ObstacleTests.swift */; };
+		72B0CE821F92654A0082CF46 /* ObstacleKTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B0CE811F92654A0082CF46 /* ObstacleKTree.swift */; };
+		72B0CE841F927A440082CF46 /* RVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B0CE831F927A440082CF46 /* RVO.swift */; };
+		72B0CE861F927E4E0082CF46 /* ObstacleKTreeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B0CE851F927E4E0082CF46 /* ObstacleKTreeTests.swift */; };
+		72B0CE881F92AFAF0082CF46 /* MathTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B0CE871F92AFAF0082CF46 /* MathTests.swift */; };
 		AB1867011F779D9F000E0864 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1867001F779D9F000E0864 /* AppDelegate.swift */; };
 		AB1867031F779D9F000E0864 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = AB1867021F779D9F000E0864 /* GameScene.sks */; };
 		AB1867051F779D9F000E0864 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = AB1867041F779D9F000E0864 /* Actions.sks */; };
@@ -22,7 +37,6 @@
 		AB1867271F779D9F000E0864 /* FlockingBehaviorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1867261F779D9F000E0864 /* FlockingBehaviorUITests.swift */; };
 		AB28D3961F7838A700BB1542 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB28D3951F7838A700BB1542 /* Constants.swift */; };
 		AB6349491F77A639002F5587 /* SteeringAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6349481F77A639002F5587 /* SteeringAgent.swift */; };
-		AB63494C1F77A66C002F5587 /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB63494B1F77A66C002F5587 /* Math.swift */; };
 		AB63494E1F77A746002F5587 /* SteeringBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB63494D1F77A746002F5587 /* SteeringBehavior.swift */; };
 		AB6349501F77AB5D002F5587 /* AgentNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB63494F1F77AB5D002F5587 /* AgentNode.swift */; };
 /* End PBXBuildFile section */
@@ -46,8 +60,23 @@
 
 /* Begin PBXFileReference section */
 		7246E8491F7FF2B400343083 /* Updatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Updatable.swift; sourceTree = "<group>"; };
+		726340501F9B3918009D91A4 /* ObstacleBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObstacleBuilder.swift; sourceTree = "<group>"; };
+		726340521F9B3923009D91A4 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		726340531F9B3923009D91A4 /* TestingAppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestingAppDelegate.swift; sourceTree = "<group>"; };
+		726340581F9B5579009D91A4 /* AgentKTree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgentKTree.swift; sourceTree = "<group>"; };
+		7263405A1F9B55CB009D91A4 /* Agent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Agent.swift; sourceTree = "<group>"; };
+		7263405C1F9BAFA1009D91A4 /* AgentKTreeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgentKTreeTests.swift; sourceTree = "<group>"; };
 		72A184961F7FE49100BB16DB /* SteeringManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SteeringManager.swift; sourceTree = "<group>"; };
 		72A184981F7FE4F100BB16DB /* SteeringGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SteeringGroup.swift; sourceTree = "<group>"; };
+		72B0CE731F921B3E0082CF46 /* Obstacle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Obstacle.swift; sourceTree = "<group>"; };
+		72B0CE771F92269B0082CF46 /* Vector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vector.swift; sourceTree = "<group>"; };
+		72B0CE791F9226BE0082CF46 /* Math.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Math.swift; sourceTree = "<group>"; };
+		72B0CE7B1F92271F0082CF46 /* PointLineRelativePositionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointLineRelativePositionTests.swift; sourceTree = "<group>"; };
+		72B0CE7D1F925D550082CF46 /* ObstacleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObstacleTests.swift; sourceTree = "<group>"; };
+		72B0CE811F92654A0082CF46 /* ObstacleKTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObstacleKTree.swift; sourceTree = "<group>"; };
+		72B0CE831F927A440082CF46 /* RVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RVO.swift; sourceTree = "<group>"; };
+		72B0CE851F927E4E0082CF46 /* ObstacleKTreeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObstacleKTreeTests.swift; sourceTree = "<group>"; };
+		72B0CE871F92AFAF0082CF46 /* MathTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathTests.swift; sourceTree = "<group>"; };
 		AB1866FD1F779D9F000E0864 /* FlockingBehavior.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlockingBehavior.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB1867001F779D9F000E0864 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AB1867021F779D9F000E0864 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -66,7 +95,6 @@
 		AB1867281F779D9F000E0864 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AB28D3951F7838A700BB1542 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		AB6349481F77A639002F5587 /* SteeringAgent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SteeringAgent.swift; sourceTree = "<group>"; };
-		AB63494B1F77A66C002F5587 /* Math.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Math.swift; sourceTree = "<group>"; };
 		AB63494D1F77A746002F5587 /* SteeringBehavior.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SteeringBehavior.swift; sourceTree = "<group>"; };
 		AB63494F1F77AB5D002F5587 /* AgentNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgentNode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -96,6 +124,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		72B0CE721F921B200082CF46 /* RVO */ = {
+			isa = PBXGroup;
+			children = (
+				7263405A1F9B55CB009D91A4 /* Agent.swift */,
+				726340581F9B5579009D91A4 /* AgentKTree.swift */,
+				726340501F9B3918009D91A4 /* ObstacleBuilder.swift */,
+				72B0CE731F921B3E0082CF46 /* Obstacle.swift */,
+				72B0CE811F92654A0082CF46 /* ObstacleKTree.swift */,
+				72B0CE831F927A440082CF46 /* RVO.swift */,
+			);
+			name = RVO;
+			sourceTree = "<group>";
+		};
 		AB1866F41F779D9F000E0864 = {
 			isa = PBXGroup;
 			children = (
@@ -119,9 +160,12 @@
 		AB1866FF1F779D9F000E0864 /* FlockingBehavior */ = {
 			isa = PBXGroup;
 			children = (
+				72B0CE721F921B200082CF46 /* RVO */,
 				AB63494A1F77A65C002F5587 /* Math */,
 				AB6349471F77A619002F5587 /* Core */,
 				AB1867001F779D9F000E0864 /* AppDelegate.swift */,
+				726340531F9B3923009D91A4 /* TestingAppDelegate.swift */,
+				726340521F9B3923009D91A4 /* main.swift */,
 				AB63494F1F77AB5D002F5587 /* AgentNode.swift */,
 				AB1867021F779D9F000E0864 /* GameScene.sks */,
 				AB1867041F779D9F000E0864 /* Actions.sks */,
@@ -141,6 +185,11 @@
 			children = (
 				AB18671B1F779D9F000E0864 /* FlockingBehaviorTests.swift */,
 				AB18671D1F779D9F000E0864 /* Info.plist */,
+				72B0CE7B1F92271F0082CF46 /* PointLineRelativePositionTests.swift */,
+				7263405C1F9BAFA1009D91A4 /* AgentKTreeTests.swift */,
+				72B0CE7D1F925D550082CF46 /* ObstacleTests.swift */,
+				72B0CE851F927E4E0082CF46 /* ObstacleKTreeTests.swift */,
+				72B0CE871F92AFAF0082CF46 /* MathTests.swift */,
 			);
 			path = FlockingBehaviorTests;
 			sourceTree = "<group>";
@@ -169,7 +218,8 @@
 		AB63494A1F77A65C002F5587 /* Math */ = {
 			isa = PBXGroup;
 			children = (
-				AB63494B1F77A66C002F5587 /* Math.swift */,
+				72B0CE771F92269B0082CF46 /* Vector.swift */,
+				72B0CE791F9226BE0082CF46 /* Math.swift */,
 			);
 			name = Math;
 			sourceTree = "<group>";
@@ -316,14 +366,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB1867071F779D9F000E0864 /* GameScene.swift in Sources */,
+				7263405B1F9B55CB009D91A4 /* Agent.swift in Sources */,
+				726340541F9B3923009D91A4 /* main.swift in Sources */,
+				72B0CE781F92269B0082CF46 /* Vector.swift in Sources */,
+				72B0CE7A1F9226BE0082CF46 /* Math.swift in Sources */,
 				AB6349491F77A639002F5587 /* SteeringAgent.swift in Sources */,
+				726340511F9B3919009D91A4 /* ObstacleBuilder.swift in Sources */,
+				72B0CE741F921B3E0082CF46 /* Obstacle.swift in Sources */,
 				72A184971F7FE49200BB16DB /* SteeringManager.swift in Sources */,
 				7246E84A1F7FF2B500343083 /* Updatable.swift in Sources */,
 				72A184991F7FE4F100BB16DB /* SteeringGroup.swift in Sources */,
+				726340591F9B557A009D91A4 /* AgentKTree.swift in Sources */,
 				AB1867091F779D9F000E0864 /* GameViewController.swift in Sources */,
+				72B0CE821F92654A0082CF46 /* ObstacleKTree.swift in Sources */,
 				AB63494E1F77A746002F5587 /* SteeringBehavior.swift in Sources */,
+				72B0CE841F927A440082CF46 /* RVO.swift in Sources */,
 				AB1867011F779D9F000E0864 /* AppDelegate.swift in Sources */,
-				AB63494C1F77A66C002F5587 /* Math.swift in Sources */,
+				726340551F9B3923009D91A4 /* TestingAppDelegate.swift in Sources */,
 				AB6349501F77AB5D002F5587 /* AgentNode.swift in Sources */,
 				AB28D3961F7838A700BB1542 /* Constants.swift in Sources */,
 			);
@@ -333,7 +392,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				72B0CE7E1F925D550082CF46 /* ObstacleTests.swift in Sources */,
+				72B0CE881F92AFAF0082CF46 /* MathTests.swift in Sources */,
 				AB18671C1F779D9F000E0864 /* FlockingBehaviorTests.swift in Sources */,
+				72B0CE861F927E4E0082CF46 /* ObstacleKTreeTests.swift in Sources */,
+				72B0CE7C1F92271F0082CF46 /* PointLineRelativePositionTests.swift in Sources */,
+				7263405D1F9BAFA1009D91A4 /* AgentKTreeTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

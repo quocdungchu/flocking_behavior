@@ -13,10 +13,10 @@ protocol SteeringAgenetBehaviorsDataSource: class {
 }
 
 protocol SteeringAgentGroupDelegate: class {
-    func findSeekingPosition(by agent: SteeringAgent, boundingDistance: Float) -> Vect2?
-    func findOtherAgentPositionsForCohesion(by agent: SteeringAgent, boundingDistance: Float) -> [Vect2]
-    func findOtherAgentPositionsForSeparation(by agent: SteeringAgent, boundingDistance: Float) -> [Vect2]
-    func findOtherAgentVelocitiesForAlignment(by agent: SteeringAgent, boundingDistance: Float) -> [Vect2]
+    func findSeekingPosition(by agent: SteeringAgent, boundingDistance: Float) -> Vector?
+    func findOtherAgentPositionsForCohesion(by agent: SteeringAgent, boundingDistance: Float) -> [Vector]
+    func findOtherAgentPositionsForSeparation(by agent: SteeringAgent, boundingDistance: Float) -> [Vector]
+    func findOtherAgentVelocitiesForAlignment(by agent: SteeringAgent, boundingDistance: Float) -> [Vector]
     func validateToAchieve(agent: SteeringAgent)
     func isGroupLeader(agent: SteeringAgent) -> Bool
     func hasAchieved(agent: SteeringAgent) -> Bool
@@ -30,10 +30,10 @@ protocol SteeringAgentUpdatingDelegate: class {
 class SteeringAgent {
     let id: Int
     private let maximumSpeed: Float
-    var position: Vect2
-    var rotation: Vect2
+    var position: Vector
+    var rotation: Vector
     var speed: Float
-    var velocity: Vect2 {
+    var velocity: Vector {
         get {
             return rotation.normalized * speed
         }
@@ -50,8 +50,8 @@ class SteeringAgent {
 
     init(
         id: Int,
-        position: Vect2,
-        rotation: Vect2,
+        position: Vector,
+        rotation: Vector,
         speed: Float,
         maximumSpeed: Float)
     {
@@ -62,17 +62,17 @@ class SteeringAgent {
         self.maximumSpeed = maximumSpeed
     }
     
-    private func compute(velocity: Vect2, other: Vect2) -> Vect2 {
+    private func compute(velocity: Vector, other: Vector) -> Vector {
         return (velocity + other).limitedVector(maximumLength: maximumSpeed)
     }
     
-    private func compute(velocity: Vect2, behaviors: [SteeringBehavior]) -> Vect2 {
+    private func compute(velocity: Vector, behaviors: [SteeringBehavior]) -> Vector {
         return behaviors.reduce(velocity) {
             compute(velocity: $0, behavior: $1)
         }
     }
     
-    private func compute(velocity: Vect2, behavior: SteeringBehavior) -> Vect2 {
+    private func compute(velocity: Vector, behavior: SteeringBehavior) -> Vector {
         switch behavior {
         case .seeking (let weight, let visibleDistance):
             return compute(
@@ -114,7 +114,7 @@ class SteeringAgent {
     
     private func desiredVelocityForSeeking(
         weight: Float,
-        boundingDistance: Float) -> Vect2
+        boundingDistance: Float) -> Vector
     {
         if let seekingPosition = groupDelegate?.findSeekingPosition(
             by: self,
@@ -122,13 +122,13 @@ class SteeringAgent {
         {
             return position.vector(to: seekingPosition) * weight
         } else {
-            return Vect2.zero
+            return Vector.zero
         }
     }
     
     private func desiredVelocityForCohesion(
         weight: Float,
-        boundingDistance: Float) -> Vect2
+        boundingDistance: Float) -> Vector
     {
         if let otherAgentPositions = groupDelegate?.findOtherAgentPositionsForCohesion(
             by: self,
@@ -137,13 +137,13 @@ class SteeringAgent {
             return position.vectorToCenter(of: otherAgentPositions) * weight
             
         } else {
-            return Vect2.zero
+            return Vector.zero
         }
     }
     
     private func desiredVelocityForSeparation(
         weight: Float,
-        boundingDistance: Float) -> Vect2
+        boundingDistance: Float) -> Vector
     {
         if let otherAgentPositions = groupDelegate?.findOtherAgentPositionsForSeparation(
             by: self,
@@ -152,13 +152,13 @@ class SteeringAgent {
             return position.vectorToCenter(of: otherAgentPositions) * weight * (-1)
             
         } else {
-            return Vect2.zero
+            return Vector.zero
         }
     }
     
     private func desiredVelocityForAlignment(
         weight: Float,
-        boundingDistance: Float) -> Vect2
+        boundingDistance: Float) -> Vector
     {
         if let otherAgentVelocities = groupDelegate?.findOtherAgentVelocitiesForAlignment(
             by: self,
@@ -167,7 +167,7 @@ class SteeringAgent {
             return average(of: otherAgentVelocities) * weight
             
         } else {
-            return Vect2.zero
+            return Vector.zero
         }
     }
 }
@@ -193,7 +193,7 @@ extension SteeringAgent: Updatable {
             hasAchieved: groupDelegate.hasAchieved(agent: self)
         )
         
-        velocity = compute(velocity: Vect2.zero, behaviors: behaviors)
+        velocity = compute(velocity: Vector.zero, behaviors: behaviors)
         position += velocity
         
         groupDelegate.validateToAchieve(agent: self)
