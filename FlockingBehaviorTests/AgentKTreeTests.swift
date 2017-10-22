@@ -42,6 +42,25 @@ class AgentKTreeTests: XCTestCase {
         
         var queried = [Agent]()
         
+        kTree.queryAgents(point: Vector(0.2, 0.2), range: 0.3) {
+            queried.append($0)
+        }
+        
+        XCTAssertTrue(queried.contains { $0.position == Vector(0,0) })
+    }
+    
+    func testQuery2(){
+        let agents = [
+            Agent(position: Vector(0,0)),
+            Agent(position: Vector(1,0)),
+            Agent(position: Vector(0,1)),
+            Agent(position: Vector(1,1)),
+        ]
+        
+        let kTree = AgentKTree(agents: agents, maxLeafSize: 1)
+        
+        var queried = [Agent]()
+        
         kTree.queryAgents(point: Vector(0.5, 0.5), range: 0.6) {
             queried.append($0)
         }
@@ -52,7 +71,7 @@ class AgentKTreeTests: XCTestCase {
         XCTAssertTrue(queried.contains { $0.position == Vector(0,1) })
     }
     
-    func testQuery2(){
+    func testQuery3(){
         let agents = [
             Agent(position: Vector(0,0)),
             Agent(position: Vector(1,0)),
