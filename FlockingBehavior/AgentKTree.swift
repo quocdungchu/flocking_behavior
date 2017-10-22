@@ -9,6 +9,8 @@ import Foundation
 
 class AgentKTree {
     
+    typealias OnQueriedAgent = (Agent) -> Void
+    
     enum Constans {
         static let defaultMaxLeafSize = 1
     }
@@ -45,11 +47,6 @@ class AgentKTree {
             self.right = right
             self.zone = zone
         }
-    }
-    
-    struct SplitResult {
-        let agents: [Agent]
-        let splitIndex: Int
     }
     
     var agents: [Agent]
@@ -146,5 +143,87 @@ class AgentKTree {
         }
         
         return Zone(min: Vector(minX, minY), max: Vector(maxX, maxY))
+    }
+    
+    func queryAgents(point: Vector, range: Float, onQueriedAgent: OnQueriedAgent) {
+        queryAgentRecursive(
+            point: point,
+            squaredRange: sqr(range),
+            nodeIndex: 0,
+            onQueriedAgent: onQueriedAgent
+        )
+    }
+    
+    func queryAgentRecursive(
+        point: Vector,
+        squaredRange: Float,
+        nodeIndex: Int,
+        onQueriedAgent: OnQueriedAgent)
+    {
+        guard let node = nodes[nodeIndex] else {
+            return
+        }
+        
+        guard let left = node.left,
+            let right = node.right,
+            let leftZone = nodes[left]?.zone,
+            let rightZone = nodes[right]?.zone,
+            maxLeafSize < node.end - node.begin else
+        {
+            
+            for i in (node.begin + 1)..<node.end {
+                onQueriedAgent(agents[i])
+            }
+            
+            return
+        }
+        
+        let squaredDistanceToLeftZone = AgentKTree.squaredDistance(fromPoint: point, toZone: leftZone)
+        let squaredDistanceToRightZone = AgentKTree.squaredDistance(fromPoint: point, toZone: rightZone)
+
+        if squaredDistanceToLeftZone < squaredDistanceToRightZone {
+            if squaredDistanceToLeftZone < squaredRange {
+                queryAgentRecursive(
+                    point: point,
+                    squaredRange: squaredRange,
+                    nodeIndex: left,
+                    onQueriedAgent: onQueriedAgent
+                )
+                
+                if squaredDistanceToRightZone < squaredRange {
+                    queryAgentRecursive(
+                        point: point,
+                        squaredRange: squaredRange,
+                        nodeIndex: right,
+                        onQueriedAgent: onQueriedAgent
+                    )
+                }
+            }
+        } else {
+            if squaredDistanceToRightZone < squaredRange {
+                queryAgentRecursive(
+                    point: point,
+                    squaredRange: squaredRange,
+                    nodeIndex: right,
+                    onQueriedAgent: onQueriedAgent
+                )
+                
+                if squaredDistanceToLeftZone < squaredRange {
+                    queryAgentRecursive(
+                        point: point,
+                        squaredRange: squaredRange,
+                        nodeIndex: left,
+                        onQueriedAgent: onQueriedAgent
+                    )
+                }
+            }
+        }
+    }
+    
+    static func squaredDistance(fromPoint point: Vector, toZone zone: Zone) -> Float {
+        return sqr(max(0.0, (zone.min.x - point.x)))
+            + sqr(max(0.0, (point.x - zone.max.x)))
+            + sqr(max(0.0, (zone.min.y - point.y)))
+            + sqr(max(0.0, (point.y - zone.max.y)))
     }
 }

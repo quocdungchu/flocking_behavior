@@ -11,7 +11,7 @@ import XCTest
 
 class AgentKTreeTests: XCTestCase {
     
-    func test_buildNodes_withThreeAents(){
+    func test_buildNodes(){
         let agents = [
             Agent(position: Vector(2,0)),
             Agent(position: Vector(3,0)),
@@ -28,5 +28,7 @@ class AgentKTreeTests: XCTestCase {
             kTree.agents.map { $0.position },
             agents.map { $0.position }.sorted { $0.x < $1.x }
         )
+        
+        
     }
 }

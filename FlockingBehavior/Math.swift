@@ -67,3 +67,7 @@ func shortestAngleBetween(_ angle1: Float, angle2: Float) -> Float {
     }
     return angle
 }
+
+func sqr(_ value: Float) -> Float {
+    return value * value
+}
