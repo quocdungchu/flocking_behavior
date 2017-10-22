@@ -13,6 +13,7 @@
 		726340551F9B3923009D91A4 /* TestingAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726340531F9B3923009D91A4 /* TestingAppDelegate.swift */; };
 		726340591F9B557A009D91A4 /* AgentKTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726340581F9B5579009D91A4 /* AgentKTree.swift */; };
 		7263405B1F9B55CB009D91A4 /* Agent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7263405A1F9B55CB009D91A4 /* Agent.swift */; };
+		7263405D1F9BAFA1009D91A4 /* AgentKTreeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7263405C1F9BAFA1009D91A4 /* AgentKTreeTests.swift */; };
 		72A184971F7FE49200BB16DB /* SteeringManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72A184961F7FE49100BB16DB /* SteeringManager.swift */; };
 		72A184991F7FE4F100BB16DB /* SteeringGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72A184981F7FE4F100BB16DB /* SteeringGroup.swift */; };
 		72B0CE741F921B3E0082CF46 /* Obstacle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B0CE731F921B3E0082CF46 /* Obstacle.swift */; };
@@ -64,6 +65,7 @@
 		726340531F9B3923009D91A4 /* TestingAppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestingAppDelegate.swift; sourceTree = "<group>"; };
 		726340581F9B5579009D91A4 /* AgentKTree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgentKTree.swift; sourceTree = "<group>"; };
 		7263405A1F9B55CB009D91A4 /* Agent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Agent.swift; sourceTree = "<group>"; };
+		7263405C1F9BAFA1009D91A4 /* AgentKTreeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgentKTreeTests.swift; sourceTree = "<group>"; };
 		72A184961F7FE49100BB16DB /* SteeringManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SteeringManager.swift; sourceTree = "<group>"; };
 		72A184981F7FE4F100BB16DB /* SteeringGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SteeringGroup.swift; sourceTree = "<group>"; };
 		72B0CE731F921B3E0082CF46 /* Obstacle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Obstacle.swift; sourceTree = "<group>"; };
@@ -184,6 +186,7 @@
 				AB18671B1F779D9F000E0864 /* FlockingBehaviorTests.swift */,
 				AB18671D1F779D9F000E0864 /* Info.plist */,
 				72B0CE7B1F92271F0082CF46 /* PointLineRelativePositionTests.swift */,
+				7263405C1F9BAFA1009D91A4 /* AgentKTreeTests.swift */,
 				72B0CE7D1F925D550082CF46 /* ObstacleTests.swift */,
 				72B0CE851F927E4E0082CF46 /* ObstacleKTreeTests.swift */,
 				72B0CE871F92AFAF0082CF46 /* MathTests.swift */,
@@ -394,6 +397,7 @@
 				AB18671C1F779D9F000E0864 /* FlockingBehaviorTests.swift in Sources */,
 				72B0CE861F927E4E0082CF46 /* ObstacleKTreeTests.swift in Sources */,
 				72B0CE7C1F92271F0082CF46 /* PointLineRelativePositionTests.swift in Sources */,
+				7263405D1F9BAFA1009D91A4 /* AgentKTreeTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

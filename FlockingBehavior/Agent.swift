@@ -7,5 +7,9 @@
 //
 
 class Agent {
-    let position = Vector.zero
+    let position: Vector
+    
+    init(position: Vector) {
+        self.position = position
+    }
 }

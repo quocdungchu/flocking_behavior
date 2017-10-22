@@ -10,7 +10,7 @@ import Foundation
 class AgentKTree {
     
     enum Constans {
-        static let maxLeafSize = 10
+        static let maxLeafSize = 1
     }
     
     struct Zone {
@@ -25,12 +25,7 @@ class AgentKTree {
             return (max - min) * 0.5
         }
         
-        init(){
-            self.min = Vector.zero
-            self.max = Vector.zero
-        }
-        
-        init(min: Vector, max: Vector) {
+        init(min: Vector = Vector.zero, max: Vector = Vector.zero) {
             self.min = min
             self.max = max
         }
@@ -43,15 +38,7 @@ class AgentKTree {
         let right: Int
         let zone: Zone
         
-        init(){
-            self.begin = 0
-            self.end = 0
-            self.left = 0
-            self.right = 0
-            self.zone = Zone()
-        }
-        
-        init(begin: Int, end: Int, left: Int, right: Int, zone: Zone) {
+        init(begin: Int = 0, end: Int = 0, left: Int = 0, right: Int = 0, zone: Zone = Zone()) {
             self.begin = begin
             self.end = end
             self.left = left
@@ -65,7 +52,8 @@ class AgentKTree {
     
     init(agents: [Agent]) {
         self.agents = agents
-        self.nodes = [Node](repeating: Node(), count: agents.count)
+        self.nodes = [Node](repeating: Node(), count: 2 * agents.count - 1)
+        buildNodes()
     }
     
     func buildNodes(){
@@ -78,52 +66,58 @@ class AgentKTree {
     
     func buildNodesRecursive(begin: Int, end: Int, forIndex index: Int) {
         
+        guard Constans.maxLeafSize < (end - begin) + 1 else {
+            nodes[index] = Node(
+                begin: begin,
+                end: end
+            )
+            return
+        }
+        
         let zone = findNodeZone(begin: begin, end: end, forIndex: index)
         
-        if Constans.maxLeafSize < (end - begin) + 1 {
-            let isVertical = zone.isVertical
+        let isVertical = zone.isVertical
+        
+        let splitValue = isVertical ? zone.center.x: zone.center.y
+        
+        var left = begin
+        var right = end
             
-            let splitValue = isVertical ? zone.center.x: zone.center.y
+        while left < right {
             
-            var left = begin
-            var right = end
-            
-            while left < right {
-                
-                while left < right
-                    && (isVertical ? agents[left].position.x: agents[left].position.y) < splitValue
-                {
-                    left += 1
-                }
-                
-                while right > left
-                    && (isVertical ? agents[right].position.x: agents[right].position.y) >= splitValue
-                {
-                    right -= 1
-                }
-                
-                if left < right {
-                    agents.swapAt(left, right)
-                    left += 1
-                    right -= 1
-                }
-                
-                if left == begin {
-                    left += 1
-                    right += 1
-                }
-                
-                nodes[index] = Node(
-                    begin: begin,
-                    end: end,
-                    left: index + 1,
-                    right: index + 2 * ( left - begin),
-                    zone: zone
-                )
-                
-                buildNodesRecursive(begin: begin, end: left, forIndex: nodes[index].left)
-                buildNodesRecursive(begin: left, end: end, forIndex: nodes[index].right)
+            while left < right
+                && (isVertical ? agents[left].position.x: agents[left].position.y) < splitValue
+            {
+                left += 1
             }
+            
+            while right > left
+                && (isVertical ? agents[right].position.x: agents[right].position.y) >= splitValue
+            {
+                right -= 1
+            }
+            
+            if left < right {
+                agents.swapAt(left, right)
+                left += 1
+                right -= 1
+            }
+            
+            if left == begin {
+                left += 1
+                right += 1
+            }
+            
+            nodes[index] = Node(
+                begin: begin,
+                end: end,
+                left: index + 1,
+                right: index + 2 * ( left - begin),
+                zone: zone
+            )
+            
+            buildNodesRecursive(begin: begin, end: left, forIndex: nodes[index].left)
+            buildNodesRecursive(begin: left, end: end, forIndex: nodes[index].right)
         }
     }
     
