@@ -11,13 +11,22 @@ import XCTest
 
 class AgentKTreeTests: XCTestCase {
     
-    func testBuildNodes(){
-        let kTree = AgentKTree(agents: [
+    func test_buildNodes_withThreeAents(){
+        let agents = [
             Agent(position: Vector(2,0)),
+            Agent(position: Vector(3,0)),
+            Agent(position: Vector(8,0)),
+            Agent(position: Vector(7,0)),
+            Agent(position: Vector(9,0)),
+            Agent(position: Vector(6,0)),
             Agent(position: Vector.zero),
             Agent(position: Vector(1,0)),
-        ])
+        ]
         
-        XCTAssertEqual(0, 0)
+        let kTree = AgentKTree(agents: agents, maxLeafSize: 1)
+        XCTAssertEqual(
+            kTree.agents.map { $0.position },
+            agents.map { $0.position }.sorted { $0.x < $1.x }
+        )
     }
 }
