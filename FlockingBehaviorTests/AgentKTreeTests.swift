@@ -11,7 +11,7 @@ import XCTest
 
 class AgentKTreeTests: XCTestCase {
     
-    func test_buildNodes(){
+    func testBuildNodes(){
         let agents = [
             Agent(position: Vector(2,0)),
             Agent(position: Vector(3,0)),
@@ -28,7 +28,56 @@ class AgentKTreeTests: XCTestCase {
             kTree.agents.map { $0.position },
             agents.map { $0.position }.sorted { $0.x < $1.x }
         )
+    }
+    
+    func testQuery1(){
+        let agents = [
+            Agent(position: Vector(0,0)),
+            Agent(position: Vector(1,0)),
+            Agent(position: Vector(0,1)),
+            Agent(position: Vector(1,1)),
+        ]
         
+        let kTree = AgentKTree(agents: agents, maxLeafSize: 1)
         
+        var queried = [Agent]()
+        
+        kTree.queryAgents(point: Vector(0.5, 0.5), range: 0.6) {
+            queried.append($0)
+        }
+        
+        XCTAssertTrue(queried.contains { $0.position == Vector(0,0) })
+        XCTAssertTrue(queried.contains { $0.position == Vector(1,0) })
+        XCTAssertTrue(queried.contains { $0.position == Vector(1,1) })
+        XCTAssertTrue(queried.contains { $0.position == Vector(0,1) })
+    }
+    
+    func testQuery2(){
+        let agents = [
+            Agent(position: Vector(0,0)),
+            Agent(position: Vector(1,0)),
+            Agent(position: Vector(2,0)),
+            
+            Agent(position: Vector(0,1)),
+            Agent(position: Vector(1,1)),
+            Agent(position: Vector(2,1)),
+            
+            Agent(position: Vector(0,2)),
+            Agent(position: Vector(1,2)),
+            Agent(position: Vector(2,2)),
+        ]
+        
+        let kTree = AgentKTree(agents: agents, maxLeafSize: 1)
+        
+        var queried = [Agent]()
+        
+        kTree.queryAgents(point: Vector(0.5, 0.5), range: 2) {
+            queried.append($0)
+        }
+        
+        XCTAssertTrue(queried.contains { $0.position == Vector(0,0) })
+        XCTAssertTrue(queried.contains { $0.position == Vector(1,0) })
+        XCTAssertTrue(queried.contains { $0.position == Vector(1,1) })
+        XCTAssertTrue(queried.contains { $0.position == Vector(0,1) })
     }
 }

@@ -171,7 +171,7 @@ class AgentKTree {
             maxLeafSize < node.end - node.begin else
         {
             
-            for i in (node.begin + 1)..<node.end {
+            for i in node.begin..<node.end {
                 onQueriedAgent(agents[i])
             }
             
