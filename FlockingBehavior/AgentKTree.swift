@@ -82,7 +82,7 @@ class AgentKTree {
         
         let isVertical = zone.isVertical
         
-        let splitValue = isVertical ? zone.center.x: zone.center.y
+        let pivot = isVertical ? zone.center.x: zone.center.y
         
         var left = begin
         var right = end
@@ -90,13 +90,13 @@ class AgentKTree {
         while left < right {
             
             while left < right
-                && (isVertical ? agents[left].position.x: agents[left].position.y) < splitValue
+                && (isVertical ? agents[left].position.x: agents[left].position.y) < pivot
             {
                 left += 1
             }
             
             while right > left
-                && (isVertical ? agents[right - 1].position.x: agents[right - 1].position.y) >= splitValue
+                && (isVertical ? agents[right - 1].position.x: agents[right - 1].position.y) >= pivot
             {
                 right -= 1
             }
