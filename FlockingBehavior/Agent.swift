@@ -8,8 +8,19 @@
 
 class Agent {
     let position: Vector
+    let radius: Float
+    let vector: Vector
+    let preferredVector: Vector
     
-    init(position: Vector) {
+    init(
+        position: Vector,
+        radius: Float,
+        vector: Vector = Vector.zero,
+        preferredVector: Vector = Vector.zero)
+    {
         self.position = position
+        self.radius = radius
+        self.vector = vector
+        self.preferredVector = preferredVector
     }
 }

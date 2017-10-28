@@ -12,16 +12,21 @@ import XCTest
 class AgentKTreeTests: XCTestCase {
     
     func testBuildNodes(){
-        let agents = [
-            Agent(position: Vector(2,0)),
-            Agent(position: Vector(3,0)),
-            Agent(position: Vector(8,0)),
-            Agent(position: Vector(7,0)),
-            Agent(position: Vector(9,0)),
-            Agent(position: Vector(6,0)),
-            Agent(position: Vector.zero),
-            Agent(position: Vector(1,0)),
+        
+        let positions = [
+            Vector(2,0),
+            Vector(3,0),
+            Vector(8,0),
+            Vector(7,0),
+            Vector(9,0),
+            Vector(6,0),
+            Vector.zero,
+            Vector(1,0),
         ]
+        
+        let agents = positions.map {
+            Agent(position: $0, radius: 10)
+        }
         
         let kTree = AgentKTree(agents: agents, maxLeafSize: 1)
         XCTAssertEqual(
@@ -31,12 +36,16 @@ class AgentKTreeTests: XCTestCase {
     }
     
     func testQuery1(){
-        let agents = [
-            Agent(position: Vector(0,0)),
-            Agent(position: Vector(1,0)),
-            Agent(position: Vector(0,1)),
-            Agent(position: Vector(1,1)),
+        let positions = [
+            Vector(0,0),
+            Vector(1,0),
+            Vector(0,1),
+            Vector(1,1),
         ]
+        
+        let agents = positions.map {
+            Agent(position: $0, radius: 10)
+        }
         
         let kTree = AgentKTree(agents: agents, maxLeafSize: 1)
         
@@ -50,12 +59,16 @@ class AgentKTreeTests: XCTestCase {
     }
     
     func testQuery2(){
-        let agents = [
-            Agent(position: Vector(0,0)),
-            Agent(position: Vector(1,0)),
-            Agent(position: Vector(0,1)),
-            Agent(position: Vector(1,1)),
+        let positions = [
+            Vector(0,0),
+            Vector(1,0),
+            Vector(0,1),
+            Vector(1,1),
         ]
+        
+        let agents = positions.map {
+            Agent(position: $0, radius: 10)
+        }
         
         let kTree = AgentKTree(agents: agents, maxLeafSize: 1)
         
@@ -72,19 +85,23 @@ class AgentKTreeTests: XCTestCase {
     }
     
     func testQuery3(){
-        let agents = [
-            Agent(position: Vector(0,0)),
-            Agent(position: Vector(1,0)),
-            Agent(position: Vector(2,0)),
+        let positions = [
+            Vector(0,0),
+            Vector(1,0),
+            Vector(2,0),
             
-            Agent(position: Vector(0,1)),
-            Agent(position: Vector(1,1)),
-            Agent(position: Vector(2,1)),
+            Vector(0,1),
+            Vector(1,1),
+            Vector(2,1),
             
-            Agent(position: Vector(0,2)),
-            Agent(position: Vector(1,2)),
-            Agent(position: Vector(2,2)),
+            Vector(0,2),
+            Vector(1,2),
+            Vector(2,2)
         ]
+        
+        let agents = positions.map {
+            Agent(position: $0, radius: 10)
+        }
         
         let kTree = AgentKTree(agents: agents, maxLeafSize: 1)
         

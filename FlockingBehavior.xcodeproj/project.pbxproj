@@ -22,7 +22,7 @@
 		72B0CE7C1F92271F0082CF46 /* PointLineRelativePositionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B0CE7B1F92271F0082CF46 /* PointLineRelativePositionTests.swift */; };
 		72B0CE7E1F925D550082CF46 /* ObstacleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B0CE7D1F925D550082CF46 /* ObstacleTests.swift */; };
 		72B0CE821F92654A0082CF46 /* ObstacleKTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B0CE811F92654A0082CF46 /* ObstacleKTree.swift */; };
-		72B0CE841F927A440082CF46 /* RVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B0CE831F927A440082CF46 /* RVO.swift */; };
+		72B0CE841F927A440082CF46 /* RVOConstans.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B0CE831F927A440082CF46 /* RVOConstans.swift */; };
 		72B0CE861F927E4E0082CF46 /* ObstacleKTreeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B0CE851F927E4E0082CF46 /* ObstacleKTreeTests.swift */; };
 		72B0CE881F92AFAF0082CF46 /* MathTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B0CE871F92AFAF0082CF46 /* MathTests.swift */; };
 		AB1867011F779D9F000E0864 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1867001F779D9F000E0864 /* AppDelegate.swift */; };
@@ -74,7 +74,7 @@
 		72B0CE7B1F92271F0082CF46 /* PointLineRelativePositionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointLineRelativePositionTests.swift; sourceTree = "<group>"; };
 		72B0CE7D1F925D550082CF46 /* ObstacleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObstacleTests.swift; sourceTree = "<group>"; };
 		72B0CE811F92654A0082CF46 /* ObstacleKTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObstacleKTree.swift; sourceTree = "<group>"; };
-		72B0CE831F927A440082CF46 /* RVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RVO.swift; sourceTree = "<group>"; };
+		72B0CE831F927A440082CF46 /* RVOConstans.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RVOConstans.swift; sourceTree = "<group>"; };
 		72B0CE851F927E4E0082CF46 /* ObstacleKTreeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObstacleKTreeTests.swift; sourceTree = "<group>"; };
 		72B0CE871F92AFAF0082CF46 /* MathTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathTests.swift; sourceTree = "<group>"; };
 		AB1866FD1F779D9F000E0864 /* FlockingBehavior.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlockingBehavior.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -132,7 +132,7 @@
 				726340501F9B3918009D91A4 /* ObstacleBuilder.swift */,
 				72B0CE731F921B3E0082CF46 /* Obstacle.swift */,
 				72B0CE811F92654A0082CF46 /* ObstacleKTree.swift */,
-				72B0CE831F927A440082CF46 /* RVO.swift */,
+				72B0CE831F927A440082CF46 /* RVOConstans.swift */,
 			);
 			name = RVO;
 			sourceTree = "<group>";
@@ -380,7 +380,7 @@
 				AB1867091F779D9F000E0864 /* GameViewController.swift in Sources */,
 				72B0CE821F92654A0082CF46 /* ObstacleKTree.swift in Sources */,
 				AB63494E1F77A746002F5587 /* SteeringBehavior.swift in Sources */,
-				72B0CE841F927A440082CF46 /* RVO.swift in Sources */,
+				72B0CE841F927A440082CF46 /* RVOConstans.swift in Sources */,
 				AB1867011F779D9F000E0864 /* AppDelegate.swift in Sources */,
 				726340551F9B3923009D91A4 /* TestingAppDelegate.swift in Sources */,
 				AB6349501F77AB5D002F5587 /* AgentNode.swift in Sources */,
