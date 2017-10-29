@@ -47,4 +47,10 @@ class RVOExample1ViewController: UIViewController {
         step += 1
         updateLabel()
     }
+    
+    @IBAction func reset(){
+        scene?.reset()
+        step = 0
+        updateLabel()
+    }
 }

@@ -18,18 +18,33 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9CI-ka-ppv">
-                                <rect key="frame" x="154.5" y="607" width="66" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="AqC-UF-vli"/>
-                                </constraints>
-                                <state key="normal" title="Next step"/>
-                                <connections>
-                                    <action selector="nextStep" destination="fuL-Zb-SC2" eventType="touchUpInside" id="Uzj-n8-uL5"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="xqN-yl-1QL">
+                                <rect key="frame" x="125" y="607" width="125" height="40"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fEI-u5-pAD">
+                                        <rect key="frame" x="0.0" y="0.0" width="39" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="W3V-nV-zyb"/>
+                                        </constraints>
+                                        <state key="normal" title="Reset"/>
+                                        <connections>
+                                            <action selector="reset" destination="fuL-Zb-SC2" eventType="touchUpInside" id="X72-b2-pGs"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9CI-ka-ppv">
+                                        <rect key="frame" x="59" y="0.0" width="66" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="AqC-UF-vli"/>
+                                        </constraints>
+                                        <state key="normal" title="Next step"/>
+                                        <connections>
+                                            <action selector="nextStep" destination="fuL-Zb-SC2" eventType="touchUpInside" id="Uzj-n8-uL5"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Step 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QiY-Yg-OLw">
-                                <rect key="frame" x="20" y="40" width="50.5" height="21"/>
+                                <rect key="frame" x="20" y="40" width="50.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -38,9 +53,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="QiY-Yg-OLw" firstAttribute="leading" secondItem="7Qa-WA-mDz" secondAttribute="leading" constant="20" id="Adk-FT-wFB"/>
-                            <constraint firstItem="9CI-ka-ppv" firstAttribute="centerX" secondItem="qdt-rC-F0o" secondAttribute="centerX" id="Ch4-hl-Srk"/>
+                            <constraint firstItem="7Qa-WA-mDz" firstAttribute="bottom" secondItem="xqN-yl-1QL" secondAttribute="bottom" constant="20" id="hTA-1J-WFE"/>
+                            <constraint firstItem="xqN-yl-1QL" firstAttribute="centerX" secondItem="qdt-rC-F0o" secondAttribute="centerX" id="oQa-aC-iGq"/>
                             <constraint firstItem="QiY-Yg-OLw" firstAttribute="top" secondItem="7Qa-WA-mDz" secondAttribute="top" constant="20" id="rYn-zz-vIo"/>
-                            <constraint firstItem="7Qa-WA-mDz" firstAttribute="bottom" secondItem="9CI-ka-ppv" secondAttribute="bottom" constant="20" id="toe-a7-Mf2"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="7Qa-WA-mDz"/>
                     </view>

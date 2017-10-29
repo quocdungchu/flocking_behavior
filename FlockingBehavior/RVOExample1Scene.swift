@@ -21,18 +21,37 @@ class RVOExample1Scene: SKScene {
     var agentAvoidanceNode: RVOAvoidanceNode!
     
     override func didMove(to view: SKView) {
-        
-        agentNode = RVOAgentNode(agent: Agent(position: Vector(5.0, 0.0), radius: 1.0, maxSpeed: 0.5))
-        neighborNode = RVOAgentNode(agent: Agent(position: Vector(-5.0, 0.0), radius: 1.0, maxSpeed: 0.5))
-        agentAvoidanceNode = RVOAvoidanceNode(agent: agentNode.agent, neighbors: [neighborNode.agent], noCollisionDeltaTime: noCollisionDeltaTime)
-
-        addChild(agentNode)
-        addChild(neighborNode)
-        addChild(agentAvoidanceNode)
-
+        addNodes()
+    }
+    
+    func reset(){
+        removeNodes()
+        addNodes()
+        update()
     }
     
     func nextStep(){
+        computeAgents()
+        update()
+    }
+    
+    private func addNodes(){
+        agentNode = RVOAgentNode(agent: Agent(position: Vector(5.0, 0.0), radius: 1.0, maxSpeed: 0.5))
+        neighborNode = RVOAgentNode(agent: Agent(position: Vector(-5.0, 0.0), radius: 1.0, maxSpeed: 0.5))
+        agentAvoidanceNode = RVOAvoidanceNode(agent: agentNode.agent, neighbors: [neighborNode.agent], noCollisionDeltaTime: noCollisionDeltaTime)
+        
+        addChild(agentNode)
+        addChild(neighborNode)
+        addChild(agentAvoidanceNode)
+    }
+    
+    private func removeNodes(){
+        agentNode.removeFromParent()
+        neighborNode.removeFromParent()
+        agentAvoidanceNode.removeFromParent()
+    }
+    
+    private func computeAgents(){
         let agent = agentNode.agent
         let neighbor = neighborNode.agent
         
@@ -52,7 +71,9 @@ class RVOExample1Scene: SKScene {
         
         agent.update(computedVelocity: agentComputed, timeStep: timeStep)
         neighbor.update(computedVelocity: neighborComputed, timeStep: timeStep)
-        
+    }
+    
+    private func update(){
         agentNode.update()
         neighborNode.update()
         agentAvoidanceNode.update()
