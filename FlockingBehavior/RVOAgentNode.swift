@@ -8,25 +8,29 @@
 
 import SpriteKit
 
+enum RVOExampleConstants {
+    static let scale: Float = 60.0
+}
+
 class RVOAgentNode: SKShapeNode {
     let agent: Agent
     let scale: Float
     
-    init(agent: Agent, scale: Float = 20.0) {
+    init(agent: Agent, scale: Float = RVOExampleConstants.scale) {
         self.agent = agent
         self.scale = scale
         
         super.init()
         
+        addNodes()
         update()
-        draw()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func draw(){
+    private func addNodes(){
         
         addChild(boundingNode())
         addChild(drawingNode())
@@ -42,7 +46,7 @@ class RVOAgentNode: SKShapeNode {
         let bounding = UIBezierPath()
         bounding.addArc(withCenter: CGPoint(0, 0), radius: CGFloat(agent.radius * scale), startAngle: 0, endAngle: CGFloat(2 * Float.pi), clockwise: true)
         boundingNode.path = bounding.cgPath
-        boundingNode.strokeColor = UIColor.blue
+        boundingNode.strokeColor = UIColor.yellow
         boundingNode.lineWidth = 1
         return boundingNode
     }
@@ -57,7 +61,7 @@ class RVOAgentNode: SKShapeNode {
         path.close()
         
         drawingNode.path = path.cgPath
-        drawingNode.strokeColor = UIColor.red
+        drawingNode.strokeColor = UIColor.green
         drawingNode.lineWidth = 2
         
         return drawingNode
