@@ -28,14 +28,25 @@
                                     <action selector="nextStep" destination="fuL-Zb-SC2" eventType="touchUpInside" id="Uzj-n8-uL5"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Step 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QiY-Yg-OLw">
+                                <rect key="frame" x="20" y="40" width="50.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="QiY-Yg-OLw" firstAttribute="leading" secondItem="7Qa-WA-mDz" secondAttribute="leading" constant="20" id="Adk-FT-wFB"/>
                             <constraint firstItem="9CI-ka-ppv" firstAttribute="centerX" secondItem="qdt-rC-F0o" secondAttribute="centerX" id="Ch4-hl-Srk"/>
+                            <constraint firstItem="QiY-Yg-OLw" firstAttribute="top" secondItem="7Qa-WA-mDz" secondAttribute="top" constant="20" id="rYn-zz-vIo"/>
                             <constraint firstItem="7Qa-WA-mDz" firstAttribute="bottom" secondItem="9CI-ka-ppv" secondAttribute="bottom" constant="20" id="toe-a7-Mf2"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="7Qa-WA-mDz"/>
                     </view>
+                    <connections>
+                        <outlet property="stepLabel" destination="QiY-Yg-OLw" id="pyJ-jh-dgm"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ejo-oV-RdB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

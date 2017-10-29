@@ -12,15 +12,18 @@ class RVOAvoidanceNode: SKShapeNode {
     let agent: Agent
     let neighbors: [Agent]
     let scale: Float
+    let noCollisionDeltaTime: Double
+
     
     let relativePositionNodes: [SKShapeNode]
     let relativeVelocityNodes: [SKShapeNode]
     
-    init(agent: Agent, neighbors: [Agent], scale: Float = RVOExampleConstants.scale) {
+    init(agent: Agent, neighbors: [Agent], scale: Float = RVOExampleConstants.scale, noCollisionDeltaTime: Double) {
         self.agent = agent
         self.neighbors = neighbors
         self.scale = scale
-        
+        self.noCollisionDeltaTime = noCollisionDeltaTime
+
         self.relativePositionNodes = neighbors.map { _ in
             let node = SKShapeNode()
             node.strokeColor = UIColor.cyan
@@ -46,10 +49,22 @@ class RVOAvoidanceNode: SKShapeNode {
     }
     
     private func relativePositionPath(agent: Agent, neighbor: Agent) -> UIBezierPath {
+        let center = CGPoint(vector: (neighbor.position - agent.position) * scale)
+        let radius = CGFloat((agent.radius + neighbor.radius) * scale)
+        
+        let smallCenter = CGPoint(vector: (neighbor.position - agent.position) * Float(1.0 / noCollisionDeltaTime) * scale)
+        let smallRadius = CGFloat((agent.radius + neighbor.radius) * Float(1.0 / noCollisionDeltaTime) * scale)
+
         let path = UIBezierPath()
         path.move(to: CGPoint(vector: Vector.zero))
-        path.addLine(to: CGPoint(vector: (neighbor.position - agent.position) * scale))
+        path.addLine(to: center)
         
+        path.move(to: center)
+        path.addArc(withCenter: center, radius: radius, startAngle: 0, endAngle: CGFloat(2 * Float.pi), clockwise: true)
+        
+        path.move(to: smallCenter)
+        path.addArc(withCenter: smallCenter, radius: smallRadius, startAngle: 0, endAngle: CGFloat(2 * Float.pi), clockwise: true)
+                
         return path
     }
     

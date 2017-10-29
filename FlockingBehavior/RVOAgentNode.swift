@@ -9,7 +9,7 @@
 import SpriteKit
 
 enum RVOExampleConstants {
-    static let scale: Float = 60.0
+    static let scale: Float = 20.0
 }
 
 class RVOAgentNode: SKShapeNode {
