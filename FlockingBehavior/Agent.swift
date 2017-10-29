@@ -39,17 +39,10 @@ class Agent {
     }
     
     func update(
-        preferredVelocity: Vector,
-        neighbors: [Agent],
-        noCollisionDeltaTime: Double,
+        computedVelocity: Vector,
         timeStep: Double)
     {
-        velocity = computedVelocity(
-            preferredVelocity: preferredVelocity,
-            neighbors: neighbors,
-            noCollisionDeltaTime: noCollisionDeltaTime,
-            timeStep: timeStep
-        )
+        velocity = computedVelocity
         position += velocity * Float(timeStep)
     }
     
@@ -72,7 +65,7 @@ class Agent {
             lines: ocraLines,
             radius: maxSpeed,
             optimalVelocity: preferredVelocity,
-            directionOptimal: false
+            directionOptimal: true
         )
         
         if let failIndex = linearProgram2Result.failIndex {

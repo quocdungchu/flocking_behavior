@@ -22,8 +22,8 @@ class RVOExample1Scene: SKScene {
     
     override func didMove(to view: SKView) {
         
-        agentNode = RVOAgentNode(agent: Agent(position: Vector(5.0, 0.0), radius: 1.0, maxSpeed: 0.3))
-        neighborNode = RVOAgentNode(agent: Agent(position: Vector(-5.0, 0.0), radius: 1.0, maxSpeed: 0.3))
+        agentNode = RVOAgentNode(agent: Agent(position: Vector(5.0, 0.0), radius: 1.0, maxSpeed: 0.5))
+        neighborNode = RVOAgentNode(agent: Agent(position: Vector(-5.0, 0.0), radius: 1.0, maxSpeed: 0.5))
         agentAvoidanceNode = RVOAvoidanceNode(agent: agentNode.agent, neighbors: [neighborNode.agent], noCollisionDeltaTime: noCollisionDeltaTime)
 
         addChild(agentNode)
@@ -36,19 +36,22 @@ class RVOExample1Scene: SKScene {
         let agent = agentNode.agent
         let neighbor = neighborNode.agent
         
-        agent.update(
+        let agentComputed = agent.computedVelocity(
             preferredVelocity: (agentDestination - agent.position).limitedVector(maximumLength: agent.maxSpeed),
             neighbors: [neighbor],
             noCollisionDeltaTime: noCollisionDeltaTime,
             timeStep: timeStep
         )
         
-        neighbor.update(
+        let neighborComputed = neighbor.computedVelocity(
             preferredVelocity: (neightborDestination - neighbor.position).limitedVector(maximumLength: neighbor.maxSpeed),
             neighbors: [agent],
             noCollisionDeltaTime: noCollisionDeltaTime,
             timeStep: timeStep
         )
+        
+        agent.update(computedVelocity: agentComputed, timeStep: timeStep)
+        neighbor.update(computedVelocity: neighborComputed, timeStep: timeStep)
         
         agentNode.update()
         neighborNode.update()
