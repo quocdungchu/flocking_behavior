@@ -18,8 +18,7 @@ class RVOAgentNode: SKShapeNode {
         
         super.init()
         
-        self.position = CGPoint(vector: agent.position * scale)
-        
+        update()
         draw()
     }
     
@@ -31,6 +30,7 @@ class RVOAgentNode: SKShapeNode {
         let path = UIBezierPath()
         path.move(to: CGPoint(0, agent.radius * scale))
         path.addLine(to: CGPoint(agent.radius * scale, -agent.radius * scale))
+        path.addLine(to: CGPoint(0, 0))
         path.addLine(to: CGPoint(-agent.radius * scale, -agent.radius * scale))
         path.close()
         
@@ -41,6 +41,7 @@ class RVOAgentNode: SKShapeNode {
     
     func update(){
         self.position = CGPoint(vector: agent.position * scale)
+        self.zRotation = CGFloat(agent.rotation.angle - Float.pi / 2)
     }
 }
 

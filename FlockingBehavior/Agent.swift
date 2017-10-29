@@ -12,7 +12,18 @@ class Agent {
     var position: Vector
     let radius: Float
     let maxSpeed: Float
-    var velocity: Vector
+    var rotation: Vector
+    var speed: Float
+    var velocity: Vector {
+        get {
+            return rotation.normalized * speed
+        }
+        
+        set {
+            rotation = newValue.normalized
+            speed = newValue.length
+        }
+    }
     
     init(
         position: Vector,
@@ -23,7 +34,8 @@ class Agent {
         self.position = position
         self.radius = radius
         self.maxSpeed = maxSpeed
-        self.velocity = velocity
+        self.rotation = velocity.normalized
+        self.speed = velocity.length
     }
     
     func update(
