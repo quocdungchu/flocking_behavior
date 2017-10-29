@@ -57,6 +57,10 @@ struct Vector {
         return Vector(vector.x * value, vector.y * value)
     }
     
+    static func * (value: Float, vector: Vector) -> Vector {
+        return vector * value
+    }
+    
     static func *= (left: inout Vector, value: Float) {
         left = left * value
     }
