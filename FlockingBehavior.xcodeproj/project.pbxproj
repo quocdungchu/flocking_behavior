@@ -25,6 +25,12 @@
 		72B0CE841F927A440082CF46 /* RVOConstans.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B0CE831F927A440082CF46 /* RVOConstans.swift */; };
 		72B0CE861F927E4E0082CF46 /* ObstacleKTreeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B0CE851F927E4E0082CF46 /* ObstacleKTreeTests.swift */; };
 		72B0CE881F92AFAF0082CF46 /* MathTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B0CE871F92AFAF0082CF46 /* MathTests.swift */; };
+		72B4532A1FA610B6005CDE8A /* RVOExample1.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 72B453291FA610B6005CDE8A /* RVOExample1.storyboard */; };
+		72B4532C1FA61162005CDE8A /* RVOExample1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B4532B1FA61162005CDE8A /* RVOExample1ViewController.swift */; };
+		72B4532E1FA6129E005CDE8A /* RVORenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B4532D1FA6129E005CDE8A /* RVORenderView.swift */; };
+		72B453301FA61328005CDE8A /* RVOExample1Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B4532F1FA61328005CDE8A /* RVOExample1Scene.swift */; };
+		72B453321FA6137D005CDE8A /* RVOAgentNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B453311FA6137D005CDE8A /* RVOAgentNode.swift */; };
+		72B453341FA6152C005CDE8A /* RVOScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 72B453331FA6152C005CDE8A /* RVOScene.sks */; };
 		72FF33C41FA47F1500076D3B /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72FF33C31FA47F1500076D3B /* Line.swift */; };
 		72FF33C61FA5CE9C00076D3B /* AgentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72FF33C51FA5CE9C00076D3B /* AgentTests.swift */; };
 		72FF33C81FA5E4F400076D3B /* LineComputerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72FF33C71FA5E4F400076D3B /* LineComputerTests.swift */; };
@@ -80,6 +86,12 @@
 		72B0CE831F927A440082CF46 /* RVOConstans.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RVOConstans.swift; sourceTree = "<group>"; };
 		72B0CE851F927E4E0082CF46 /* ObstacleKTreeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObstacleKTreeTests.swift; sourceTree = "<group>"; };
 		72B0CE871F92AFAF0082CF46 /* MathTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathTests.swift; sourceTree = "<group>"; };
+		72B453291FA610B6005CDE8A /* RVOExample1.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RVOExample1.storyboard; sourceTree = "<group>"; };
+		72B4532B1FA61162005CDE8A /* RVOExample1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RVOExample1ViewController.swift; sourceTree = "<group>"; };
+		72B4532D1FA6129E005CDE8A /* RVORenderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RVORenderView.swift; sourceTree = "<group>"; };
+		72B4532F1FA61328005CDE8A /* RVOExample1Scene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RVOExample1Scene.swift; sourceTree = "<group>"; };
+		72B453311FA6137D005CDE8A /* RVOAgentNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RVOAgentNode.swift; sourceTree = "<group>"; };
+		72B453331FA6152C005CDE8A /* RVOScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = RVOScene.sks; sourceTree = "<group>"; };
 		72FF33C31FA47F1500076D3B /* Line.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
 		72FF33C51FA5CE9C00076D3B /* AgentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgentTests.swift; sourceTree = "<group>"; };
 		72FF33C71FA5E4F400076D3B /* LineComputerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineComputerTests.swift; sourceTree = "<group>"; };
@@ -143,6 +155,19 @@
 			name = RVO;
 			sourceTree = "<group>";
 		};
+		72B453281FA6107F005CDE8A /* RVOExample */ = {
+			isa = PBXGroup;
+			children = (
+				72B453291FA610B6005CDE8A /* RVOExample1.storyboard */,
+				72B4532B1FA61162005CDE8A /* RVOExample1ViewController.swift */,
+				72B4532D1FA6129E005CDE8A /* RVORenderView.swift */,
+				72B4532F1FA61328005CDE8A /* RVOExample1Scene.swift */,
+				72B453311FA6137D005CDE8A /* RVOAgentNode.swift */,
+				72B453331FA6152C005CDE8A /* RVOScene.sks */,
+			);
+			name = RVOExample;
+			sourceTree = "<group>";
+		};
 		AB1866F41F779D9F000E0864 = {
 			isa = PBXGroup;
 			children = (
@@ -166,6 +191,7 @@
 		AB1866FF1F779D9F000E0864 /* FlockingBehavior */ = {
 			isa = PBXGroup;
 			children = (
+				72B453281FA6107F005CDE8A /* RVOExample */,
 				72B0CE721F921B200082CF46 /* RVO */,
 				AB63494A1F77A65C002F5587 /* Math */,
 				AB6349471F77A619002F5587 /* Core */,
@@ -350,6 +376,8 @@
 				AB18670E1F779D9F000E0864 /* Assets.xcassets in Resources */,
 				AB1867111F779D9F000E0864 /* LaunchScreen.storyboard in Resources */,
 				AB1867051F779D9F000E0864 /* Actions.sks in Resources */,
+				72B453341FA6152C005CDE8A /* RVOScene.sks in Resources */,
+				72B4532A1FA610B6005CDE8A /* RVOExample1.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -379,6 +407,8 @@
 				726340541F9B3923009D91A4 /* main.swift in Sources */,
 				72B0CE781F92269B0082CF46 /* Vector.swift in Sources */,
 				72B0CE7A1F9226BE0082CF46 /* Math.swift in Sources */,
+				72B4532C1FA61162005CDE8A /* RVOExample1ViewController.swift in Sources */,
+				72B4532E1FA6129E005CDE8A /* RVORenderView.swift in Sources */,
 				AB6349491F77A639002F5587 /* SteeringAgent.swift in Sources */,
 				726340511F9B3919009D91A4 /* ObstacleBuilder.swift in Sources */,
 				72B0CE741F921B3E0082CF46 /* Obstacle.swift in Sources */,
@@ -393,7 +423,9 @@
 				72B0CE841F927A440082CF46 /* RVOConstans.swift in Sources */,
 				AB1867011F779D9F000E0864 /* AppDelegate.swift in Sources */,
 				726340551F9B3923009D91A4 /* TestingAppDelegate.swift in Sources */,
+				72B453321FA6137D005CDE8A /* RVOAgentNode.swift in Sources */,
 				AB6349501F77AB5D002F5587 /* AgentNode.swift in Sources */,
+				72B453301FA61328005CDE8A /* RVOExample1Scene.swift in Sources */,
 				AB28D3961F7838A700BB1542 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
