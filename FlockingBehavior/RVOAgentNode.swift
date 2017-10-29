@@ -27,6 +27,28 @@ class RVOAgentNode: SKShapeNode {
     }
     
     private func draw(){
+        
+        addChild(boundingNode())
+        addChild(drawingNode())
+    }
+    
+    func update(){
+        self.position = CGPoint(vector: agent.position * scale)
+        self.zRotation = CGFloat(agent.rotation.angle - Float.pi / 2)
+    }
+    
+    private func boundingNode() -> SKShapeNode {
+        let boundingNode = SKShapeNode()
+        let bounding = UIBezierPath()
+        bounding.addArc(withCenter: CGPoint(0, 0), radius: CGFloat(agent.radius * scale), startAngle: 0, endAngle: CGFloat(2 * Float.pi), clockwise: true)
+        boundingNode.path = bounding.cgPath
+        boundingNode.strokeColor = UIColor.blue
+        boundingNode.lineWidth = 1
+        return boundingNode
+    }
+    
+    private func drawingNode() -> SKShapeNode {
+        let drawingNode = SKShapeNode()
         let path = UIBezierPath()
         path.move(to: CGPoint(0, agent.radius * scale))
         path.addLine(to: CGPoint(agent.radius * scale, -agent.radius * scale))
@@ -34,14 +56,11 @@ class RVOAgentNode: SKShapeNode {
         path.addLine(to: CGPoint(-agent.radius * scale, -agent.radius * scale))
         path.close()
         
-        self.path = path.cgPath
-        self.strokeColor = UIColor.red
-        self.lineWidth = 2
-    }
-    
-    func update(){
-        self.position = CGPoint(vector: agent.position * scale)
-        self.zRotation = CGFloat(agent.rotation.angle - Float.pi / 2)
+        drawingNode.path = path.cgPath
+        drawingNode.strokeColor = UIColor.red
+        drawingNode.lineWidth = 2
+        
+        return drawingNode
     }
 }
 
