@@ -25,7 +25,7 @@ class AgentKTreeTests: XCTestCase {
         ]
         
         let agents = positions.map {
-            Agent(position: $0, radius: 10)
+            Agent(position: $0, radius: 10, maxSpeed: 0.0)
         }
         
         let kTree = AgentKTree(agents: agents, maxLeafSize: 1)
@@ -44,7 +44,7 @@ class AgentKTreeTests: XCTestCase {
         ]
         
         let agents = positions.map {
-            Agent(position: $0, radius: 10)
+            Agent(position: $0, radius: 10, maxSpeed: 0.0)
         }
         
         let kTree = AgentKTree(agents: agents, maxLeafSize: 1)
@@ -67,7 +67,7 @@ class AgentKTreeTests: XCTestCase {
         ]
         
         let agents = positions.map {
-            Agent(position: $0, radius: 10)
+            Agent(position: $0, radius: 10, maxSpeed: 0.0)
         }
         
         let kTree = AgentKTree(agents: agents, maxLeafSize: 1)
@@ -100,7 +100,7 @@ class AgentKTreeTests: XCTestCase {
         ]
         
         let agents = positions.map {
-            Agent(position: $0, radius: 10)
+            Agent(position: $0, radius: 10, maxSpeed: 0.0)
         }
         
         let kTree = AgentKTree(agents: agents, maxLeafSize: 1)
