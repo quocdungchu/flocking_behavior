@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		723CE1D51FA7D2B2001CF1DC /* RVOSimulator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723CE1D41FA7D2B2001CF1DC /* RVOSimulator.swift */; };
 		7246E84A1F7FF2B500343083 /* Updatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7246E8491F7FF2B400343083 /* Updatable.swift */; };
 		726340511F9B3919009D91A4 /* ObstacleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726340501F9B3918009D91A4 /* ObstacleBuilder.swift */; };
 		726340541F9B3923009D91A4 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726340521F9B3923009D91A4 /* main.swift */; };
@@ -68,6 +69,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		723CE1D41FA7D2B2001CF1DC /* RVOSimulator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RVOSimulator.swift; sourceTree = "<group>"; };
 		7246E8491F7FF2B400343083 /* Updatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Updatable.swift; sourceTree = "<group>"; };
 		726340501F9B3918009D91A4 /* ObstacleBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObstacleBuilder.swift; sourceTree = "<group>"; };
 		726340521F9B3923009D91A4 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
@@ -142,6 +144,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		723CE1D31FA7D262001CF1DC /* RVOSimulator */ = {
+			isa = PBXGroup;
+			children = (
+				723CE1D41FA7D2B2001CF1DC /* RVOSimulator.swift */,
+			);
+			name = RVOSimulator;
+			sourceTree = "<group>";
+		};
 		72B0CE721F921B200082CF46 /* RVO */ = {
 			isa = PBXGroup;
 			children = (
@@ -191,6 +201,7 @@
 		AB1866FF1F779D9F000E0864 /* FlockingBehavior */ = {
 			isa = PBXGroup;
 			children = (
+				723CE1D31FA7D262001CF1DC /* RVOSimulator */,
 				72B453281FA6107F005CDE8A /* RVOExample */,
 				72B0CE721F921B200082CF46 /* RVO */,
 				AB63494A1F77A65C002F5587 /* Math */,
@@ -406,6 +417,7 @@
 				7263405B1F9B55CB009D91A4 /* Agent.swift in Sources */,
 				726340541F9B3923009D91A4 /* main.swift in Sources */,
 				72B0CE781F92269B0082CF46 /* Vector.swift in Sources */,
+				723CE1D51FA7D2B2001CF1DC /* RVOSimulator.swift in Sources */,
 				72B453361FA629BB005CDE8A /* RVOAvoidanceNode.swift in Sources */,
 				72B0CE7A1F9226BE0082CF46 /* Math.swift in Sources */,
 				72B4532C1FA61162005CDE8A /* RVOExample1ViewController.swift in Sources */,

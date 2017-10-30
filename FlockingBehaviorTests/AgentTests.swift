@@ -39,49 +39,95 @@ class AgentTests: XCTestCase {
         XCTAssertEqual(orcaLine!.direction, Vector(0, -1))
     }
     
-    func testAvoidanceCollision(){
-        let noCollisionDeltaTime = 2.0
-        let timeStep = 1.0
-        let agentDestination = Vector(-5.0, 0)
-        let neightborDestination = Vector(5.0, 0)
-
-        let agent = Agent(
-            position: Vector(5.0, 0.0),
-            radius: 1.0,
-            maxSpeed: 0.5,
-            velocity: Vector(-0.5, 0.0)
+    func testAvoidanceCollisionTwoAgent1(){
+        let simulator = RVOSimulator(noCollisionDeltaTime: 2.0, timeStep: 1.0)
+        simulator.add(
+            agent: Agent(
+                position: Vector(5.0, 0.0),
+                radius: 1.0,
+                maxSpeed: 0.5,
+                velocity: Vector(-0.5, 0.0)
+            ),
+            destination: Vector(-5.0, 0)
         )
         
-        let neighbor = Agent(
-            position: Vector(-5.0, 0.0),
-            radius: 1.0,
-            maxSpeed: 0.5,
-            velocity: Vector(0.5, 0.0)
+        simulator.add(
+            agent: Agent(
+                position: Vector(-5.0, 0.0),
+                radius: 1.0,
+                maxSpeed: 0.5,
+                velocity: Vector(0.5, 0.0)
+            ),
+            destination: Vector(5.0, 0)
         )
         
         var isCollided = false
         
         for _ in 0...100 {
-            let agentComputed = agent.computedVelocity(
-                preferredVelocity: (agentDestination - agent.position).limitedVector(maximumLength: agent.maxSpeed),
-                neighbors: [neighbor],
-                noCollisionDeltaTime: noCollisionDeltaTime,
-                timeStep: timeStep
-            )
-            
-            let neighborComputed = neighbor.computedVelocity(
-                preferredVelocity: (neightborDestination - neighbor.position).limitedVector(maximumLength: neighbor.maxSpeed),
-                neighbors: [agent],
-                noCollisionDeltaTime: noCollisionDeltaTime,
-                timeStep: timeStep
-            )
-            
-            agent.update(computedVelocity: agentComputed, timeStep: timeStep)
-            neighbor.update(computedVelocity: neighborComputed, timeStep: timeStep)
-
-            isCollided = isCollided || (agent.position - neighbor.position).length - (agent.radius + neighbor.radius) < RVOConstants.epsilon
+            simulator.update()
+            isCollided = isCollided || simulator.isCollided
         }
         
         XCTAssertFalse(isCollided)
+        XCTAssertTrue(simulator.isAchieved)
+    }
+    
+    func testAvoidanceCollisionTwoAgent2(){
+        let simulator = RVOSimulator(noCollisionDeltaTime: 2.0, timeStep: 1.0)
+        simulator.add(
+            agent: Agent(
+                position: Vector(5.0, 0.0),
+                radius: 1.0,
+                maxSpeed: 0.5,
+                velocity: Vector(-0.5, 0.0)
+            ),
+            destination: Vector(-5.0, 0)
+        )
+        
+        simulator.add(
+            agent: Agent(
+                position: Vector(0.0, 0.0),
+                radius: 1.0,
+                maxSpeed: 0.0,
+                velocity: Vector(0.0, 0.0)
+            ),
+            destination: Vector(0.0, 0)
+        )
+        
+        var isCollided = false
+        
+        for _ in 0...100 {
+            simulator.update()
+            isCollided = isCollided || simulator.isCollided
+        }
+        
+        XCTAssertFalse(isCollided)
+        XCTAssertTrue(simulator.isAchieved)
+    }
+}
+
+extension RVOSimulator {
+    var isCollided: Bool {
+        var isCollided = false
+        for i in 0..<agents.count {
+            for j in (i+1)..<agents.count {
+                isCollided = isCollided || (agents[i].position - agents[j].position).length - (agents[i].radius + agents[j].radius) < RVOConstants.epsilon
+            }
+        }
+        return isCollided
+    }
+    
+    var isAchieved: Bool {
+        var isAchieved = true
+        for i in 0..<agents.count {
+            isAchieved = isAchieved && agents[i].position.isEqualInProximity(to: destinations[i])
+        }
+        return isAchieved
+    }
+}
+
+extension Vector {
+    func isEqualInProximity(to vector: Vector) -> Bool {
+        return fabs(x - vector.x) < RVOConstants.epsilon && fabs(y - vector.y) < RVOConstants.epsilon
     }
 }
