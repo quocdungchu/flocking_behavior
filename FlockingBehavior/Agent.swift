@@ -109,7 +109,7 @@ class Agent {
             
             let dotProduct = w * relativePosition
             let isProjectInCutOffCircle = dotProduct < 0.0
-                && sqr(dotProduct) > combinedRadius * wSquaredLength
+                && sqr(dotProduct) > squaredCombinedRadius * wSquaredLength
             
             if isProjectInCutOffCircle {
                 let wLenght = w.length
