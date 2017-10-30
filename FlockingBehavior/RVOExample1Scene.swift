@@ -11,7 +11,7 @@ import SpriteKit
 
 class RVOExample1Scene: SKScene {
     
-    let noCollisionDeltaTime = 8.0
+    let noCollisionDeltaTime = 2.0
     let timeStep = 1.0
     let agentDestination = Vector(-5.0, 0)
     let neightborDestination = Vector(5.0, 0)
@@ -38,7 +38,7 @@ class RVOExample1Scene: SKScene {
     private func addNodes(){
         agentNode = RVOAgentNode(agent: Agent(position: Vector(5.0, 0.0), radius: 1.0, maxSpeed: 0.5))
         neighborNode = RVOAgentNode(agent: Agent(position: Vector(-5.0, 0.0), radius: 1.0, maxSpeed: 0.5))
-        agentAvoidanceNode = RVOAvoidanceNode(agent: agentNode.agent, neighbors: [neighborNode.agent], noCollisionDeltaTime: noCollisionDeltaTime)
+        agentAvoidanceNode = RVOAvoidanceNode(agent: agentNode.agent, neighbors: [neighborNode.agent], noCollisionDeltaTime: noCollisionDeltaTime, timeStep: timeStep, destinationPoint: agentDestination)
         
         addChild(agentNode)
         addChild(neighborNode)
