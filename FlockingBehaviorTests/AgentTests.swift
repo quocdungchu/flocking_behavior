@@ -40,7 +40,7 @@ class AgentTests: XCTestCase {
     }
     
     func testAvoidanceCollision(){
-        let noCollisionDeltaTime = 8.0
+        let noCollisionDeltaTime = 2.0
         let timeStep = 1.0
         let agentDestination = Vector(-5.0, 0)
         let neightborDestination = Vector(5.0, 0)
