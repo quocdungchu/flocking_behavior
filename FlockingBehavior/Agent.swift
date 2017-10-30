@@ -129,7 +129,7 @@ class Agent {
                     ) / squaredDistance
                     
                 } else {
-                    direction = Vector(
+                    direction = -1 * Vector(
                         relativeVelocity.x * leg + relativeVelocity.y * combinedRadius,
                         -relativePosition.x * combinedRadius + relativeVelocity.y * leg
                     ) / squaredDistance

@@ -62,20 +62,23 @@ class AgentTests: XCTestCase {
         var isCollided = false
         
         for _ in 0...100 {
-            agent.update(
+            let agentComputed = agent.computedVelocity(
                 preferredVelocity: (agentDestination - agent.position).limitedVector(maximumLength: agent.maxSpeed),
                 neighbors: [neighbor],
                 noCollisionDeltaTime: noCollisionDeltaTime,
                 timeStep: timeStep
             )
             
-            neighbor.update(
+            let neighborComputed = neighbor.computedVelocity(
                 preferredVelocity: (neightborDestination - neighbor.position).limitedVector(maximumLength: neighbor.maxSpeed),
                 neighbors: [agent],
                 noCollisionDeltaTime: noCollisionDeltaTime,
                 timeStep: timeStep
             )
             
+            agent.update(computedVelocity: agentComputed, timeStep: timeStep)
+            neighbor.update(computedVelocity: neighborComputed, timeStep: timeStep)
+
             isCollided = isCollided || (agent.position - neighbor.position).length - (agent.radius + neighbor.radius) < RVOConstants.epsilon
         }
         
