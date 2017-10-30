@@ -124,14 +124,14 @@ class Agent {
                 
                 if isProjectOnLeftLeg {
                     direction = Vector(
-                        relativeVelocity.x * leg - relativeVelocity.y * combinedRadius,
-                        relativePosition.x * combinedRadius + relativeVelocity.y * leg
+                        relativePosition.x * leg - relativePosition.y * combinedRadius,
+                        relativePosition.x * combinedRadius + relativePosition.y * leg
                     ) / squaredDistance
                     
                 } else {
                     direction = -1 * Vector(
-                        relativeVelocity.x * leg + relativeVelocity.y * combinedRadius,
-                        -relativePosition.x * combinedRadius + relativeVelocity.y * leg
+                        relativePosition.x * leg + relativePosition.y * combinedRadius,
+                        -relativePosition.x * combinedRadius + relativePosition.y * leg
                     ) / squaredDistance
                 }
                 
