@@ -26,7 +26,7 @@ class RVOSimulator {
         destinations.append(destination)
     }
     
-    func update(){
+    func computeAgents(){
         var computedVelocities = [Vector]()
         
         for i in 0..<agents.count {

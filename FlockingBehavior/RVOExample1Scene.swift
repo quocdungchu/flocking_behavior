@@ -5,20 +5,14 @@
 //  Created by Quoc Dung Chu on 29/10/2017.
 //  Copyright © 2017 quoc. All rights reserved.
 //
-
 import UIKit
 import SpriteKit
 
 class RVOExample1Scene: SKScene {
     
-    let noCollisionDeltaTime = 2.0
-    let timeStep = 1.0
-    let agentDestination = Vector(-5.0, 0)
-    let neightborDestination = Vector(5.0, 0)
-    
-    var agentNode: RVOAgentNode!
-    var neighborNode: RVOAgentNode!
     var agentAvoidanceNode: RVOAvoidanceNode!
+    let simulator = RVOSimulator(noCollisionDeltaTime: 2.0, timeStep: 1.0)
+    var agentNodes = [RVOAgentNode]()
     
     override func didMove(to view: SKView) {
         addNodes()
@@ -36,46 +30,58 @@ class RVOExample1Scene: SKScene {
     }
     
     private func addNodes(){
-        agentNode = RVOAgentNode(agent: Agent(position: Vector(5.0, 0.0), radius: 1.0, maxSpeed: 0.5))
-        neighborNode = RVOAgentNode(agent: Agent(position: Vector(-5.0, 0.0), radius: 1.0, maxSpeed: 0.5))
-        agentAvoidanceNode = RVOAvoidanceNode(agent: agentNode.agent, neighbors: [neighborNode.agent], noCollisionDeltaTime: noCollisionDeltaTime, timeStep: timeStep, destinationPoint: agentDestination)
         
-        addChild(agentNode)
-        addChild(neighborNode)
+        simulator.add(
+            agent: Agent(
+                position: Vector(5.0, 0.0),
+                radius: 1.0,
+                maxSpeed: 0.5
+            ),
+            destination: Vector(-5.0, 0)
+        )
+        
+        simulator.add(
+            agent: Agent(
+                position: Vector(-5.0, 0.0),
+                radius: 1.0,
+                maxSpeed: 0.5
+            ),
+            destination: Vector(5.0, 0)
+        )
+        
+        agentNodes = simulator.agents.map {
+            RVOAgentNode(agent: $0)
+        }
+        
+        agentAvoidanceNode = RVOAvoidanceNode(
+            agent: simulator.agents[0],
+            neighbors: simulator.agents.filter { $0 !== simulator.agents[0] },
+            noCollisionDeltaTime: simulator.noCollisionDeltaTime,
+            timeStep: simulator.timeStep,
+            destinationPoint: simulator.destinations[0]
+        )
+
+        agentNodes.forEach {
+            self.addChild($0)
+        }
+        
         addChild(agentAvoidanceNode)
     }
     
     private func removeNodes(){
-        agentNode.removeFromParent()
-        neighborNode.removeFromParent()
+        agentNodes.forEach {
+            $0.removeFromParent()
+        }
+        agentNodes.removeAll()
         agentAvoidanceNode.removeFromParent()
     }
     
     private func computeAgents(){
-        let agent = agentNode.agent
-        let neighbor = neighborNode.agent
-        
-        let agentComputed = agent.computedVelocity(
-            preferredVelocity: (agentDestination - agent.position).limitedVector(maximumLength: agent.maxSpeed),
-            neighbors: [neighbor],
-            noCollisionDeltaTime: noCollisionDeltaTime,
-            timeStep: timeStep
-        )
-        
-        let neighborComputed = neighbor.computedVelocity(
-            preferredVelocity: (neightborDestination - neighbor.position).limitedVector(maximumLength: neighbor.maxSpeed),
-            neighbors: [agent],
-            noCollisionDeltaTime: noCollisionDeltaTime,
-            timeStep: timeStep
-        )
-        
-        agent.update(computedVelocity: agentComputed, timeStep: timeStep)
-        neighbor.update(computedVelocity: neighborComputed, timeStep: timeStep)
+        simulator.computeAgents()
     }
     
     private func update(){
-        agentNode.update()
-        neighborNode.update()
+        agentNodes.forEach { $0.update() }
         agentAvoidanceNode.update()
     }
 }
