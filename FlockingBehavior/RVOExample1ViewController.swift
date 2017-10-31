@@ -21,7 +21,7 @@ class RVOExample1ViewController: UIViewController {
         super.viewDidLoad()
         updateLabel()
 
-        if let view = self.view as! SKView? {
+        if let view = self.view as? SKView {
             if let scene = SKScene(fileNamed: "RVOScene") as? RVOExample1Scene {
                 self.scene = scene
                 // Set the scale mode to scale to fit the window
