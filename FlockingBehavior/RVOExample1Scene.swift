@@ -74,6 +74,9 @@ class RVOExample1Scene: SKScene {
         }
         agentNodes.removeAll()
         agentAvoidanceNode.removeFromParent()
+        
+        simulator.agents.removeAll()
+        simulator.destinations.removeAll()
     }
     
     private func computeAgents(){
