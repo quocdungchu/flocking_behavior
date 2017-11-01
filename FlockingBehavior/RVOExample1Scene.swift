@@ -25,6 +25,7 @@ class RVOExample1Scene: SKScene {
     }
     
     func nextStep(){
+        simulator.printVisualisationForDebug()
         computeAgents()
         update()
     }
@@ -32,8 +33,10 @@ class RVOExample1Scene: SKScene {
     private func addNodes(){
         simulator = RVOSimulator.makeWithAgentsInCircle(
             radius: 5.0,
-            numberOfAgents: 6,
-            timeNoCollision: 6.0,
+            numberOfAgents: 3,
+            agentRadius: 1.0,
+            agentMaxSpeed: 0.5,
+            timeNoCollision: 2.0,
             timeStep: 1.0
         )
         

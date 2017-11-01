@@ -16,6 +16,8 @@ class RVOSimulator {
     var agents = [Agent]()
     var destinations = [Vector]()
     
+    var globalTime: Int = 0
+    
     init(timeNoCollision: Double, timeStep: Double) {
         self.timeNoCollision = timeNoCollision
         self.timeStep = timeStep
@@ -52,10 +54,20 @@ class RVOSimulator {
         for i in 0..<agents.count {
             agents[i].update(computedVelocity: computedVelocities[i], timeStep: timeStep)
         }
+        
+        globalTime += 1
     }
     
     func preferredVelocity(of agent: Agent, destination: Vector) -> Vector {
-        return (destination - agent.position).limitedVector(maximumLength: agent.maxSpeed)
+        return (destination - agent.position).normalized//.limitedVector(maximumLength: agent.maxSpeed)
+    }
+    
+    func printVisualisationForDebug(){
+        var positionString = "\(globalTime)"
+        agents.forEach {
+            positionString += " (\(String(format:"%.6f", $0.position.x)), \(String(format:"%.6f", $0.position.y)))"
+        }
+        print("\(positionString)")
     }
 }
 
