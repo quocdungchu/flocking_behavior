@@ -65,7 +65,7 @@ class Agent {
             lines: ocraLines,
             radius: maxSpeed,
             optimalVelocity: preferredVelocity,
-            directionOptimal: true
+            directionOptimal: false
         )
         
         if let failIndex = linearProgram2Result.failIndex {
