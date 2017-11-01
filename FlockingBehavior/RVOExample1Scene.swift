@@ -11,7 +11,7 @@ import SpriteKit
 class RVOExample1Scene: SKScene {
     
     var agentAvoidanceNode: RVOAvoidanceNode!
-    let simulator = RVOSimulator(noCollisionDeltaTime: 2.0, timeStep: 1.0)
+    var simulator: RVOSimulator!
     var agentNodes = [RVOAgentNode]()
     
     override func didMove(to view: SKView) {
@@ -30,24 +30,7 @@ class RVOExample1Scene: SKScene {
     }
     
     private func addNodes(){
-        
-        simulator.add(
-            agent: Agent(
-                position: Vector(5.0, 0.0),
-                radius: 1.0,
-                maxSpeed: 0.5
-            ),
-            destination: Vector(-5.0, 0)
-        )
-        
-        simulator.add(
-            agent: Agent(
-                position: Vector(-5.0, 0.0),
-                radius: 1.0,
-                maxSpeed: 0.5
-            ),
-            destination: Vector(5.0, 0)
-        )
+        simulator = RVOSimulator.makeWithAgentsInCircle(radius: 5.0, numberOfAgents: 3)
         
         agentNodes = simulator.agents.map {
             RVOAgentNode(agent: $0)
@@ -75,8 +58,7 @@ class RVOExample1Scene: SKScene {
         agentNodes.removeAll()
         agentAvoidanceNode.removeFromParent()
         
-        simulator.agents.removeAll()
-        simulator.destinations.removeAll()
+        simulator.removeAll()
     }
     
     private func computeAgents(){
