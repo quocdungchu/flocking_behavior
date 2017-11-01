@@ -104,6 +104,25 @@ class AgentTests: XCTestCase {
         XCTAssertFalse(isCollided)
         XCTAssertTrue(simulator.isAchieved)
     }
+    
+    func testAvoidanceCollisionEightAgent(){
+        let simulator = RVOSimulator.makeWithAgentsInCircle(
+            radius: 5.0,
+            numberOfAgents: 5,
+            timeNoCollision: 2.0,
+            timeStep: 1.0
+        )
+        
+        var isCollided = false
+        
+        for _ in 0...200 {
+            simulator.computeAgents()
+            isCollided = isCollided || simulator.isCollided
+        }
+        
+        XCTAssertFalse(isCollided)
+        XCTAssertTrue(simulator.isAchieved)
+    }
 }
 
 extension RVOSimulator {
@@ -111,7 +130,10 @@ extension RVOSimulator {
         var isCollided = false
         for i in 0..<agents.count {
             for j in (i+1)..<agents.count {
-                isCollided = isCollided || (agents[i].position - agents[j].position).length - (agents[i].radius + agents[j].radius) < RVOConstants.epsilon
+                let distance = (agents[i].position - agents[j].position).length
+                let totalRadius = agents[i].radius + agents[j].radius
+
+                isCollided = isCollided || distance - totalRadius <= RVOConstants.epsilon
             }
         }
         return isCollided
@@ -128,6 +150,6 @@ extension RVOSimulator {
 
 extension Vector {
     func isEqualInProximity(to vector: Vector) -> Bool {
-        return fabs(x - vector.x) < RVOConstants.epsilon && fabs(y - vector.y) < RVOConstants.epsilon
+        return fabs(x - vector.x) <= RVOConstants.epsilon && fabs(y - vector.y) <= RVOConstants.epsilon
     }
 }

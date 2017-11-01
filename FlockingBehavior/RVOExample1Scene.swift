@@ -30,7 +30,12 @@ class RVOExample1Scene: SKScene {
     }
     
     private func addNodes(){
-        simulator = RVOSimulator.makeWithAgentsInCircle(radius: 5.0, numberOfAgents: 3)
+        simulator = RVOSimulator.makeWithAgentsInCircle(
+            radius: 5.0,
+            numberOfAgents: 6,
+            timeNoCollision: 6.0,
+            timeStep: 1.0
+        )
         
         agentNodes = simulator.agents.map {
             RVOAgentNode(agent: $0)
