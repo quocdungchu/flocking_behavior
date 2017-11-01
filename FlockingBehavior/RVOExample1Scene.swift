@@ -14,6 +14,8 @@ class RVOExample1Scene: SKScene {
     var simulator: RVOSimulator!
     var agentNodes = [RVOAgentNode]()
     
+    var currentTime: Double = 0
+    
     override func didMove(to view: SKView) {
         addNodes()
     }
@@ -33,11 +35,11 @@ class RVOExample1Scene: SKScene {
     private func addNodes(){
         simulator = RVOSimulator.makeWithAgentsInCircle(
             radius: 5.0,
-            numberOfAgents: 3,
+            numberOfAgents: 4,
             agentRadius: 1.0,
             agentMaxSpeed: 0.5,
             timeNoCollision: 2.0,
-            timeStep: 1.0
+            timeStep: 0.125
         )
         
         agentNodes = simulator.agents.map {
@@ -76,5 +78,13 @@ class RVOExample1Scene: SKScene {
     private func update(){
         agentNodes.forEach { $0.update() }
         agentAvoidanceNode.update()
+    }
+    
+    override func update(_ currentTime: TimeInterval) {
+        
+        if currentTime - self.currentTime >= simulator.timeStep {
+            //nextStep()
+            self.currentTime = currentTime
+        }
     }
 }
