@@ -49,14 +49,14 @@ class Agent {
     func computedVelocity(
         preferredVelocity: Vector,
         neighbors: [Agent],
-        noCollisionDeltaTime: Double,
+        timeNoCollision: Double,
         timeStep: Double) -> Vector
     {
         let ocraLines = neighbors.flatMap {
             self.orcaLine(
                 preferredVelocity: preferredVelocity,
                 neighbor: $0,
-                noCollisionDeltaTime: noCollisionDeltaTime,
+                timeNoCollision: timeNoCollision,
                 timeStep: timeStep
             )
         }
@@ -84,10 +84,10 @@ class Agent {
     func orcaLine(
         preferredVelocity: Vector,
         neighbor: Agent,
-        noCollisionDeltaTime: Double,
+        timeNoCollision: Double,
         timeStep: Double) -> Line?
     {
-        guard noCollisionDeltaTime != 0.0 && timeStep != 0.0 else {
+        guard timeNoCollision != 0.0 && timeStep != 0.0 else {
             return nil
         }
         
@@ -101,9 +101,9 @@ class Agent {
         let u: Vector
         
         if squaredDistance > squaredCombinedRadius {
-            let invNoCollisionDeltaTime = Float(1.0 / noCollisionDeltaTime)
+            let invtimeNoCollision = Float(1.0 / timeNoCollision)
 
-            let cutoffCenter = invNoCollisionDeltaTime * relativePosition
+            let cutoffCenter = invtimeNoCollision * relativePosition
             let w = relativeVelocity - cutoffCenter
             let wSquaredLength = w.squaredLength
             
@@ -116,7 +116,7 @@ class Agent {
                 let wUnit = w / wLenght
                 
                 direction = Vector(wUnit.y, -wUnit.x)
-                u = (combinedRadius * invNoCollisionDeltaTime - wLenght) * wUnit
+                u = (combinedRadius * invtimeNoCollision - wLenght) * wUnit
                 
             } else {
                 let leg = sqrtf(squaredDistance - squaredCombinedRadius)

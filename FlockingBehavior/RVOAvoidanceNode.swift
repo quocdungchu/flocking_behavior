@@ -12,7 +12,7 @@ class RVOAvoidanceNode: SKShapeNode {
     let agent: Agent
     let neighbors: [Agent]
     let scale: Float
-    let noCollisionDeltaTime: Double
+    let timeNoCollision: Double
     let timeStep: Double
     let destinationPoint: Vector
     
@@ -20,11 +20,11 @@ class RVOAvoidanceNode: SKShapeNode {
     let relativeVelocityNodes: [SKShapeNode]
     let ocraLineNodes: [SKShapeNode]
     
-    init(agent: Agent, neighbors: [Agent], scale: Float = RVOExampleConstants.scale, noCollisionDeltaTime: Double, timeStep: Double, destinationPoint: Vector) {
+    init(agent: Agent, neighbors: [Agent], scale: Float = RVOExampleConstants.scale, timeNoCollision: Double, timeStep: Double, destinationPoint: Vector) {
         self.agent = agent
         self.neighbors = neighbors
         self.scale = scale
-        self.noCollisionDeltaTime = noCollisionDeltaTime
+        self.timeNoCollision = timeNoCollision
         self.timeStep = timeStep
         self.destinationPoint = destinationPoint
 
@@ -61,7 +61,7 @@ class RVOAvoidanceNode: SKShapeNode {
     
     private func ocraLinePath(agent: Agent, neighbor: Agent) -> UIBezierPath {
         
-        let line = agent.orcaLine(preferredVelocity: destinationPoint - agent.position, neighbor: neighbor, noCollisionDeltaTime: noCollisionDeltaTime, timeStep: timeStep)
+        let line = agent.orcaLine(preferredVelocity: destinationPoint - agent.position, neighbor: neighbor, timeNoCollision: timeNoCollision, timeStep: timeStep)
         
         let path = UIBezierPath()
         
@@ -79,8 +79,8 @@ class RVOAvoidanceNode: SKShapeNode {
         let center = CGPoint(vector: (neighbor.position - agent.position) * scale)
         let radius = CGFloat((agent.radius + neighbor.radius) * scale)
         
-        let smallCenter = CGPoint(vector: (neighbor.position - agent.position) * Float(1.0 / noCollisionDeltaTime) * scale)
-        let smallRadius = CGFloat((agent.radius + neighbor.radius) * Float(1.0 / noCollisionDeltaTime) * scale)
+        let smallCenter = CGPoint(vector: (neighbor.position - agent.position) * Float(1.0 / timeNoCollision) * scale)
+        let smallRadius = CGFloat((agent.radius + neighbor.radius) * Float(1.0 / timeNoCollision) * scale)
 
         let path = UIBezierPath()
         path.move(to: CGPoint(vector: Vector.zero))

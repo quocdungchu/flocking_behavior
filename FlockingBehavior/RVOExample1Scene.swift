@@ -39,7 +39,7 @@ class RVOExample1Scene: SKScene {
         agentAvoidanceNode = RVOAvoidanceNode(
             agent: simulator.agents[0],
             neighbors: simulator.agents.filter { $0 !== simulator.agents[0] },
-            noCollisionDeltaTime: simulator.noCollisionDeltaTime,
+            timeNoCollision: simulator.timeNoCollision,
             timeStep: simulator.timeStep,
             destinationPoint: simulator.destinations[0]
         )

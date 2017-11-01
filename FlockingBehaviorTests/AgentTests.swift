@@ -11,7 +11,7 @@ import XCTest
 
 class AgentTests: XCTestCase {
     func testOCRALine(){
-        let noCollisionDeltaTime = 2.0
+        let timeNoCollision = 2.0
         let timeStep = 0.25
         
         let agent = Agent(
@@ -31,7 +31,7 @@ class AgentTests: XCTestCase {
         let orcaLine = agent.orcaLine(
             preferredVelocity: Vector(-0.5, 0.0),
             neighbor: neighbor,
-            noCollisionDeltaTime: noCollisionDeltaTime,
+            timeNoCollision: timeNoCollision,
             timeStep: timeStep
         )
         
@@ -40,7 +40,7 @@ class AgentTests: XCTestCase {
     }
     
     func testAvoidanceCollisionTwoAgent1(){
-        let simulator = RVOSimulator(noCollisionDeltaTime: 2.0, timeStep: 1.0)
+        let simulator = RVOSimulator(timeNoCollision: 2.0, timeStep: 1.0)
         simulator.add(
             agent: Agent(
                 position: Vector(5.0, 0.0),
@@ -73,7 +73,7 @@ class AgentTests: XCTestCase {
     }
     
     func testAvoidanceCollisionTwoAgent2(){
-        let simulator = RVOSimulator(noCollisionDeltaTime: 2.0, timeStep: 1.0)
+        let simulator = RVOSimulator(timeNoCollision: 2.0, timeStep: 1.0)
         simulator.add(
             agent: Agent(
                 position: Vector(5.0, 0.0),

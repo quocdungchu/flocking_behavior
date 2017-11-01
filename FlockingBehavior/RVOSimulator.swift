@@ -10,14 +10,14 @@ import Foundation
 
 class RVOSimulator {
     
-    let noCollisionDeltaTime: Double
+    let timeNoCollision: Double
     let timeStep: Double
     
     var agents = [Agent]()
     var destinations = [Vector]()
     
-    init(noCollisionDeltaTime: Double, timeStep: Double) {
-        self.noCollisionDeltaTime = noCollisionDeltaTime
+    init(timeNoCollision: Double, timeStep: Double) {
+        self.timeNoCollision = timeNoCollision
         self.timeStep = timeStep
     }
     
@@ -40,9 +40,9 @@ class RVOSimulator {
             let neighbors = agents.filter { $0 !== agent }
             
             let agentComputed = agent.computedVelocity(
-                preferredVelocity: (destination - agent.position).limitedVector(maximumLength: agent.maxSpeed),
+                preferredVelocity: preferredVelocity(of: agent, destination: destination),
                 neighbors: neighbors,
-                noCollisionDeltaTime: noCollisionDeltaTime,
+                timeNoCollision: timeNoCollision,
                 timeStep: timeStep
             )
             
@@ -53,13 +53,17 @@ class RVOSimulator {
             agents[i].update(computedVelocity: computedVelocities[i], timeStep: timeStep)
         }
     }
+    
+    func preferredVelocity(of agent: Agent, destination: Vector) -> Vector {
+        return (destination - agent.position).limitedVector(maximumLength: agent.maxSpeed)
+    }
 }
 
 extension RVOSimulator {
     enum Constants {
         static let agentRadius: Float = 1.0
         static let agentMaxSpeed: Float = 0.5
-        static let noCollisionDeltaTime: Double = 2
+        static let timeNoCollision: Double = 2
         static let timeStep: Double = 0.5
     }
     
@@ -68,11 +72,11 @@ extension RVOSimulator {
         numberOfAgents: Int,
         agentRadius: Float = Constants.agentRadius,
         agentMaxSpeed: Float = Constants.agentMaxSpeed,
-        noCollisionDeltaTime: Double = Constants.noCollisionDeltaTime,
+        timeNoCollision: Double = Constants.timeNoCollision,
         timeStep: Double = Constants.timeStep) -> RVOSimulator
     {
         let simulator = RVOSimulator(
-            noCollisionDeltaTime: noCollisionDeltaTime,
+            timeNoCollision: timeNoCollision,
             timeStep: timeStep
         )
     
