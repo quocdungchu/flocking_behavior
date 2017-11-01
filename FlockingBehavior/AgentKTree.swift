@@ -70,15 +70,18 @@ class AgentKTree {
     
     func buildNodesRecursive(begin: Int, end: Int, forIndex index: Int) {
         
+        let zone = findNodeZone(begin: begin, end: end, forIndex: index)
+
+        
         guard maxLeafSize < end - begin else {
             nodes[index] = Node(
                 begin: begin,
-                end: end
+                end: end,
+                zone: zone
             )
             return
         }
         
-        let zone = findNodeZone(begin: begin, end: end, forIndex: index)
         
         let isVertical = zone.isVertical
         
