@@ -59,7 +59,12 @@ class RVOSimulator {
     }
     
     func preferredVelocity(of agent: Agent, destination: Vector) -> Vector {
-        return (destination - agent.position).normalized//.limitedVector(maximumLength: agent.maxSpeed)
+        let relativePosition = destination - agent.position
+        if relativePosition.length > 1 {
+            return relativePosition.normalized
+        } else {
+            return relativePosition
+        }
     }
     
     func printVisualisationForDebug(){
