@@ -35,7 +35,7 @@ class RVOSimulator {
         destinations.removeAll()
     }
     
-    func computeAgents(){
+    func computeAgents(timeStep: Double){
         
         var computedVelocities = [Vector]()
         

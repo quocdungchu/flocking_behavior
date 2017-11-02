@@ -14,7 +14,7 @@ class RVOExample1Scene: SKScene {
     var simulator: RVOOptimalSimulator!
     var agentNodes = [RVOAgentNode]()
     
-    var currentTime: Double = 0
+    var previousTime: Double?
     
     override func didMove(to view: SKView) {
         addNodes()
@@ -26,22 +26,28 @@ class RVOExample1Scene: SKScene {
         update()
     }
     
+    func nextStep(timeStep: Double){
+        simulator.printVisualisationForDebug()
+        computeAgents(timeStep: timeStep)
+        update()
+    }
+    
     func nextStep(){
         simulator.printVisualisationForDebug()
-        computeAgents()
+        computeAgents(timeStep: simulator.timeStep)
         update()
     }
     
     private func addNodes(){
         simulator = RVOOptimalSimulator.makeWithAgentsInCircle(
             radius: 20.0,
-            numberOfAgents: 10,
-            maxNeightborDistance: 10000,
-            neighborsLeafSize: 1000,
+            numberOfAgents: 13,
+            maxNeightborDistance: 6,
+            neighborsLeafSize: 10,
             agentRadius: 1.0,
-            agentMaxSpeed: 0.5,
-            timeNoCollision: 2.0,
-            timeStep: 1.0
+            agentMaxSpeed: 2.0,
+            timeNoCollision: 10.0,
+            timeStep: 0.25
         )
         
         agentNodes = simulator.agents.map {
@@ -73,8 +79,8 @@ class RVOExample1Scene: SKScene {
         simulator.removeAll()
     }
     
-    private func computeAgents(){
-        simulator.computeAgents()
+    private func computeAgents(timeStep: Double){
+        simulator.computeAgents(timeStep: timeStep)
     }
     
     private func update(){
@@ -84,9 +90,10 @@ class RVOExample1Scene: SKScene {
     
     override func update(_ currentTime: TimeInterval) {
         
-        if currentTime - self.currentTime >= simulator.timeStep {
-            //nextStep()
-            self.currentTime = currentTime
+        if let previousTime = previousTime {
+            nextStep(timeStep: currentTime - previousTime)
         }
+        
+        self.previousTime = currentTime
     }
 }

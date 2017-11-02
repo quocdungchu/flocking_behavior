@@ -39,7 +39,7 @@ class RVOOptimalSimulator {
         destinations.removeAll()
     }
     
-    func computeAgents(){
+    func computeAgents(timeStep: Double){
         agentKTree = AgentKTree(agents: agents, maxLeafSize: neighborsLeafSize)
         
         var computedVelocities = [Vector]()
