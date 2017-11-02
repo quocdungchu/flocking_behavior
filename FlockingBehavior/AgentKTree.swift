@@ -38,9 +38,9 @@ class AgentKTree {
         let end: Int
         let left: Int?
         let right: Int?
-        let zone: Zone?
+        let zone: Zone
         
-        init(begin: Int = 0, end: Int = 0, left: Int? = nil, right: Int? = nil, zone: Zone? = nil) {
+        init(begin: Int = 0, end: Int = 0, left: Int? = nil, right: Int? = nil, zone: Zone) {
             self.begin = begin
             self.end = end
             self.left = left
@@ -71,7 +71,6 @@ class AgentKTree {
     func buildNodesRecursive(begin: Int, end: Int, forIndex index: Int) {
         
         let zone = findNodeZone(begin: begin, end: end, forIndex: index)
-
         
         guard maxLeafSize < end - begin else {
             nodes[index] = Node(
@@ -81,7 +80,7 @@ class AgentKTree {
             )
             return
         }
-        
+
         
         let isVertical = zone.isVertical
         
@@ -169,8 +168,8 @@ class AgentKTree {
         
         guard let left = node.left,
             let right = node.right,
-            let leftZone = nodes[left]?.zone,
-            let rightZone = nodes[right]?.zone,
+            let leftNode = nodes[left],
+            let rightNode = nodes[right],
             maxLeafSize < node.end - node.begin else
         {
             
@@ -181,8 +180,8 @@ class AgentKTree {
             return
         }
         
-        let squaredDistanceToLeftZone = AgentKTree.squaredDistance(fromPoint: point, toZone: leftZone)
-        let squaredDistanceToRightZone = AgentKTree.squaredDistance(fromPoint: point, toZone: rightZone)
+        let squaredDistanceToLeftZone = AgentKTree.squaredDistance(fromPoint: point, toZone: leftNode.zone)
+        let squaredDistanceToRightZone = AgentKTree.squaredDistance(fromPoint: point, toZone: rightNode.zone)
 
         if squaredDistanceToLeftZone < squaredDistanceToRightZone {
             if squaredDistanceToLeftZone < squaredRange {
