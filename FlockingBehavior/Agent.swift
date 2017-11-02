@@ -253,7 +253,7 @@ enum LineComputer {
                     lines: lines,
                     lineIndex: i,
                     radius: radius,
-                    optimalVelocity: newVelocity,
+                    optimalVelocity: optimalVelocity,
                     directionOptimal: directionOptimal) else
                 {
                     return LinearProgram2Result(computedVelocity: newVelocity, failIndex: i)
