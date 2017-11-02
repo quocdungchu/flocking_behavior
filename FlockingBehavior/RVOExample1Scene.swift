@@ -42,11 +42,11 @@ class RVOExample1Scene: SKScene {
         simulator = RVOOptimalSimulator.makeWithAgentsInCircle(
             radius: 20.0,
             numberOfAgents: 13,
-            maxNeightborDistance: 6,
+            maxNeightborDistance: 3,
             neighborsLeafSize: 10,
             agentRadius: 1.0,
-            agentMaxSpeed: 2.0,
-            timeNoCollision: 10.0,
+            agentMaxSpeed: 1.0,
+            timeNoCollision: 2.0,
             timeStep: 0.25
         )
         
