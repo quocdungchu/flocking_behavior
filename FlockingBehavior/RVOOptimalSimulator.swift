@@ -1,17 +1,19 @@
 //
-//  RVOSimulator.swift
+//  RVOOptimalSimulator.swift
 //  FlockingBehavior
 //
-//  Created by Quoc Dung Chu on 30/10/2017.
+//  Created by Quoc Dung Chu on 01/11/2017.
 //  Copyright © 2017 quoc. All rights reserved.
 //
 
 import Foundation
 
-class RVOSimulator {
+class RVOOptimalSimulator {
     
     let timeNoCollision: Double
     let timeStep: Double
+    let maxNeightborDistance: Float
+    let neighborsLeafSize: Int
     
     var agents = [Agent]()
     var destinations = [Vector]()
@@ -20,7 +22,9 @@ class RVOSimulator {
     
     var agentKTree: AgentKTree!
     
-    init(timeNoCollision: Double, timeStep: Double) {
+    init(maxNeightborDistance: Float, neighborsLeafSize: Int, timeNoCollision: Double, timeStep: Double) {
+        self.maxNeightborDistance = maxNeightborDistance
+        self.neighborsLeafSize = neighborsLeafSize
         self.timeNoCollision = timeNoCollision
         self.timeStep = timeStep
     }
@@ -36,6 +40,7 @@ class RVOSimulator {
     }
     
     func computeAgents(){
+        agentKTree = AgentKTree(agents: agents, maxLeafSize: neighborsLeafSize)
         
         var computedVelocities = [Vector]()
         
@@ -43,7 +48,7 @@ class RVOSimulator {
             let agent = agents[i]
             let destination = destinations[i]
             
-            let agentNeighbors = neighbors(of: agent)
+            let agentNeighbors = neighbors(of: agent, kTree: agentKTree)
             
             let agentComputed = agent.computedVelocity(
                 preferredVelocity: preferredVelocity(of: agent, destination: destination),
@@ -62,8 +67,12 @@ class RVOSimulator {
         globalTime += 1
     }
     
-    func neighbors(of agent: Agent) -> [Agent] {
-        return agents.filter { $0 !== agent }
+    func neighbors(of agent: Agent, kTree: AgentKTree) -> [Agent] {
+        var neighbors = [Agent]()
+        kTree.queryAgents(point: agent.position, range: maxNeightborDistance) {
+            neighbors.append($0)
+        }
+        return neighbors
     }
     
     func preferredVelocity(of agent: Agent, destination: Vector) -> Vector {
@@ -86,7 +95,7 @@ class RVOSimulator {
     }
 }
 
-extension RVOSimulator {
+extension RVOOptimalSimulator {
     enum Constants {
         static let agentRadius: Float = 1.0
         static let agentMaxSpeed: Float = 0.5
@@ -97,16 +106,20 @@ extension RVOSimulator {
     static func makeWithAgentsInCircle(
         radius: Float,
         numberOfAgents: Int,
+        maxNeightborDistance: Float,
+        neighborsLeafSize: Int,
         agentRadius: Float = Constants.agentRadius,
         agentMaxSpeed: Float = Constants.agentMaxSpeed,
         timeNoCollision: Double = Constants.timeNoCollision,
-        timeStep: Double = Constants.timeStep) -> RVOSimulator
+        timeStep: Double = Constants.timeStep) -> RVOOptimalSimulator
     {
-        let simulator = RVOSimulator(
+        let simulator = RVOOptimalSimulator(
+            maxNeightborDistance: maxNeightborDistance,
+            neighborsLeafSize: neighborsLeafSize,
             timeNoCollision: timeNoCollision,
             timeStep: timeStep
         )
-    
+        
         let angleBetweenTwoAgents = 2.0 * Float.pi / Float(numberOfAgents)
         
         for i in 0..<numberOfAgents {

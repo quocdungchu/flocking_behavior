@@ -11,7 +11,7 @@ import SpriteKit
 class RVOExample1Scene: SKScene {
     
     var agentAvoidanceNode: RVOAvoidanceNode!
-    var simulator: RVOSimulator!
+    var simulator: RVOOptimalSimulator!
     var agentNodes = [RVOAgentNode]()
     
     var currentTime: Double = 0
@@ -33,28 +33,28 @@ class RVOExample1Scene: SKScene {
     }
     
     private func addNodes(){
-        simulator = RVOSimulator.makeWithAgentsInCircle(
-            radius: 5.0,
+        simulator = RVOOptimalSimulator.makeWithAgentsInCircle(
+            radius: 20.0,
             numberOfAgents: 10,
-            maxNeightborDistance: 5,
-            neighborsLeafSize: 10,
+            maxNeightborDistance: 10000,
+            neighborsLeafSize: 1000,
             agentRadius: 1.0,
-            agentMaxSpeed: 4.0,
-            timeNoCollision: 10.0,
-            timeStep: 0.125
+            agentMaxSpeed: 0.5,
+            timeNoCollision: 2.0,
+            timeStep: 1.0
         )
         
         agentNodes = simulator.agents.map {
             RVOAgentNode(agent: $0)
         }
         
-        agentAvoidanceNode = RVOAvoidanceNode(
-            agent: simulator.agents[0],
-            neighbors: simulator.neighbors(of: simulator.agents[0]),
-            timeNoCollision: simulator.timeNoCollision,
-            timeStep: simulator.timeStep,
-            destinationPoint: simulator.destinations[0]
-        )
+//        agentAvoidanceNode = RVOAvoidanceNode(
+//            agent: simulator.agents[0],
+//            neighbors: simulator.neighbors(of: simulator.agents[0]),
+//            timeNoCollision: simulator.timeNoCollision,
+//            timeStep: simulator.timeStep,
+//            destinationPoint: simulator.destinations[0]
+//        )
 
         agentNodes.forEach {
             self.addChild($0)
@@ -68,7 +68,7 @@ class RVOExample1Scene: SKScene {
             $0.removeFromParent()
         }
         agentNodes.removeAll()
-        agentAvoidanceNode.removeFromParent()
+        //agentAvoidanceNode.removeFromParent()
         
         simulator.removeAll()
     }
@@ -85,7 +85,7 @@ class RVOExample1Scene: SKScene {
     override func update(_ currentTime: TimeInterval) {
         
         if currentTime - self.currentTime >= simulator.timeStep {
-            nextStep()
+            //nextStep()
             self.currentTime = currentTime
         }
     }
