@@ -24,7 +24,9 @@ class RVOSimpleSimulator {
         self.timeNoCollision = timeNoCollision
         self.timeStep = timeStep
     }
-    
+}
+
+extension RVOSimpleSimulator: RVOSimulator {
     func add(agent: Agent, destination: Vector) {
         agents.append(agent)
         destinations.append(destination)
@@ -66,61 +68,11 @@ class RVOSimpleSimulator {
         return agents.filter { $0 !== agent }
     }
     
-    func preferredVelocity(of agent: Agent, destination: Vector) -> Vector {
-        let relativePosition = destination - agent.position
-        
-        if relativePosition.length > 1 {
-            return relativePosition.normalized
-            
-        } else {
-            return relativePosition
-        }
-    }
-    
     func printVisualisationForDebug(){
         var positionString = "\(globalTime)"
         agents.forEach {
             positionString += " (\(String(format:"%.6f", $0.position.x)), \(String(format:"%.6f", $0.position.y)))"
         }
         print("\(positionString)")
-    }
-}
-
-extension RVOSimpleSimulator {
-    enum Constants {
-        static let agentRadius: Float = 1.0
-        static let agentMaxSpeed: Float = 0.5
-        static let timeNoCollision: Double = 2
-        static let timeStep: Double = 0.5
-    }
-    
-    static func makeWithAgentsInCircle(
-        radius: Float,
-        numberOfAgents: Int,
-        agentRadius: Float = Constants.agentRadius,
-        agentMaxSpeed: Float = Constants.agentMaxSpeed,
-        timeNoCollision: Double = Constants.timeNoCollision,
-        timeStep: Double = Constants.timeStep) -> RVOSimpleSimulator
-    {
-        let simulator = RVOSimpleSimulator(
-            timeNoCollision: timeNoCollision,
-            timeStep: timeStep
-        )
-    
-        let angleBetweenTwoAgents = 2.0 * Float.pi / Float(numberOfAgents)
-        
-        for i in 0..<numberOfAgents {
-            let angle = angleBetweenTwoAgents * Float(i)
-            let agentPosition = Vector(radius * cos(angle), radius * sin(angle))
-            let agent = Agent(
-                position: agentPosition,
-                radius: agentRadius,
-                maxSpeed: agentMaxSpeed
-            )
-            let destination = -1 * agentPosition
-            simulator.add(agent: agent, destination: destination)
-        }
-        
-        return simulator
     }
 }
