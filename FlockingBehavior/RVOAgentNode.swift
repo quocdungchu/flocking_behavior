@@ -46,7 +46,7 @@ class RVOAgentNode: SKShapeNode {
         let bounding = UIBezierPath()
         bounding.addArc(withCenter: CGPoint(0, 0), radius: CGFloat(agent.radius * scale), startAngle: 0, endAngle: CGFloat(2 * Float.pi), clockwise: true)
         boundingNode.path = bounding.cgPath
-        boundingNode.strokeColor = UIColor.yellow
+        boundingNode.strokeColor = UIColor.green
         boundingNode.lineWidth = 1
         return boundingNode
     }

@@ -11,7 +11,7 @@ import SpriteKit
 
 class RVOExample1ViewController: UIViewController {
 
-    var scene: RVOExample1Scene?
+    var scene: RVOExample1Scene!
     
     @IBOutlet var stepLabel: UILabel!
     
@@ -22,14 +22,14 @@ class RVOExample1ViewController: UIViewController {
         updateLabel()
 
         if let view = self.view as? SKView {
-            if let scene = SKScene(fileNamed: "RVOScene") as? RVOExample1Scene {
-                self.scene = scene
-                // Set the scale mode to scale to fit the window
-                scene.scaleMode = .aspectFill
-                
-                // Present the scene
-                view.presentScene(scene)
-            }
+            self.scene = RVOExample1Scene(size: self.view.bounds.size)
+            scene.backgroundColor = UIColor.white
+            scene.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+            // Set the scale mode to scale to fit the window
+            scene.scaleMode = .aspectFill
+            
+            // Present the scene
+            view.presentScene(scene)
             
             view.ignoresSiblingOrder = true
             
