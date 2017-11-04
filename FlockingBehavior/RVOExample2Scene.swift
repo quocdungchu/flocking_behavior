@@ -32,22 +32,19 @@ class RVOExample2Scene: SKScene {
         update()
     }
     
-    func nextStep(){
-        simulator.printVisualisationForDebug()
-        computeAgents(timeStep: simulator.timeStep)
-        update()
-    }
-    
     private func addNodes(){
-        simulator = RVOOptimalSimulator.makeWithAgentsInCircle(
-            radius: 20.0,
-            numberOfAgents: 13,
+        simulator = RVOOptimalSimulator(
             maxNeightborDistance: 3,
             neighborsLeafSize: 10,
-            agentRadius: 1.0,
-            agentMaxSpeed: 1.0,
             timeNoCollision: 2.0,
             timeStep: 0.25
+        )
+
+        simulator.addAgentInCircle(
+            radius: 20.0,
+            numberOfAgents: 13,
+            agentRadius: 1.0,
+            agentMaxSpeed: 1.0
         )
         
         agentNodes = simulator.agents.map {

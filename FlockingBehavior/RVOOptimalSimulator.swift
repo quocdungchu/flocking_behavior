@@ -29,6 +29,16 @@ class RVOOptimalSimulator {
         self.timeStep = timeStep
     }
     
+    func neighbors(of agent: Agent, kTree: AgentKTree) -> [Agent] {
+        var neighbors = [Agent]()
+        kTree.queryAgents(point: agent.position, range: maxNeightborDistance) {
+            neighbors.append($0)
+        }
+        return neighbors
+    }
+}
+
+extension RVOOptimalSimulator: RVOSimulator {
     func add(agent: Agent, destination: Vector) {
         agents.append(agent)
         destinations.append(destination)
@@ -48,7 +58,7 @@ class RVOOptimalSimulator {
             let agent = agents[i]
             let destination = destinations[i]
             
-            let agentNeighbors = neighbors(of: agent, kTree: agentKTree)
+            let agentNeighbors = neighbors(of: agent)
             
             let agentComputed = agent.computedVelocity(
                 preferredVelocity: preferredVelocity(of: agent, destination: destination),
@@ -67,23 +77,12 @@ class RVOOptimalSimulator {
         globalTime += 1
     }
     
-    func neighbors(of agent: Agent, kTree: AgentKTree) -> [Agent] {
-        var neighbors = [Agent]()
-        kTree.queryAgents(point: agent.position, range: maxNeightborDistance) {
-            neighbors.append($0)
+    func neighbors(of agent: Agent) -> [Agent] {
+        guard let kTree = agentKTree else {
+            return []
         }
-        return neighbors
-    }
-    
-    func preferredVelocity(of agent: Agent, destination: Vector) -> Vector {
-        let relativePosition = destination - agent.position
         
-        if relativePosition.length > 1 {
-            return relativePosition.normalized
-            
-        } else {
-            return relativePosition
-        }
+        return neighbors(of: agent, kTree: kTree)
     }
     
     func printVisualisationForDebug(){
@@ -95,45 +94,46 @@ class RVOOptimalSimulator {
     }
 }
 
-extension RVOOptimalSimulator {
-    enum Constants {
-        static let agentRadius: Float = 1.0
-        static let agentMaxSpeed: Float = 0.5
-        static let timeNoCollision: Double = 2
-        static let timeStep: Double = 0.5
-    }
-    
-    static func makeWithAgentsInCircle(
-        radius: Float,
-        numberOfAgents: Int,
-        maxNeightborDistance: Float,
-        neighborsLeafSize: Int,
-        agentRadius: Float = Constants.agentRadius,
-        agentMaxSpeed: Float = Constants.agentMaxSpeed,
-        timeNoCollision: Double = Constants.timeNoCollision,
-        timeStep: Double = Constants.timeStep) -> RVOOptimalSimulator
-    {
-        let simulator = RVOOptimalSimulator(
-            maxNeightborDistance: maxNeightborDistance,
-            neighborsLeafSize: neighborsLeafSize,
-            timeNoCollision: timeNoCollision,
-            timeStep: timeStep
-        )
-        
-        let angleBetweenTwoAgents = 2.0 * Float.pi / Float(numberOfAgents)
-        
-        for i in 0..<numberOfAgents {
-            let angle = angleBetweenTwoAgents * Float(i)
-            let agentPosition = Vector(radius * cos(angle), radius * sin(angle))
-            let agent = Agent(
-                position: agentPosition,
-                radius: agentRadius,
-                maxSpeed: agentMaxSpeed
-            )
-            let destination = -1 * agentPosition
-            simulator.add(agent: agent, destination: destination)
-        }
-        
-        return simulator
-    }
-}
+//extension RVOOptimalSimulator {
+//    enum Constants {
+//        static let agentRadius: Float = 1.0
+//        static let agentMaxSpeed: Float = 0.5
+//        static let timeNoCollision: Double = 2
+//        static let timeStep: Double = 0.5
+//    }
+//    
+//    static func makeWithAgentsInCircle(
+//        radius: Float,
+//        numberOfAgents: Int,
+//        maxNeightborDistance: Float,
+//        neighborsLeafSize: Int,
+//        agentRadius: Float = Constants.agentRadius,
+//        agentMaxSpeed: Float = Constants.agentMaxSpeed,
+//        timeNoCollision: Double = Constants.timeNoCollision,
+//        timeStep: Double = Constants.timeStep) -> RVOOptimalSimulator
+//    {
+//        let simulator = RVOOptimalSimulator(
+//            maxNeightborDistance: maxNeightborDistance,
+//            neighborsLeafSize: neighborsLeafSize,
+//            timeNoCollision: timeNoCollision,
+//            timeStep: timeStep
+//        )
+//        
+//        let angleBetweenTwoAgents = 2.0 * Float.pi / Float(numberOfAgents)
+//        
+//        for i in 0..<numberOfAgents {
+//            let angle = angleBetweenTwoAgents * Float(i)
+//            let agentPosition = Vector(radius * cos(angle), radius * sin(angle))
+//            let agent = Agent(
+//                position: agentPosition,
+//                radius: agentRadius,
+//                maxSpeed: agentMaxSpeed
+//            )
+//            let destination = -1 * agentPosition
+//            simulator.add(agent: agent, destination: destination)
+//        }
+//        
+//        return simulator
+//    }
+//}
+

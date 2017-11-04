@@ -11,6 +11,8 @@ import SpriteKit
 class RVOExample1Scene: SKScene {
     enum Constants {
         static let scale: Float = 60.0
+        static let timeNoCollision: Double = 6.0
+        static let timeStep: Double = 0.25
     }
     var agentAvoidanceNode: RVOAvoidanceNode!
     var simulator: RVOSimulator!
@@ -36,18 +38,21 @@ class RVOExample1Scene: SKScene {
     
     func nextStep(){
         simulator.printVisualisationForDebug()
-        computeAgents(timeStep: simulator.timeStep)
+        computeAgents(timeStep: Constants.timeStep)
         update()
     }
     
     private func addNodes(){
-        simulator = RVOSimulator.makeWithAgentsInCircle(
+        let simulator = RVOSimpleSimulator(
+            timeNoCollision: Constants.timeNoCollision,
+            timeStep: Constants.timeStep
+        )
+        
+        simulator.addAgentInCircle(
             radius: 5.0,
             numberOfAgents: 2,
             agentRadius: 1.0,
-            agentMaxSpeed: 1.0,
-            timeNoCollision: 6.0,
-            timeStep: 0.25
+            agentMaxSpeed: 1.0
         )
         
         agentNodes = simulator.agents.map {
