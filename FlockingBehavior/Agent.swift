@@ -149,7 +149,7 @@ class Agent {
             u = (combinedRadius * invTimeStep - wLength) * wUnit
         }
         
-        return Line(point: velocity + 0.5 * u, direction: direction)
+        return Line(point: velocity + maxSpeed / (maxSpeed + neighbor.maxSpeed) * u, direction: direction)
     }
 }
 
