@@ -64,7 +64,7 @@ class AgentTests: XCTestCase {
         var isCollided = false
         
         for _ in 0...100 {
-            simulator.computeAgents()
+            simulator.computeAgents(timeStep: simulator.timeStep)
             isCollided = isCollided || simulator.isCollided
         }
         
@@ -97,7 +97,7 @@ class AgentTests: XCTestCase {
         var isCollided = false
         
         for _ in 0...100 {
-            simulator.computeAgents()
+            simulator.computeAgents(timeStep: simulator.timeStep)
             isCollided = isCollided || simulator.isCollided
         }
         
@@ -116,7 +116,7 @@ class AgentTests: XCTestCase {
         var isCollided = false
         
         for _ in 0...200 {
-            simulator.computeAgents()
+            simulator.computeAgents(timeStep: simulator.timeStep)
             isCollided = isCollided || simulator.isCollided
         }
         

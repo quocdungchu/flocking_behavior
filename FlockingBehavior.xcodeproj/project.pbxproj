@@ -36,7 +36,6 @@
 		7258481E1FADC21A00D4E15D /* SteeringBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB63494D1F77A746002F5587 /* SteeringBehavior.swift */; };
 		7258481F1FADC21A00D4E15D /* RVOConstans.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B0CE831F927A440082CF46 /* RVOConstans.swift */; };
 		725848201FADC21A00D4E15D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1867001F779D9F000E0864 /* AppDelegate.swift */; };
-		725848211FADC21A00D4E15D /* TestingAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726340531F9B3923009D91A4 /* TestingAppDelegate.swift */; };
 		725848221FADC21A00D4E15D /* RVOAgentNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B453311FA6137D005CDE8A /* RVOAgentNode.swift */; };
 		725848231FADC21A00D4E15D /* AgentNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB63494F1F77AB5D002F5587 /* AgentNode.swift */; };
 		725848241FADC21A00D4E15D /* RVOExample1Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B4532F1FA61328005CDE8A /* RVOExample1Scene.swift */; };
@@ -47,7 +46,6 @@
 		7258482B1FADC21A00D4E15D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB18670D1F779D9F000E0864 /* Assets.xcassets */; };
 		7258482C1FADC21A00D4E15D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB18670F1F779D9F000E0864 /* LaunchScreen.storyboard */; };
 		7258482D1FADC21A00D4E15D /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = AB1867041F779D9F000E0864 /* Actions.sks */; };
-		7258482E1FADC21A00D4E15D /* RVOExample1Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 72B453331FA6152C005CDE8A /* RVOExample1Scene.sks */; };
 		7258482F1FADC21A00D4E15D /* RVOExample1.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 72B453291FA610B6005CDE8A /* RVOExample1.storyboard */; };
 		725848391FADC26900D4E15D /* RVOExample2Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725847FB1FADB7B800D4E15D /* RVOExample2Scene.swift */; };
 		7258483A1FADC26900D4E15D /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1867061F779D9F000E0864 /* GameScene.swift */; };
@@ -73,7 +71,6 @@
 		7258484E1FADC26900D4E15D /* SteeringBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB63494D1F77A746002F5587 /* SteeringBehavior.swift */; };
 		7258484F1FADC26900D4E15D /* RVOConstans.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B0CE831F927A440082CF46 /* RVOConstans.swift */; };
 		725848501FADC26900D4E15D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1867001F779D9F000E0864 /* AppDelegate.swift */; };
-		725848511FADC26900D4E15D /* TestingAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726340531F9B3923009D91A4 /* TestingAppDelegate.swift */; };
 		725848521FADC26900D4E15D /* RVOAgentNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B453311FA6137D005CDE8A /* RVOAgentNode.swift */; };
 		725848531FADC26900D4E15D /* AgentNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB63494F1F77AB5D002F5587 /* AgentNode.swift */; };
 		725848541FADC26900D4E15D /* RVOExample1Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B4532F1FA61328005CDE8A /* RVOExample1Scene.swift */; };
@@ -84,7 +81,6 @@
 		7258485B1FADC26900D4E15D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB18670D1F779D9F000E0864 /* Assets.xcassets */; };
 		7258485C1FADC26900D4E15D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB18670F1F779D9F000E0864 /* LaunchScreen.storyboard */; };
 		7258485D1FADC26900D4E15D /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = AB1867041F779D9F000E0864 /* Actions.sks */; };
-		7258485E1FADC26900D4E15D /* RVOExample1Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 72B453331FA6152C005CDE8A /* RVOExample1Scene.sks */; };
 		7258485F1FADC26900D4E15D /* RVOExample1.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 72B453291FA610B6005CDE8A /* RVOExample1.storyboard */; };
 		725848671FADC27A00D4E15D /* RVOExample2Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725847FB1FADB7B800D4E15D /* RVOExample2Scene.swift */; };
 		725848681FADC27A00D4E15D /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1867061F779D9F000E0864 /* GameScene.swift */; };
@@ -110,7 +106,6 @@
 		7258487C1FADC27A00D4E15D /* SteeringBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB63494D1F77A746002F5587 /* SteeringBehavior.swift */; };
 		7258487D1FADC27A00D4E15D /* RVOConstans.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B0CE831F927A440082CF46 /* RVOConstans.swift */; };
 		7258487E1FADC27A00D4E15D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1867001F779D9F000E0864 /* AppDelegate.swift */; };
-		7258487F1FADC27A00D4E15D /* TestingAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726340531F9B3923009D91A4 /* TestingAppDelegate.swift */; };
 		725848801FADC27A00D4E15D /* RVOAgentNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B453311FA6137D005CDE8A /* RVOAgentNode.swift */; };
 		725848811FADC27A00D4E15D /* AgentNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB63494F1F77AB5D002F5587 /* AgentNode.swift */; };
 		725848821FADC27A00D4E15D /* RVOExample1Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B4532F1FA61328005CDE8A /* RVOExample1Scene.swift */; };
@@ -121,14 +116,13 @@
 		725848891FADC27A00D4E15D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB18670D1F779D9F000E0864 /* Assets.xcassets */; };
 		7258488A1FADC27A00D4E15D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB18670F1F779D9F000E0864 /* LaunchScreen.storyboard */; };
 		7258488B1FADC27A00D4E15D /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = AB1867041F779D9F000E0864 /* Actions.sks */; };
-		7258488C1FADC27A00D4E15D /* RVOExample1Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 72B453331FA6152C005CDE8A /* RVOExample1Scene.sks */; };
 		7258488D1FADC27A00D4E15D /* RVOExample1.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 72B453291FA610B6005CDE8A /* RVOExample1.storyboard */; };
 		726340511F9B3919009D91A4 /* ObstacleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726340501F9B3918009D91A4 /* ObstacleBuilder.swift */; };
 		726340541F9B3923009D91A4 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726340521F9B3923009D91A4 /* main.swift */; };
-		726340551F9B3923009D91A4 /* TestingAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726340531F9B3923009D91A4 /* TestingAppDelegate.swift */; };
 		726340591F9B557A009D91A4 /* AgentKTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726340581F9B5579009D91A4 /* AgentKTree.swift */; };
 		7263405B1F9B55CB009D91A4 /* Agent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7263405A1F9B55CB009D91A4 /* Agent.swift */; };
 		7263405D1F9BAFA1009D91A4 /* AgentKTreeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7263405C1F9BAFA1009D91A4 /* AgentKTreeTests.swift */; };
+		729271E71FADCEBB00F92E27 /* TestingAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729271E61FADCEBB00F92E27 /* TestingAppDelegate.swift */; };
 		72A184971F7FE49200BB16DB /* SteeringManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72A184961F7FE49100BB16DB /* SteeringManager.swift */; };
 		72A184991F7FE4F100BB16DB /* SteeringGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72A184981F7FE4F100BB16DB /* SteeringGroup.swift */; };
 		72B0CE741F921B3E0082CF46 /* Obstacle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B0CE731F921B3E0082CF46 /* Obstacle.swift */; };
@@ -144,7 +138,6 @@
 		72B4532C1FA61162005CDE8A /* RVOExample1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B4532B1FA61162005CDE8A /* RVOExample1ViewController.swift */; };
 		72B453301FA61328005CDE8A /* RVOExample1Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B4532F1FA61328005CDE8A /* RVOExample1Scene.swift */; };
 		72B453321FA6137D005CDE8A /* RVOAgentNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B453311FA6137D005CDE8A /* RVOAgentNode.swift */; };
-		72B453341FA6152C005CDE8A /* RVOExample1Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 72B453331FA6152C005CDE8A /* RVOExample1Scene.sks */; };
 		72B453361FA629BB005CDE8A /* RVOAvoidanceNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B453351FA629BB005CDE8A /* RVOAvoidanceNode.swift */; };
 		72C58F501FAA41CA0077FB2B /* RVOOptimalSimulator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C58F4F1FAA41CA0077FB2B /* RVOOptimalSimulator.swift */; };
 		72E581301FA9B6C900E0A127 /* RVOSimulatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72E5812F1FA9B6C900E0A127 /* RVOSimulatorTests.swift */; };
@@ -159,7 +152,6 @@
 		AB18670C1F779D9F000E0864 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB18670A1F779D9F000E0864 /* Main.storyboard */; };
 		AB18670E1F779D9F000E0864 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB18670D1F779D9F000E0864 /* Assets.xcassets */; };
 		AB1867111F779D9F000E0864 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB18670F1F779D9F000E0864 /* LaunchScreen.storyboard */; };
-		AB18671C1F779D9F000E0864 /* FlockingBehaviorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB18671B1F779D9F000E0864 /* FlockingBehaviorTests.swift */; };
 		AB1867271F779D9F000E0864 /* FlockingBehaviorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1867261F779D9F000E0864 /* FlockingBehaviorUITests.swift */; };
 		AB28D3961F7838A700BB1542 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB28D3951F7838A700BB1542 /* Constants.swift */; };
 		AB6349491F77A639002F5587 /* SteeringAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6349481F77A639002F5587 /* SteeringAgent.swift */; };
@@ -168,6 +160,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		724FE3DD1FADCCDB00E659E6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AB1866F51F779D9F000E0864 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 725848371FADC26900D4E15D;
+			remoteInfo = RVOExample1;
+		};
+		724FE3DF1FADCCF000E659E6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AB1866F51F779D9F000E0864 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 725848651FADC27A00D4E15D;
+			remoteInfo = RVOExample2;
+		};
 		725848351FADC22F00D4E15D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = AB1866F51F779D9F000E0864 /* Project object */;
@@ -205,10 +211,10 @@
 		725848921FADC27C00D4E15D /* RVOExample1 copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "RVOExample1 copy-Info.plist"; path = "/Users/quocdungchu/Projects/flocking_behavior/RVOExample1 copy-Info.plist"; sourceTree = "<absolute>"; };
 		726340501F9B3918009D91A4 /* ObstacleBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObstacleBuilder.swift; sourceTree = "<group>"; };
 		726340521F9B3923009D91A4 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
-		726340531F9B3923009D91A4 /* TestingAppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestingAppDelegate.swift; sourceTree = "<group>"; };
 		726340581F9B5579009D91A4 /* AgentKTree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgentKTree.swift; sourceTree = "<group>"; };
 		7263405A1F9B55CB009D91A4 /* Agent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Agent.swift; sourceTree = "<group>"; };
 		7263405C1F9BAFA1009D91A4 /* AgentKTreeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgentKTreeTests.swift; sourceTree = "<group>"; };
+		729271E61FADCEBB00F92E27 /* TestingAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingAppDelegate.swift; sourceTree = "<group>"; };
 		72A184961F7FE49100BB16DB /* SteeringManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SteeringManager.swift; sourceTree = "<group>"; };
 		72A184981F7FE4F100BB16DB /* SteeringGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SteeringGroup.swift; sourceTree = "<group>"; };
 		72B0CE731F921B3E0082CF46 /* Obstacle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Obstacle.swift; sourceTree = "<group>"; };
@@ -224,7 +230,6 @@
 		72B4532B1FA61162005CDE8A /* RVOExample1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RVOExample1ViewController.swift; sourceTree = "<group>"; };
 		72B4532F1FA61328005CDE8A /* RVOExample1Scene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RVOExample1Scene.swift; sourceTree = "<group>"; };
 		72B453311FA6137D005CDE8A /* RVOAgentNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RVOAgentNode.swift; sourceTree = "<group>"; };
-		72B453331FA6152C005CDE8A /* RVOExample1Scene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = RVOExample1Scene.sks; sourceTree = "<group>"; };
 		72B453351FA629BB005CDE8A /* RVOAvoidanceNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RVOAvoidanceNode.swift; sourceTree = "<group>"; };
 		72C58F4F1FAA41CA0077FB2B /* RVOOptimalSimulator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RVOOptimalSimulator.swift; sourceTree = "<group>"; };
 		72E5812F1FA9B6C900E0A127 /* RVOSimulatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RVOSimulatorTests.swift; sourceTree = "<group>"; };
@@ -242,7 +247,6 @@
 		AB1867101F779D9F000E0864 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AB1867121F779D9F000E0864 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AB1867171F779D9F000E0864 /* FlockingBehaviorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlockingBehaviorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		AB18671B1F779D9F000E0864 /* FlockingBehaviorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlockingBehaviorTests.swift; sourceTree = "<group>"; };
 		AB18671D1F779D9F000E0864 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AB1867221F779D9F000E0864 /* FlockingBehaviorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlockingBehaviorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB1867261F779D9F000E0864 /* FlockingBehaviorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlockingBehaviorUITests.swift; sourceTree = "<group>"; };
@@ -302,7 +306,6 @@
 		725847FF1FADB86000D4E15D /* Example1 */ = {
 			isa = PBXGroup;
 			children = (
-				72B453331FA6152C005CDE8A /* RVOExample1Scene.sks */,
 				72B453291FA610B6005CDE8A /* RVOExample1.storyboard */,
 				72B4532B1FA61162005CDE8A /* RVOExample1ViewController.swift */,
 				72B4532F1FA61328005CDE8A /* RVOExample1Scene.swift */,
@@ -404,7 +407,6 @@
 				AB63494A1F77A65C002F5587 /* Math */,
 				AB6349471F77A619002F5587 /* Core */,
 				AB1867001F779D9F000E0864 /* AppDelegate.swift */,
-				726340531F9B3923009D91A4 /* TestingAppDelegate.swift */,
 				726340521F9B3923009D91A4 /* main.swift */,
 				AB63494F1F77AB5D002F5587 /* AgentNode.swift */,
 				AB1867021F779D9F000E0864 /* GameScene.sks */,
@@ -423,7 +425,6 @@
 		AB18671A1F779D9F000E0864 /* FlockingBehaviorTests */ = {
 			isa = PBXGroup;
 			children = (
-				AB18671B1F779D9F000E0864 /* FlockingBehaviorTests.swift */,
 				AB18671D1F779D9F000E0864 /* Info.plist */,
 				72B0CE7B1F92271F0082CF46 /* PointLineRelativePositionTests.swift */,
 				7263405C1F9BAFA1009D91A4 /* AgentKTreeTests.swift */,
@@ -433,6 +434,7 @@
 				72B0CE871F92AFAF0082CF46 /* MathTests.swift */,
 				72FF33C71FA5E4F400076D3B /* LineComputerTests.swift */,
 				72E5812F1FA9B6C900E0A127 /* RVOSimulatorTests.swift */,
+				729271E61FADCEBB00F92E27 /* TestingAppDelegate.swift */,
 			);
 			path = FlockingBehaviorTests;
 			sourceTree = "<group>";
@@ -552,6 +554,8 @@
 			dependencies = (
 				AB1867191F779D9F000E0864 /* PBXTargetDependency */,
 				725848361FADC22F00D4E15D /* PBXTargetDependency */,
+				724FE3DE1FADCCDB00E659E6 /* PBXTargetDependency */,
+				724FE3E01FADCCF000E659E6 /* PBXTargetDependency */,
 			);
 			name = FlockingBehaviorTests;
 			productName = FlockingBehaviorTests;
@@ -596,7 +600,7 @@
 						DevelopmentTeam = 2U9LJ49V7G;
 						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
-						TestTargetID = 725848071FADC21A00D4E15D;
+						TestTargetID = AB1866FC1F779D9F000E0864;
 					};
 					AB1867211F779D9F000E0864 = {
 						CreatedOnToolsVersion = 8.3.3;
@@ -641,7 +645,6 @@
 				7258482B1FADC21A00D4E15D /* Assets.xcassets in Resources */,
 				7258482C1FADC21A00D4E15D /* LaunchScreen.storyboard in Resources */,
 				7258482D1FADC21A00D4E15D /* Actions.sks in Resources */,
-				7258482E1FADC21A00D4E15D /* RVOExample1Scene.sks in Resources */,
 				7258482F1FADC21A00D4E15D /* RVOExample1.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -656,7 +659,6 @@
 				7258485B1FADC26900D4E15D /* Assets.xcassets in Resources */,
 				7258485C1FADC26900D4E15D /* LaunchScreen.storyboard in Resources */,
 				7258485D1FADC26900D4E15D /* Actions.sks in Resources */,
-				7258485E1FADC26900D4E15D /* RVOExample1Scene.sks in Resources */,
 				7258485F1FADC26900D4E15D /* RVOExample1.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -671,7 +673,6 @@
 				725848891FADC27A00D4E15D /* Assets.xcassets in Resources */,
 				7258488A1FADC27A00D4E15D /* LaunchScreen.storyboard in Resources */,
 				7258488B1FADC27A00D4E15D /* Actions.sks in Resources */,
-				7258488C1FADC27A00D4E15D /* RVOExample1Scene.sks in Resources */,
 				7258488D1FADC27A00D4E15D /* RVOExample1.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -686,7 +687,6 @@
 				AB18670E1F779D9F000E0864 /* Assets.xcassets in Resources */,
 				AB1867111F779D9F000E0864 /* LaunchScreen.storyboard in Resources */,
 				AB1867051F779D9F000E0864 /* Actions.sks in Resources */,
-				72B453341FA6152C005CDE8A /* RVOExample1Scene.sks in Resources */,
 				72B4532A1FA610B6005CDE8A /* RVOExample1.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -736,7 +736,6 @@
 				7258481E1FADC21A00D4E15D /* SteeringBehavior.swift in Sources */,
 				7258481F1FADC21A00D4E15D /* RVOConstans.swift in Sources */,
 				725848201FADC21A00D4E15D /* AppDelegate.swift in Sources */,
-				725848211FADC21A00D4E15D /* TestingAppDelegate.swift in Sources */,
 				725848221FADC21A00D4E15D /* RVOAgentNode.swift in Sources */,
 				725848231FADC21A00D4E15D /* AgentNode.swift in Sources */,
 				725848241FADC21A00D4E15D /* RVOExample1Scene.swift in Sources */,
@@ -772,7 +771,6 @@
 				7258484E1FADC26900D4E15D /* SteeringBehavior.swift in Sources */,
 				7258484F1FADC26900D4E15D /* RVOConstans.swift in Sources */,
 				725848501FADC26900D4E15D /* AppDelegate.swift in Sources */,
-				725848511FADC26900D4E15D /* TestingAppDelegate.swift in Sources */,
 				725848521FADC26900D4E15D /* RVOAgentNode.swift in Sources */,
 				725848531FADC26900D4E15D /* AgentNode.swift in Sources */,
 				725848541FADC26900D4E15D /* RVOExample1Scene.swift in Sources */,
@@ -808,7 +806,6 @@
 				7258487C1FADC27A00D4E15D /* SteeringBehavior.swift in Sources */,
 				7258487D1FADC27A00D4E15D /* RVOConstans.swift in Sources */,
 				7258487E1FADC27A00D4E15D /* AppDelegate.swift in Sources */,
-				7258487F1FADC27A00D4E15D /* TestingAppDelegate.swift in Sources */,
 				725848801FADC27A00D4E15D /* RVOAgentNode.swift in Sources */,
 				725848811FADC27A00D4E15D /* AgentNode.swift in Sources */,
 				725848821FADC27A00D4E15D /* RVOExample1Scene.swift in Sources */,
@@ -844,7 +841,6 @@
 				AB63494E1F77A746002F5587 /* SteeringBehavior.swift in Sources */,
 				72B0CE841F927A440082CF46 /* RVOConstans.swift in Sources */,
 				AB1867011F779D9F000E0864 /* AppDelegate.swift in Sources */,
-				726340551F9B3923009D91A4 /* TestingAppDelegate.swift in Sources */,
 				72B453321FA6137D005CDE8A /* RVOAgentNode.swift in Sources */,
 				AB6349501F77AB5D002F5587 /* AgentNode.swift in Sources */,
 				72B453301FA61328005CDE8A /* RVOExample1Scene.swift in Sources */,
@@ -860,9 +856,9 @@
 				72E581301FA9B6C900E0A127 /* RVOSimulatorTests.swift in Sources */,
 				72B0CE881F92AFAF0082CF46 /* MathTests.swift in Sources */,
 				72FF33C81FA5E4F400076D3B /* LineComputerTests.swift in Sources */,
-				AB18671C1F779D9F000E0864 /* FlockingBehaviorTests.swift in Sources */,
 				72B0CE861F927E4E0082CF46 /* ObstacleKTreeTests.swift in Sources */,
 				72FF33C61FA5CE9C00076D3B /* AgentTests.swift in Sources */,
+				729271E71FADCEBB00F92E27 /* TestingAppDelegate.swift in Sources */,
 				72B0CE7C1F92271F0082CF46 /* PointLineRelativePositionTests.swift in Sources */,
 				7263405D1F9BAFA1009D91A4 /* AgentKTreeTests.swift in Sources */,
 			);
@@ -879,6 +875,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		724FE3DE1FADCCDB00E659E6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 725848371FADC26900D4E15D /* RVOExample1 */;
+			targetProxy = 724FE3DD1FADCCDB00E659E6 /* PBXContainerItemProxy */;
+		};
+		724FE3E01FADCCF000E659E6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 725848651FADC27A00D4E15D /* RVOExample2 */;
+			targetProxy = 724FE3DF1FADCCF000E659E6 /* PBXContainerItemProxy */;
+		};
 		725848361FADC22F00D4E15D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 725848071FADC21A00D4E15D /* TestApp */;
@@ -1135,7 +1141,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TestApp.app/TestApp";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FlockingBehavior.app/FlockingBehavior";
 			};
 			name = Debug;
 		};
@@ -1151,7 +1157,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TestApp.app/TestApp";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FlockingBehavior.app/FlockingBehavior";
 			};
 			name = Release;
 		};

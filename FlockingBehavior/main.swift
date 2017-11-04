@@ -8,13 +8,21 @@
 import Foundation
 import UIKit
 
-let isRunningTests = NSClassFromString("XCTestCase") != nil
-let appDelegateClass : AnyClass = isRunningTests ? TestingAppDelegate.self : AppDelegate.self
-UIApplicationMain(
-    CommandLine.argc,
-    UnsafeMutableRawPointer(CommandLine.unsafeArgv).bindMemory(
-        to: UnsafeMutablePointer<Int8>.self,
-        capacity: Int(CommandLine.argc)),
-    nil,
-    NSStringFromClass(appDelegateClass))
+//let isRunningTests = NSClassFromString("XCTestCase") != nil
+//let appDelegateClass : AnyClass = isRunningTests ? TestingAppDelegate.self : AppDelegate.self
+//UIApplicationMain(
+//    CommandLine.argc,
+//    UnsafeMutableRawPointer(CommandLine.unsafeArgv).bindMemory(
+//        to: UnsafeMutablePointer<Int8>.self,
+//        capacity: Int(CommandLine.argc)),
+//    nil,
+//    NSStringFromClass(appDelegateClass))
+
+import UIKit
+
+let appDelegateClass: AnyClass? =
+    NSClassFromString("FlockingBehaviorTests.TestingAppDelegate") ?? AppDelegate.self
+let args = UnsafeMutableRawPointer(CommandLine.unsafeArgv)
+    .bindMemory(to: UnsafeMutablePointer<Int8>.self, capacity: Int(CommandLine.argc))
+UIApplicationMain(CommandLine.argc, args, nil, NSStringFromClass(appDelegateClass!))
 
