@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		723CE1D51FA7D2B2001CF1DC /* RVOSimulator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723CE1D41FA7D2B2001CF1DC /* RVOSimulator.swift */; };
 		7246E84A1F7FF2B500343083 /* Updatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7246E8491F7FF2B400343083 /* Updatable.swift */; };
+		725847FC1FADB7B800D4E15D /* RVOExample2Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725847FB1FADB7B800D4E15D /* RVOExample2Scene.swift */; };
+		725847FE1FADB7F600D4E15D /* RVOExample2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725847FD1FADB7F600D4E15D /* RVOExample2ViewController.swift */; };
 		726340511F9B3919009D91A4 /* ObstacleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726340501F9B3918009D91A4 /* ObstacleBuilder.swift */; };
 		726340541F9B3923009D91A4 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726340521F9B3923009D91A4 /* main.swift */; };
 		726340551F9B3923009D91A4 /* TestingAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726340531F9B3923009D91A4 /* TestingAppDelegate.swift */; };
@@ -73,6 +75,8 @@
 /* Begin PBXFileReference section */
 		723CE1D41FA7D2B2001CF1DC /* RVOSimulator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RVOSimulator.swift; sourceTree = "<group>"; };
 		7246E8491F7FF2B400343083 /* Updatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Updatable.swift; sourceTree = "<group>"; };
+		725847FB1FADB7B800D4E15D /* RVOExample2Scene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RVOExample2Scene.swift; sourceTree = "<group>"; };
+		725847FD1FADB7F600D4E15D /* RVOExample2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RVOExample2ViewController.swift; sourceTree = "<group>"; };
 		726340501F9B3918009D91A4 /* ObstacleBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObstacleBuilder.swift; sourceTree = "<group>"; };
 		726340521F9B3923009D91A4 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		726340531F9B3923009D91A4 /* TestingAppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestingAppDelegate.swift; sourceTree = "<group>"; };
@@ -148,16 +152,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		723CE1D31FA7D262001CF1DC /* RVOSimulator */ = {
+		725847FF1FADB86000D4E15D /* Example1 */ = {
 			isa = PBXGroup;
 			children = (
-				723CE1D41FA7D2B2001CF1DC /* RVOSimulator.swift */,
-				72C58F4F1FAA41CA0077FB2B /* RVOOptimalSimulator.swift */,
+				72B453291FA610B6005CDE8A /* RVOExample1.storyboard */,
+				72B4532B1FA61162005CDE8A /* RVOExample1ViewController.swift */,
+				72B4532F1FA61328005CDE8A /* RVOExample1Scene.swift */,
 			);
-			name = RVOSimulator;
+			name = Example1;
 			sourceTree = "<group>";
 		};
-		72B0CE721F921B200082CF46 /* RVO */ = {
+		725848001FADB87800D4E15D /* Core */ = {
 			isa = PBXGroup;
 			children = (
 				7263405A1F9B55CB009D91A4 /* Agent.swift */,
@@ -167,20 +172,55 @@
 				72B0CE811F92654A0082CF46 /* ObstacleKTree.swift */,
 				72B0CE831F927A440082CF46 /* RVOConstans.swift */,
 			);
-			name = RVO;
+			name = Core;
 			sourceTree = "<group>";
 		};
-		72B453281FA6107F005CDE8A /* RVOExample */ = {
+		725848011FADB88900D4E15D /* Examples */ = {
 			isa = PBXGroup;
 			children = (
-				72B453291FA610B6005CDE8A /* RVOExample1.storyboard */,
-				72B4532B1FA61162005CDE8A /* RVOExample1ViewController.swift */,
-				72B4532F1FA61328005CDE8A /* RVOExample1Scene.swift */,
+				725848041FADB8EE00D4E15D /* Common */,
+				725847FF1FADB86000D4E15D /* Example1 */,
+				725848031FADB8BD00D4E15D /* Example2 */,
+			);
+			name = Examples;
+			sourceTree = "<group>";
+		};
+		725848021FADB89900D4E15D /* Simulator */ = {
+			isa = PBXGroup;
+			children = (
+				723CE1D41FA7D2B2001CF1DC /* RVOSimulator.swift */,
+				72C58F4F1FAA41CA0077FB2B /* RVOOptimalSimulator.swift */,
+			);
+			name = Simulator;
+			sourceTree = "<group>";
+		};
+		725848031FADB8BD00D4E15D /* Example2 */ = {
+			isa = PBXGroup;
+			children = (
+				725847FD1FADB7F600D4E15D /* RVOExample2ViewController.swift */,
+				725847FB1FADB7B800D4E15D /* RVOExample2Scene.swift */,
+			);
+			name = Example2;
+			sourceTree = "<group>";
+		};
+		725848041FADB8EE00D4E15D /* Common */ = {
+			isa = PBXGroup;
+			children = (
 				72B453311FA6137D005CDE8A /* RVOAgentNode.swift */,
 				72B453331FA6152C005CDE8A /* RVOScene.sks */,
 				72B453351FA629BB005CDE8A /* RVOAvoidanceNode.swift */,
 			);
-			name = RVOExample;
+			name = Common;
+			sourceTree = "<group>";
+		};
+		72B0CE721F921B200082CF46 /* RVO */ = {
+			isa = PBXGroup;
+			children = (
+				725848021FADB89900D4E15D /* Simulator */,
+				725848011FADB88900D4E15D /* Examples */,
+				725848001FADB87800D4E15D /* Core */,
+			);
+			name = RVO;
 			sourceTree = "<group>";
 		};
 		AB1866F41F779D9F000E0864 = {
@@ -206,8 +246,6 @@
 		AB1866FF1F779D9F000E0864 /* FlockingBehavior */ = {
 			isa = PBXGroup;
 			children = (
-				723CE1D31FA7D262001CF1DC /* RVOSimulator */,
-				72B453281FA6107F005CDE8A /* RVOExample */,
 				72B0CE721F921B200082CF46 /* RVO */,
 				AB63494A1F77A65C002F5587 /* Math */,
 				AB6349471F77A619002F5587 /* Core */,
@@ -419,6 +457,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				725847FC1FADB7B800D4E15D /* RVOExample2Scene.swift in Sources */,
 				AB1867071F779D9F000E0864 /* GameScene.swift in Sources */,
 				7263405B1F9B55CB009D91A4 /* Agent.swift in Sources */,
 				726340541F9B3923009D91A4 /* main.swift in Sources */,
@@ -438,6 +477,7 @@
 				72FF33C41FA47F1500076D3B /* Line.swift in Sources */,
 				AB1867091F779D9F000E0864 /* GameViewController.swift in Sources */,
 				72B0CE821F92654A0082CF46 /* ObstacleKTree.swift in Sources */,
+				725847FE1FADB7F600D4E15D /* RVOExample2ViewController.swift in Sources */,
 				AB63494E1F77A746002F5587 /* SteeringBehavior.swift in Sources */,
 				72B0CE841F927A440082CF46 /* RVOConstans.swift in Sources */,
 				AB1867011F779D9F000E0864 /* AppDelegate.swift in Sources */,
