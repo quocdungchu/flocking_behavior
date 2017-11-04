@@ -20,7 +20,7 @@ class RVOAvoidanceNode: SKShapeNode {
     let relativeVelocityNodes: [SKShapeNode]
     let ocraLineNodes: [SKShapeNode]
     
-    init(agent: Agent, neighbors: [Agent], scale: Float = RVOExampleConstants.scale, timeNoCollision: Double, timeStep: Double, destinationPoint: Vector) {
+    init(agent: Agent, neighbors: [Agent], scale: Float, timeNoCollision: Double, timeStep: Double, destinationPoint: Vector) {
         self.agent = agent
         self.neighbors = neighbors
         self.scale = scale

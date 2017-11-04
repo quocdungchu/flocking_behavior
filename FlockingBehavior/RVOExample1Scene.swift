@@ -9,9 +9,11 @@ import UIKit
 import SpriteKit
 
 class RVOExample1Scene: SKScene {
-    
+    enum Constants {
+        static let scale: Float = 60.0
+    }
     var agentAvoidanceNode: RVOAvoidanceNode!
-    var simulator: RVOOptimalSimulator!
+    var simulator: RVOSimulator!
     var agentNodes = [RVOAgentNode]()
     
     var previousTime: Double?
@@ -39,34 +41,33 @@ class RVOExample1Scene: SKScene {
     }
     
     private func addNodes(){
-        simulator = RVOOptimalSimulator.makeWithAgentsInCircle(
-            radius: 20.0,
-            numberOfAgents: 13,
-            maxNeightborDistance: 3,
-            neighborsLeafSize: 10,
+        simulator = RVOSimulator.makeWithAgentsInCircle(
+            radius: 5.0,
+            numberOfAgents: 2,
             agentRadius: 1.0,
             agentMaxSpeed: 1.0,
-            timeNoCollision: 2.0,
+            timeNoCollision: 6.0,
             timeStep: 0.25
         )
         
         agentNodes = simulator.agents.map {
-            RVOAgentNode(agent: $0)
+            RVOAgentNode(agent: $0, scale: Constants.scale)
         }
         
-//        agentAvoidanceNode = RVOAvoidanceNode(
-//            agent: simulator.agents[0],
-//            neighbors: simulator.neighbors(of: simulator.agents[0]),
-//            timeNoCollision: simulator.timeNoCollision,
-//            timeStep: simulator.timeStep,
-//            destinationPoint: simulator.destinations[0]
-//        )
+        agentAvoidanceNode = RVOAvoidanceNode(
+            agent: simulator.agents[0],
+            neighbors: simulator.neighbors(of: simulator.agents[0]),
+            scale: Constants.scale,
+            timeNoCollision: simulator.timeNoCollision,
+            timeStep: simulator.timeStep,
+            destinationPoint: simulator.destinations[0]
+        )
 
         agentNodes.forEach {
             self.addChild($0)
         }
         
-        //addChild(agentAvoidanceNode)
+        addChild(agentAvoidanceNode)
     }
     
     private func removeNodes(){
@@ -74,7 +75,7 @@ class RVOExample1Scene: SKScene {
             $0.removeFromParent()
         }
         agentNodes.removeAll()
-        //agentAvoidanceNode.removeFromParent()
+        agentAvoidanceNode.removeFromParent()
         
         simulator.removeAll()
     }
@@ -85,15 +86,6 @@ class RVOExample1Scene: SKScene {
     
     private func update(){
         agentNodes.forEach { $0.update() }
-        //agentAvoidanceNode.update()
-    }
-    
-    override func update(_ currentTime: TimeInterval) {
-        
-        if let previousTime = previousTime {
-            nextStep(timeStep: currentTime - previousTime)
-        }
-        
-        self.previousTime = currentTime
+        agentAvoidanceNode.update()
     }
 }
