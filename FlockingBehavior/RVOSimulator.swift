@@ -16,6 +16,17 @@ protocol RVOSimulator {
     func printVisualisationForDebug()
 }
 
+struct RVOSimulatorBlockDefinition {
+    let numberAgentInHorizontal: Int
+    let numberAgentInVertical: Int
+    let distanceBetweenAgent: Float
+}
+
+struct RVOSimulatorAgentDefinition {
+    let radius: Float
+    let maxSpeed: Float
+}
+
 extension RVOSimulator {
     func addAgentInCircle(
         radius: Float,
@@ -35,6 +46,33 @@ extension RVOSimulator {
             )
             let destination = -1 * agentPosition
             add(agent: agent, destination: destination)
+        }
+    }
+    
+    func addAgentInBlock(
+        blockDefinition: RVOSimulatorBlockDefinition,
+        agentDefinition: RVOSimulatorAgentDefinition,
+        agentBlockPositions: [Vector],
+        destinationBlockPositions: [Vector])
+    {
+        for i in 0..<blockDefinition.numberAgentInHorizontal {
+            for j in 0..<blockDefinition.numberAgentInVertical {
+                for k in 0..<agentBlockPositions.count {
+                    let positionInBlock = Vector(Float(i) * blockDefinition.distanceBetweenAgent, Float(j) * blockDefinition.distanceBetweenAgent)
+                    
+                    let agentPosition = agentBlockPositions[k] + positionInBlock
+                    
+                    let agent = Agent(
+                        position: agentPosition,
+                        radius: agentDefinition.radius,
+                        maxSpeed: agentDefinition.maxSpeed
+                    )
+                    
+                    let destinationPosition = destinationBlockPositions[k] + positionInBlock
+                    
+                    add(agent: agent, destination: destinationPosition)
+                }
+            }
         }
     }
     

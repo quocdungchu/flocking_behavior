@@ -17,35 +17,67 @@ class RVOExample2Scene: SKScene {
     var previousTime: Double?
     
     override func didMove(to view: SKView) {
+        resetSimulatorInCircle()
         addNodes()
     }
     
-    func reset(){
+    func resetInCircle(){
         removeNodes()
+        resetSimulatorInCircle()
         addNodes()
         update()
     }
     
-    func nextStep(timeStep: Double){
-        simulator.printVisualisationForDebug()
-        computeAgents(timeStep: timeStep)
+    func resetInBlock(){
+        removeNodes()
+        resetSimulatorInBlock()
+        addNodes()
         update()
     }
     
-    private func addNodes(){
+    private func resetSimulatorInCircle() {
         simulator = RVOOptimalSimulator(
             maxNeightborDistance: 3,
             neighborsLeafSize: 10,
             timeNoCollision: 2.0,
             timeStep: 0.25
         )
-
+        
         simulator.addAgentInCircle(
             radius: 20.0,
             numberOfAgents: 13,
             agentRadius: 1.0,
             agentMaxSpeed: 1.0
         )
+    }
+    
+    func resetSimulatorInBlock() {
+        simulator = RVOOptimalSimulator(
+            maxNeightborDistance: 15,
+            neighborsLeafSize: 10,
+            timeNoCollision: 4.0,
+            timeStep: 0.25
+        )
+        
+        let blockDefinition = RVOSimulatorBlockDefinition(numberAgentInHorizontal: 4, numberAgentInVertical: 4, distanceBetweenAgent: 5.0)
+        
+        let agentDefinition = RVOSimulatorAgentDefinition(radius: 1.0, maxSpeed: 1.0)
+        
+        simulator.addAgentInBlock(
+            blockDefinition: blockDefinition,
+            agentDefinition: agentDefinition,
+            agentBlockPositions: [Vector(10.0, -10.0), Vector(-30.0, -10.0)],
+            destinationBlockPositions: [Vector(-30.0, -10.0), Vector(10.0, -10.0)]
+        )
+    }
+    
+    private func nextStep(timeStep: Double){
+        simulator.printVisualisationForDebug()
+        computeAgents(timeStep: timeStep)
+        update()
+    }
+    
+    private func addNodes() {
         
         agentNodes = simulator.agents.map {
             RVOAgentNode(agent: $0)

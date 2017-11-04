@@ -17,7 +17,23 @@
                     <view key="view" contentMode="scaleToFill" id="7a2-Ii-k8J" customClass="SKView">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Kif-nz-Ary">
+                                <rect key="frame" x="138" y="40" width="99" height="29"/>
+                                <segments>
+                                    <segment title="Circle"/>
+                                    <segment title="Block"/>
+                                </segments>
+                                <connections>
+                                    <action selector="tapOnSegmentWithSender:" destination="gOY-k8-k1h" eventType="valueChanged" id="sLK-8s-qLb"/>
+                                </connections>
+                            </segmentedControl>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Kif-nz-Ary" firstAttribute="top" secondItem="pTe-L3-MMd" secondAttribute="top" constant="20" id="ldt-TZ-P3n"/>
+                            <constraint firstItem="Kif-nz-Ary" firstAttribute="centerX" secondItem="7a2-Ii-k8J" secondAttribute="centerX" id="pJo-ci-Pyh"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="pTe-L3-MMd"/>
                     </view>
                 </viewController>

@@ -32,4 +32,17 @@ class RVOExample2ViewController: UIViewController {
             view.showsNodeCount = true
         }
     }
+    
+    @IBAction func tapOnSegment(sender: UISegmentedControl){
+        switch sender.selectedSegmentIndex {
+        case 0:
+            scene.resetInCircle()
+            
+        case 1:
+            scene.resetInBlock()
+            
+        default:
+            break
+        }
+    }
 }
