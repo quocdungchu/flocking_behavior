@@ -70,12 +70,12 @@ class RVOExample2Scene: SKScene {
         simulator = RVOOptimalSimulator(
             maxNeightborDistance: 10,
             neighborsLeafSize: 10,
-            timeNoCollision: 10.0
+            timeNoCollision: 3.0
         )
         
         let blockDefinition = RVOSimulatorBlockDefinition(numberAgentInHorizontal: 4, numberAgentInVertical: 4, distanceBetweenAgent: 5.0)
         
-        let agentDefinition = RVOSimulatorAgentDefinition(radius: 1.0, maxSpeed: 1.0)
+        let agentDefinition = RVOSimulatorAgentDefinition(radius: 1.0, maxSpeed: 3.0)
         
         simulator.addAgentInBlock(
             blockDefinition: blockDefinition,
@@ -97,12 +97,12 @@ class RVOExample2Scene: SKScene {
         simulator = RVOOptimalSimulator(
             maxNeightborDistance: 10,
             neighborsLeafSize: 10,
-            timeNoCollision: 10.0
+            timeNoCollision: 3.0
         )
         
         let blockDefinition = RVOSimulatorBlockDefinition(numberAgentInHorizontal: 4, numberAgentInVertical: 4, distanceBetweenAgent: 5.0)
         
-        let agentDefinition = RVOSimulatorAgentDefinition(radius: 1.0, maxSpeed: 1.0)
+        let agentDefinition = RVOSimulatorAgentDefinition(radius: 1.0, maxSpeed: 2.0)
         
         simulator.addAgentInBlockAndOneDestination(
             blockDefinition: blockDefinition,

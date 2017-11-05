@@ -87,8 +87,8 @@ extension RVOSimulator {
         case .goal(let to):
             let relativePosition = to - agent.position
             
-            if relativePosition.length > 1 {
-                return relativePosition.normalized
+            if relativePosition.length > agent.maxSpeed {
+                return relativePosition.limitedVector(maximumLength: agent.maxSpeed)
                 
             } else {
                 return relativePosition

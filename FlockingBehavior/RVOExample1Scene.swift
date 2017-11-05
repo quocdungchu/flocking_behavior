@@ -44,36 +44,15 @@ class RVOExample1Scene: SKScene {
     }
     
     private func addNodes(){
-//        self.simulator = RVOSimpleSimulator(
-//            timeNoCollision: Constants.timeNoCollision
-//        )
-//
-//        simulator.addAgentInCircle(
-//            radius: 5.0,
-//            numberOfAgents: 5,
-//            agentRadius: 1.0,
-//            agentMaxSpeed: 1.0
-//        )
-        
-        self.simulator = RVOSimpleSimulator(timeNoCollision: 6.0)
-        simulator.add(
-            agent: Agent(
-                position: Vector(5.0, 0.0),
-                radius: 1.0,
-                maxSpeed: 0.5,
-                velocity: Vector(-0.5, 0.0)
-            ),
-            destination: Vector(-5.0, 0)
+        self.simulator = RVOSimpleSimulator(
+            timeNoCollision: Constants.timeNoCollision
         )
-        
-        simulator.add(
-            agent: Agent(
-                position: Vector(0.0, 0.0),
-                radius: 1.0,
-                maxSpeed: 0.0,
-                velocity: Vector(0.0, 0.0)
-            ),
-            destination: Vector(0.0, 0)
+
+        simulator.addAgentInCircle(
+            radius: 5.0,
+            numberOfAgents: 5,
+            agentRadius: 1.0,
+            agentMaxSpeed: 1.0
         )
         
         agentNodes = simulator.agents.map {
