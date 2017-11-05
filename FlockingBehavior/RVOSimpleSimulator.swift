@@ -11,13 +11,9 @@ import Foundation
 class RVOSimpleSimulator {
     
     let timeNoCollision: Double
-    
     var agents = [Agent]()
-    var destinations = [Vector]()
-    
-    var globalTime: Int = 0
-    
-    var agentKTree: AgentKTree!
+    var destinations = [Vector]()    
+    var computeCount: Int = 0
     
     init(timeNoCollision: Double) {
         self.timeNoCollision = timeNoCollision
@@ -26,42 +22,9 @@ class RVOSimpleSimulator {
 
 extension RVOSimpleSimulator: RVOSimulator {
     
-    func computeAgents(timeStep: Double){
-        
-        var computedVelocities = [Vector]()
-        
-        for i in 0..<agents.count {
-            let agent = agents[i]
-            let destination = destinations[i]
-            
-            let agentNeighbors = neighbors(of: agent)
-            
-            let agentComputed = agent.computedVelocity(
-                preferredVelocity: preferredVelocity(of: agent, destination: destination),
-                neighbors: agentNeighbors,
-                timeNoCollision: timeNoCollision,
-                timeStep: timeStep
-            )
-            
-            computedVelocities.append(agentComputed)
-        }
-        
-        for i in 0..<agents.count {
-            agents[i].update(computedVelocity: computedVelocities[i], timeStep: timeStep)
-        }
-        
-        globalTime += 1
-    }
+    func prepareToCompute() {}
     
     func neighbors(of agent: Agent) -> [Agent] {
         return agents.filter { $0 !== agent }
-    }
-    
-    func printVisualisationForDebug(){
-        var positionString = "\(globalTime)"
-        agents.forEach {
-            positionString += " (\(String(format:"%.6f", $0.position.x)), \(String(format:"%.6f", $0.position.y)))"
-        }
-        print("\(positionString)")
     }
 }

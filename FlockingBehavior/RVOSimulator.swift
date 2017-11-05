@@ -9,12 +9,13 @@
 import Foundation
 
 protocol RVOSimulator: class {
+    var timeNoCollision: Double { get }
     var agents: [Agent] { get set }
     var destinations: [Vector] { get set }
+    var computeCount: Int { get set }
 
-    func computeAgents(timeStep: Double)
+    func prepareToCompute()
     func neighbors(of agent: Agent) -> [Agent]
-    func printVisualisationForDebug()
 }
 
 struct RVOSimulatorBlockDefinition {
@@ -29,6 +30,34 @@ struct RVOSimulatorAgentDefinition {
 }
 
 extension RVOSimulator {
+    
+    func computeAgents(timeStep: Double){
+        prepareToCompute()
+        
+        var computedVelocities = [Vector]()
+        
+        for i in 0..<agents.count {
+            let agent = agents[i]
+            let destination = destinations[i]
+            
+            let agentNeighbors = neighbors(of: agent)
+            
+            let agentComputed = agent.computedVelocity(
+                preferredVelocity: preferredVelocity(of: agent, destination: destination),
+                neighbors: agentNeighbors,
+                timeNoCollision: timeNoCollision,
+                timeStep: timeStep
+            )
+            
+            computedVelocities.append(agentComputed)
+        }
+        
+        for i in 0..<agents.count {
+            agents[i].update(computedVelocity: computedVelocities[i], timeStep: timeStep)
+        }
+        
+        computeCount += 1
+    }
     
     func add(agent: Agent, destination: Vector) {
         agents.append(agent)
@@ -88,7 +117,7 @@ extension RVOSimulator {
         }
     }
     
-    func preferredVelocity(of agent: Agent, destination: Vector) -> Vector {
+    private func preferredVelocity(of agent: Agent, destination: Vector) -> Vector {
         let relativePosition = destination - agent.position
         
         if relativePosition.length > 1 {
@@ -97,5 +126,13 @@ extension RVOSimulator {
         } else {
             return relativePosition
         }
+    }
+    
+    func printVisualisationForDebug(){
+        var positionString = "\(computeCount)"
+        agents.forEach {
+            positionString += " (\(String(format:"%.6f", $0.position.x)), \(String(format:"%.6f", $0.position.y)))"
+        }
+        print("\(positionString)")
     }
 }
