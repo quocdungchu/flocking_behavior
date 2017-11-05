@@ -11,7 +11,6 @@ import Foundation
 class RVOOptimalSimulator {
     
     let timeNoCollision: Double
-    let timeStep: Double
     let maxNeightborDistance: Float
     let neighborsLeafSize: Int
     
@@ -22,11 +21,10 @@ class RVOOptimalSimulator {
     
     var agentKTree: AgentKTree!
     
-    init(maxNeightborDistance: Float, neighborsLeafSize: Int, timeNoCollision: Double, timeStep: Double) {
+    init(maxNeightborDistance: Float, neighborsLeafSize: Int, timeNoCollision: Double) {
         self.maxNeightborDistance = maxNeightborDistance
         self.neighborsLeafSize = neighborsLeafSize
         self.timeNoCollision = timeNoCollision
-        self.timeStep = timeStep
     }
     
     func neighbors(of agent: Agent, kTree: AgentKTree) -> [Agent] {
@@ -39,15 +37,6 @@ class RVOOptimalSimulator {
 }
 
 extension RVOOptimalSimulator: RVOSimulator {
-    func add(agent: Agent, destination: Vector) {
-        agents.append(agent)
-        destinations.append(destination)
-    }
-    
-    func removeAll() {
-        agents.removeAll()
-        destinations.removeAll()
-    }
     
     func computeAgents(timeStep: Double){
         agentKTree = AgentKTree(agents: agents, maxLeafSize: neighborsLeafSize)

@@ -8,9 +8,10 @@
 
 import Foundation
 
-protocol RVOSimulator {
-    func add(agent: Agent, destination: Vector)
-    func removeAll()
+protocol RVOSimulator: class {
+    var agents: [Agent] { get set }
+    var destinations: [Vector] { get set }
+
     func computeAgents(timeStep: Double)
     func neighbors(of agent: Agent) -> [Agent]
     func printVisualisationForDebug()
@@ -28,6 +29,17 @@ struct RVOSimulatorAgentDefinition {
 }
 
 extension RVOSimulator {
+    
+    func add(agent: Agent, destination: Vector) {
+        agents.append(agent)
+        destinations.append(destination)
+    }
+    
+    func removeAll() {
+        agents.removeAll()
+        destinations.removeAll()
+    }
+    
     func addAgentInCircle(
         radius: Float,
         numberOfAgents: Int,

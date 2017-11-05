@@ -45,8 +45,7 @@ class RVOExample1Scene: SKScene {
     
     private func addNodes(){
         let simulator = RVOSimpleSimulator(
-            timeNoCollision: Constants.timeNoCollision,
-            timeStep: Constants.timeStep
+            timeNoCollision: Constants.timeNoCollision
         )
         
         simulator.addAgentInCircle(
@@ -65,7 +64,7 @@ class RVOExample1Scene: SKScene {
             neighbors: simulator.neighbors(of: simulator.agents[0]),
             scale: Constants.scale,
             timeNoCollision: simulator.timeNoCollision,
-            timeStep: simulator.timeStep,
+            timeStep: Constants.timeStep,
             destinationPoint: simulator.destinations[0]
         )
 

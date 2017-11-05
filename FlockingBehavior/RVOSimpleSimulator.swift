@@ -11,7 +11,6 @@ import Foundation
 class RVOSimpleSimulator {
     
     let timeNoCollision: Double
-    let timeStep: Double
     
     var agents = [Agent]()
     var destinations = [Vector]()
@@ -20,22 +19,12 @@ class RVOSimpleSimulator {
     
     var agentKTree: AgentKTree!
     
-    init(timeNoCollision: Double, timeStep: Double) {
+    init(timeNoCollision: Double) {
         self.timeNoCollision = timeNoCollision
-        self.timeStep = timeStep
     }
 }
 
 extension RVOSimpleSimulator: RVOSimulator {
-    func add(agent: Agent, destination: Vector) {
-        agents.append(agent)
-        destinations.append(destination)
-    }
-    
-    func removeAll() {
-        agents.removeAll()
-        destinations.removeAll()
-    }
     
     func computeAgents(timeStep: Double){
         

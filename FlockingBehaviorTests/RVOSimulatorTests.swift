@@ -12,10 +12,8 @@ import XCTest
 class RVOSimulatorTests: XCTestCase {
     
     func testBuilderTwoAgentsInCircle(){
-        let simulator = RVOSimulator.makeWithAgentsInCircle(
-            radius: 5.0,
-            numberOfAgents: 2
-        )
+        let simulator = RVOSimpleSimulator(timeNoCollision: 10.0)
+        simulator.addAgentInCircle(radius: 5.0, numberOfAgents: 2, agentRadius: 1.0, agentMaxSpeed: 1.0)
         
         XCTAssertTrue(simulator.agents[0].position.isEqualInProximity(to: Vector(5.0, 0.0)))
         XCTAssertTrue(simulator.destinations[0].isEqualInProximity(to: Vector(-5.0, 0.0)))
@@ -25,10 +23,8 @@ class RVOSimulatorTests: XCTestCase {
     }
     
     func testBuilderFourAgentsInCircle(){
-        let simulator = RVOSimulator.makeWithAgentsInCircle(
-            radius: 5.0,
-            numberOfAgents: 4
-        )
+        let simulator = RVOSimpleSimulator(timeNoCollision: 10.0)
+        simulator.addAgentInCircle(radius: 5.0, numberOfAgents: 4, agentRadius: 1.0, agentMaxSpeed: 1.0)
         
         XCTAssertTrue(simulator.agents[0].position.isEqualInProximity(to: Vector(5.0, 0.0)))
         XCTAssertTrue(simulator.destinations[0].isEqualInProximity(to: Vector(-5.0, 0.0)))
