@@ -237,10 +237,7 @@ enum LineComputer {
         directionOptimal: Bool) -> LinearProgram2Result
     {
         var newVelocity: Vector
-        if directionOptimal {
-            newVelocity = optimalVelocity * radius
-            
-        } else if optimalVelocity.squaredLength > sqr(radius) {
+        if directionOptimal || optimalVelocity.squaredLength > sqr(radius) {
             newVelocity = optimalVelocity.normalized * radius
         
         } else {
