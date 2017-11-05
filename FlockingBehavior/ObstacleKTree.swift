@@ -24,13 +24,13 @@ class ObstacleKTree {
         }
     }
     
-    struct OptimalSplit {
+    struct OptimalPivot {
         let index: Int
         let leftCount: Int
         let rightCount: Int
     }
     
-    struct SplitResult {
+    struct PivotResult {
         let left: Obstacle
         let right: Obstacle
     }
@@ -46,18 +46,18 @@ class ObstacleKTree {
             return nil
         }
         
-        guard let optimalSplit = findOptimalSplitIndex(obstacles: obstacles) else {
+        guard let optimalPivot = findOptimalPivotIndex(obstacles: obstacles) else {
             return nil
         }
         
         var leftObstacles = [Obstacle]()
         var rightObstacles = [Obstacle]()
         
-        let obstacleI1 = obstacles[optimalSplit.index]
+        let obstacleI1 = obstacles[optimalPivot.index]
         let obstacleI2 = obstacleI1.next!
         
         for j in 0..<obstacles.count {
-            guard optimalSplit.index != j else {
+            guard optimalPivot.index != j else {
                 continue
             }
             
@@ -107,12 +107,12 @@ class ObstacleKTree {
         return Node(obstacle: obstacleI1, left: left, right: right)
     }
         
-    static func findOptimalSplitIndex(obstacles: [Obstacle]) -> OptimalSplit? {
+    static func findOptimalPivotIndex(obstacles: [Obstacle]) -> OptimalPivot? {
         guard !obstacles.isEmpty else {
             return nil
         }
         
-        var optimalSplitIndex = 0
+        var optimalPivotIndex = 0
         var minLeft = obstacles.count
         var minRight = obstacles.count
         
@@ -162,11 +162,11 @@ class ObstacleKTree {
             {
                 minLeft = leftSize
                 minRight = rightSize
-                optimalSplitIndex = i
+                optimalPivotIndex = i
             }
         }
         
-        return OptimalSplit(index: optimalSplitIndex, leftCount: minLeft, rightCount: minRight)
+        return OptimalPivot(index: optimalPivotIndex, leftCount: minLeft, rightCount: minRight)
     }
     
     func query(origin: Vector, range: Float, onObstacleQueried: OnObstacleQueried) {

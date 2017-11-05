@@ -21,7 +21,7 @@ class PointLineRelativePositionTests: XCTestCase {
         XCTAssert(leftOf(start: Vector(-2,-3), end: Vector(2,3), point: Vector(-0,0)) == 0)
     }
     
-    func testPointIsRIghtOfLine() {
+    func testPointIsRightOfLine() {
         XCTAssert(leftOf(start: Vector(1,-1), end: Vector(1,1), point: Vector(2,1)) < 0)
         XCTAssert(leftOf(start: Vector(-2,-3), end: Vector(2,3), point: Vector(4,-5)) < 0)
     }

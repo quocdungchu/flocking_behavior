@@ -12,16 +12,21 @@ import XCTest
 class AgentKTreeTests: XCTestCase {
     
     func testBuildNodes(){
-        let agents = [
-            Agent(position: Vector(2,0)),
-            Agent(position: Vector(3,0)),
-            Agent(position: Vector(8,0)),
-            Agent(position: Vector(7,0)),
-            Agent(position: Vector(9,0)),
-            Agent(position: Vector(6,0)),
-            Agent(position: Vector.zero),
-            Agent(position: Vector(1,0)),
+        
+        let positions = [
+            Vector(2,0),
+            Vector(3,0),
+            Vector(8,0),
+            Vector(7,0),
+            Vector(9,0),
+            Vector(6,0),
+            Vector.zero,
+            Vector(1,0),
         ]
+        
+        let agents = positions.map {
+            Agent(position: $0, radius: 10, maxSpeed: 0.0)
+        }
         
         let kTree = AgentKTree(agents: agents, maxLeafSize: 1)
         XCTAssertEqual(
@@ -31,12 +36,16 @@ class AgentKTreeTests: XCTestCase {
     }
     
     func testQuery1(){
-        let agents = [
-            Agent(position: Vector(0,0)),
-            Agent(position: Vector(1,0)),
-            Agent(position: Vector(0,1)),
-            Agent(position: Vector(1,1)),
+        let positions = [
+            Vector(0,0),
+            Vector(1,0),
+            Vector(0,1),
+            Vector(1,1),
         ]
+        
+        let agents = positions.map {
+            Agent(position: $0, radius: 10, maxSpeed: 0.0)
+        }
         
         let kTree = AgentKTree(agents: agents, maxLeafSize: 1)
         
@@ -47,21 +56,29 @@ class AgentKTreeTests: XCTestCase {
         }
         
         XCTAssertTrue(queried.contains { $0.position == Vector(0,0) })
+        
+        XCTAssertFalse(queried.contains { $0.position == Vector(1,0) })
+        XCTAssertFalse(queried.contains { $0.position == Vector(1,1) })
+        XCTAssertFalse(queried.contains { $0.position == Vector(0,1) })
     }
     
     func testQuery2(){
-        let agents = [
-            Agent(position: Vector(0,0)),
-            Agent(position: Vector(1,0)),
-            Agent(position: Vector(0,1)),
-            Agent(position: Vector(1,1)),
+        let positions = [
+            Vector(0,0),
+            Vector(1,0),
+            Vector(0,1),
+            Vector(1,1),
         ]
+        
+        let agents = positions.map {
+            Agent(position: $0, radius: 10, maxSpeed: 0.0)
+        }
         
         let kTree = AgentKTree(agents: agents, maxLeafSize: 1)
         
         var queried = [Agent]()
         
-        kTree.queryAgents(point: Vector(0.5, 0.5), range: 0.6) {
+        kTree.queryAgents(point: Vector(0.5, 0.5), range: 0.8) {
             queried.append($0)
         }
         
@@ -72,19 +89,23 @@ class AgentKTreeTests: XCTestCase {
     }
     
     func testQuery3(){
-        let agents = [
-            Agent(position: Vector(0,0)),
-            Agent(position: Vector(1,0)),
-            Agent(position: Vector(2,0)),
+        let positions = [
+            Vector(0,0),
+            Vector(1,0),
+            Vector(2,0),
             
-            Agent(position: Vector(0,1)),
-            Agent(position: Vector(1,1)),
-            Agent(position: Vector(2,1)),
+            Vector(0,1),
+            Vector(1,1),
+            Vector(2,1),
             
-            Agent(position: Vector(0,2)),
-            Agent(position: Vector(1,2)),
-            Agent(position: Vector(2,2)),
+            Vector(0,2),
+            Vector(1,2),
+            Vector(2,2)
         ]
+        
+        let agents = positions.map {
+            Agent(position: $0, radius: 10, maxSpeed: 0.0)
+        }
         
         let kTree = AgentKTree(agents: agents, maxLeafSize: 1)
         
@@ -98,5 +119,44 @@ class AgentKTreeTests: XCTestCase {
         XCTAssertTrue(queried.contains { $0.position == Vector(1,0) })
         XCTAssertTrue(queried.contains { $0.position == Vector(1,1) })
         XCTAssertTrue(queried.contains { $0.position == Vector(0,1) })
+    }
+    
+    func testQuery4(){
+        let positions = [
+            Vector(0,0),
+            Vector(1,0),
+            Vector(2,0),
+            
+            Vector(0,1),
+            Vector(1,1),
+            Vector(2,1),
+            
+            Vector(0,2),
+            Vector(1,2),
+            Vector(2,2)
+        ]
+        
+        let agents = positions.map {
+            Agent(position: $0, radius: 10, maxSpeed: 0.0)
+        }
+        
+        let kTree = AgentKTree(agents: agents, maxLeafSize: 1)
+        
+        var queried = [Agent]()
+        
+        kTree.queryAgents(point: Vector(0.5, 0.5), range: 1) {
+            queried.append($0)
+        }
+        
+        XCTAssertTrue(queried.contains { $0.position == Vector(0,0) })
+        XCTAssertTrue(queried.contains { $0.position == Vector(1,0) })
+        XCTAssertTrue(queried.contains { $0.position == Vector(1,1) })
+        XCTAssertTrue(queried.contains { $0.position == Vector(0,1) })
+        
+        XCTAssertFalse(queried.contains { $0.position == Vector(2,0) })
+        XCTAssertFalse(queried.contains { $0.position == Vector(2,1) })
+        XCTAssertFalse(queried.contains { $0.position == Vector(0,2) })
+        XCTAssertFalse(queried.contains { $0.position == Vector(1,2) })
+        XCTAssertFalse(queried.contains { $0.position == Vector(2,2) })
     }
 }

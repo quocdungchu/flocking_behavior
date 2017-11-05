@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gOY-k8-k1h">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Example2 View Controller-->
+        <scene sceneID="lqi-25-jgo">
+            <objects>
+                <viewController id="gOY-k8-k1h" customClass="RVOExample2ViewController" customModule="FlockingBehavior" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="7a2-Ii-k8J" customClass="SKView">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Kif-nz-Ary">
+                                <rect key="frame" x="21.5" y="40" width="332" height="29"/>
+                                <segments>
+                                    <segment title="Circle"/>
+                                    <segment title="Block"/>
+                                    <segment title="One destination"/>
+                                </segments>
+                                <connections>
+                                    <action selector="tapOnSegmentWithSender:" destination="gOY-k8-k1h" eventType="valueChanged" id="sLK-8s-qLb"/>
+                                </connections>
+                            </segmentedControl>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Kif-nz-Ary" firstAttribute="top" secondItem="pTe-L3-MMd" secondAttribute="top" constant="20" id="ldt-TZ-P3n"/>
+                            <constraint firstItem="Kif-nz-Ary" firstAttribute="centerX" secondItem="7a2-Ii-k8J" secondAttribute="centerX" id="pJo-ci-Pyh"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="pTe-L3-MMd"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jcK-dQ-tk3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="76" y="135"/>
+        </scene>
+    </scenes>
+</document>

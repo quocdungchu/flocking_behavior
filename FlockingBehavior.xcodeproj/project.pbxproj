@@ -7,13 +7,90 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		723CE1D51FA7D2B2001CF1DC /* RVOSimpleSimulator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723CE1D41FA7D2B2001CF1DC /* RVOSimpleSimulator.swift */; };
 		7246E84A1F7FF2B500343083 /* Updatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7246E8491F7FF2B400343083 /* Updatable.swift */; };
+		725847FC1FADB7B800D4E15D /* RVOExample2Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725847FB1FADB7B800D4E15D /* RVOExample2Scene.swift */; };
+		725847FE1FADB7F600D4E15D /* RVOExample2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725847FD1FADB7F600D4E15D /* RVOExample2ViewController.swift */; };
+		725848061FADC13900D4E15D /* RVOExample2.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 725848051FADC13900D4E15D /* RVOExample2.storyboard */; };
+		725848391FADC26900D4E15D /* RVOExample2Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725847FB1FADB7B800D4E15D /* RVOExample2Scene.swift */; };
+		7258483A1FADC26900D4E15D /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1867061F779D9F000E0864 /* GameScene.swift */; };
+		7258483B1FADC26900D4E15D /* Agent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7263405A1F9B55CB009D91A4 /* Agent.swift */; };
+		7258483C1FADC26900D4E15D /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726340521F9B3923009D91A4 /* main.swift */; };
+		7258483D1FADC26900D4E15D /* Vector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B0CE771F92269B0082CF46 /* Vector.swift */; };
+		7258483E1FADC26900D4E15D /* RVOSimpleSimulator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723CE1D41FA7D2B2001CF1DC /* RVOSimpleSimulator.swift */; };
+		7258483F1FADC26900D4E15D /* RVOAvoidanceNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B453351FA629BB005CDE8A /* RVOAvoidanceNode.swift */; };
+		725848401FADC26900D4E15D /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B0CE791F9226BE0082CF46 /* Math.swift */; };
+		725848411FADC26900D4E15D /* RVOExample1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B4532B1FA61162005CDE8A /* RVOExample1ViewController.swift */; };
+		725848421FADC26900D4E15D /* SteeringAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6349481F77A639002F5587 /* SteeringAgent.swift */; };
+		725848431FADC26900D4E15D /* ObstacleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726340501F9B3918009D91A4 /* ObstacleBuilder.swift */; };
+		725848441FADC26900D4E15D /* Obstacle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B0CE731F921B3E0082CF46 /* Obstacle.swift */; };
+		725848451FADC26900D4E15D /* SteeringManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72A184961F7FE49100BB16DB /* SteeringManager.swift */; };
+		725848461FADC26900D4E15D /* Updatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7246E8491F7FF2B400343083 /* Updatable.swift */; };
+		725848471FADC26900D4E15D /* RVOOptimalSimulator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C58F4F1FAA41CA0077FB2B /* RVOOptimalSimulator.swift */; };
+		725848481FADC26900D4E15D /* SteeringGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72A184981F7FE4F100BB16DB /* SteeringGroup.swift */; };
+		725848491FADC26900D4E15D /* AgentKTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726340581F9B5579009D91A4 /* AgentKTree.swift */; };
+		7258484A1FADC26900D4E15D /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72FF33C31FA47F1500076D3B /* Line.swift */; };
+		7258484B1FADC26900D4E15D /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1867081F779D9F000E0864 /* GameViewController.swift */; };
+		7258484C1FADC26900D4E15D /* ObstacleKTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B0CE811F92654A0082CF46 /* ObstacleKTree.swift */; };
+		7258484D1FADC26900D4E15D /* RVOExample2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725847FD1FADB7F600D4E15D /* RVOExample2ViewController.swift */; };
+		7258484E1FADC26900D4E15D /* SteeringBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB63494D1F77A746002F5587 /* SteeringBehavior.swift */; };
+		7258484F1FADC26900D4E15D /* RVOConstans.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B0CE831F927A440082CF46 /* RVOConstans.swift */; };
+		725848501FADC26900D4E15D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1867001F779D9F000E0864 /* AppDelegate.swift */; };
+		725848521FADC26900D4E15D /* RVOAgentNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B453311FA6137D005CDE8A /* RVOAgentNode.swift */; };
+		725848531FADC26900D4E15D /* AgentNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB63494F1F77AB5D002F5587 /* AgentNode.swift */; };
+		725848541FADC26900D4E15D /* RVOExample1Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B4532F1FA61328005CDE8A /* RVOExample1Scene.swift */; };
+		725848551FADC26900D4E15D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB28D3951F7838A700BB1542 /* Constants.swift */; };
+		725848581FADC26900D4E15D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB18670A1F779D9F000E0864 /* Main.storyboard */; };
+		725848591FADC26900D4E15D /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = AB1867021F779D9F000E0864 /* GameScene.sks */; };
+		7258485A1FADC26900D4E15D /* RVOExample2.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 725848051FADC13900D4E15D /* RVOExample2.storyboard */; };
+		7258485B1FADC26900D4E15D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB18670D1F779D9F000E0864 /* Assets.xcassets */; };
+		7258485C1FADC26900D4E15D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB18670F1F779D9F000E0864 /* LaunchScreen.storyboard */; };
+		7258485D1FADC26900D4E15D /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = AB1867041F779D9F000E0864 /* Actions.sks */; };
+		7258485F1FADC26900D4E15D /* RVOExample1.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 72B453291FA610B6005CDE8A /* RVOExample1.storyboard */; };
+		725848671FADC27A00D4E15D /* RVOExample2Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725847FB1FADB7B800D4E15D /* RVOExample2Scene.swift */; };
+		725848681FADC27A00D4E15D /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1867061F779D9F000E0864 /* GameScene.swift */; };
+		725848691FADC27A00D4E15D /* Agent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7263405A1F9B55CB009D91A4 /* Agent.swift */; };
+		7258486A1FADC27A00D4E15D /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726340521F9B3923009D91A4 /* main.swift */; };
+		7258486B1FADC27A00D4E15D /* Vector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B0CE771F92269B0082CF46 /* Vector.swift */; };
+		7258486C1FADC27A00D4E15D /* RVOSimpleSimulator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723CE1D41FA7D2B2001CF1DC /* RVOSimpleSimulator.swift */; };
+		7258486D1FADC27A00D4E15D /* RVOAvoidanceNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B453351FA629BB005CDE8A /* RVOAvoidanceNode.swift */; };
+		7258486E1FADC27A00D4E15D /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B0CE791F9226BE0082CF46 /* Math.swift */; };
+		7258486F1FADC27A00D4E15D /* RVOExample1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B4532B1FA61162005CDE8A /* RVOExample1ViewController.swift */; };
+		725848701FADC27A00D4E15D /* SteeringAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6349481F77A639002F5587 /* SteeringAgent.swift */; };
+		725848711FADC27A00D4E15D /* ObstacleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726340501F9B3918009D91A4 /* ObstacleBuilder.swift */; };
+		725848721FADC27A00D4E15D /* Obstacle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B0CE731F921B3E0082CF46 /* Obstacle.swift */; };
+		725848731FADC27A00D4E15D /* SteeringManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72A184961F7FE49100BB16DB /* SteeringManager.swift */; };
+		725848741FADC27A00D4E15D /* Updatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7246E8491F7FF2B400343083 /* Updatable.swift */; };
+		725848751FADC27A00D4E15D /* RVOOptimalSimulator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C58F4F1FAA41CA0077FB2B /* RVOOptimalSimulator.swift */; };
+		725848761FADC27A00D4E15D /* SteeringGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72A184981F7FE4F100BB16DB /* SteeringGroup.swift */; };
+		725848771FADC27A00D4E15D /* AgentKTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726340581F9B5579009D91A4 /* AgentKTree.swift */; };
+		725848781FADC27A00D4E15D /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72FF33C31FA47F1500076D3B /* Line.swift */; };
+		725848791FADC27A00D4E15D /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1867081F779D9F000E0864 /* GameViewController.swift */; };
+		7258487A1FADC27A00D4E15D /* ObstacleKTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B0CE811F92654A0082CF46 /* ObstacleKTree.swift */; };
+		7258487B1FADC27A00D4E15D /* RVOExample2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725847FD1FADB7F600D4E15D /* RVOExample2ViewController.swift */; };
+		7258487C1FADC27A00D4E15D /* SteeringBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB63494D1F77A746002F5587 /* SteeringBehavior.swift */; };
+		7258487D1FADC27A00D4E15D /* RVOConstans.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B0CE831F927A440082CF46 /* RVOConstans.swift */; };
+		7258487E1FADC27A00D4E15D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1867001F779D9F000E0864 /* AppDelegate.swift */; };
+		725848801FADC27A00D4E15D /* RVOAgentNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B453311FA6137D005CDE8A /* RVOAgentNode.swift */; };
+		725848811FADC27A00D4E15D /* AgentNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB63494F1F77AB5D002F5587 /* AgentNode.swift */; };
+		725848821FADC27A00D4E15D /* RVOExample1Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B4532F1FA61328005CDE8A /* RVOExample1Scene.swift */; };
+		725848831FADC27A00D4E15D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB28D3951F7838A700BB1542 /* Constants.swift */; };
+		725848861FADC27A00D4E15D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB18670A1F779D9F000E0864 /* Main.storyboard */; };
+		725848871FADC27A00D4E15D /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = AB1867021F779D9F000E0864 /* GameScene.sks */; };
+		725848881FADC27A00D4E15D /* RVOExample2.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 725848051FADC13900D4E15D /* RVOExample2.storyboard */; };
+		725848891FADC27A00D4E15D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB18670D1F779D9F000E0864 /* Assets.xcassets */; };
+		7258488A1FADC27A00D4E15D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB18670F1F779D9F000E0864 /* LaunchScreen.storyboard */; };
+		7258488B1FADC27A00D4E15D /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = AB1867041F779D9F000E0864 /* Actions.sks */; };
+		7258488D1FADC27A00D4E15D /* RVOExample1.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 72B453291FA610B6005CDE8A /* RVOExample1.storyboard */; };
 		726340511F9B3919009D91A4 /* ObstacleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726340501F9B3918009D91A4 /* ObstacleBuilder.swift */; };
 		726340541F9B3923009D91A4 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726340521F9B3923009D91A4 /* main.swift */; };
-		726340551F9B3923009D91A4 /* TestingAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726340531F9B3923009D91A4 /* TestingAppDelegate.swift */; };
 		726340591F9B557A009D91A4 /* AgentKTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726340581F9B5579009D91A4 /* AgentKTree.swift */; };
 		7263405B1F9B55CB009D91A4 /* Agent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7263405A1F9B55CB009D91A4 /* Agent.swift */; };
 		7263405D1F9BAFA1009D91A4 /* AgentKTreeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7263405C1F9BAFA1009D91A4 /* AgentKTreeTests.swift */; };
+		729271E71FADCEBB00F92E27 /* TestingAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729271E61FADCEBB00F92E27 /* TestingAppDelegate.swift */; };
+		729271E91FAE1CB400F92E27 /* RVOSimulator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729271E81FAE1CB400F92E27 /* RVOSimulator.swift */; };
+		729271EA1FAE1E1800F92E27 /* RVOSimulator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729271E81FAE1CB400F92E27 /* RVOSimulator.swift */; };
+		729271EB1FAE1E1900F92E27 /* RVOSimulator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729271E81FAE1CB400F92E27 /* RVOSimulator.swift */; };
 		72A184971F7FE49200BB16DB /* SteeringManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72A184961F7FE49100BB16DB /* SteeringManager.swift */; };
 		72A184991F7FE4F100BB16DB /* SteeringGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72A184981F7FE4F100BB16DB /* SteeringGroup.swift */; };
 		72B0CE741F921B3E0082CF46 /* Obstacle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B0CE731F921B3E0082CF46 /* Obstacle.swift */; };
@@ -22,9 +99,19 @@
 		72B0CE7C1F92271F0082CF46 /* PointLineRelativePositionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B0CE7B1F92271F0082CF46 /* PointLineRelativePositionTests.swift */; };
 		72B0CE7E1F925D550082CF46 /* ObstacleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B0CE7D1F925D550082CF46 /* ObstacleTests.swift */; };
 		72B0CE821F92654A0082CF46 /* ObstacleKTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B0CE811F92654A0082CF46 /* ObstacleKTree.swift */; };
-		72B0CE841F927A440082CF46 /* RVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B0CE831F927A440082CF46 /* RVO.swift */; };
+		72B0CE841F927A440082CF46 /* RVOConstans.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B0CE831F927A440082CF46 /* RVOConstans.swift */; };
 		72B0CE861F927E4E0082CF46 /* ObstacleKTreeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B0CE851F927E4E0082CF46 /* ObstacleKTreeTests.swift */; };
 		72B0CE881F92AFAF0082CF46 /* MathTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B0CE871F92AFAF0082CF46 /* MathTests.swift */; };
+		72B4532A1FA610B6005CDE8A /* RVOExample1.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 72B453291FA610B6005CDE8A /* RVOExample1.storyboard */; };
+		72B4532C1FA61162005CDE8A /* RVOExample1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B4532B1FA61162005CDE8A /* RVOExample1ViewController.swift */; };
+		72B453301FA61328005CDE8A /* RVOExample1Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B4532F1FA61328005CDE8A /* RVOExample1Scene.swift */; };
+		72B453321FA6137D005CDE8A /* RVOAgentNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B453311FA6137D005CDE8A /* RVOAgentNode.swift */; };
+		72B453361FA629BB005CDE8A /* RVOAvoidanceNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B453351FA629BB005CDE8A /* RVOAvoidanceNode.swift */; };
+		72C58F501FAA41CA0077FB2B /* RVOOptimalSimulator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C58F4F1FAA41CA0077FB2B /* RVOOptimalSimulator.swift */; };
+		72E581301FA9B6C900E0A127 /* RVOSimulatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72E5812F1FA9B6C900E0A127 /* RVOSimulatorTests.swift */; };
+		72FF33C41FA47F1500076D3B /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72FF33C31FA47F1500076D3B /* Line.swift */; };
+		72FF33C61FA5CE9C00076D3B /* AgentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72FF33C51FA5CE9C00076D3B /* AgentTests.swift */; };
+		72FF33C81FA5E4F400076D3B /* LineComputerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72FF33C71FA5E4F400076D3B /* LineComputerTests.swift */; };
 		AB1867011F779D9F000E0864 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1867001F779D9F000E0864 /* AppDelegate.swift */; };
 		AB1867031F779D9F000E0864 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = AB1867021F779D9F000E0864 /* GameScene.sks */; };
 		AB1867051F779D9F000E0864 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = AB1867041F779D9F000E0864 /* Actions.sks */; };
@@ -33,8 +120,6 @@
 		AB18670C1F779D9F000E0864 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB18670A1F779D9F000E0864 /* Main.storyboard */; };
 		AB18670E1F779D9F000E0864 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB18670D1F779D9F000E0864 /* Assets.xcassets */; };
 		AB1867111F779D9F000E0864 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB18670F1F779D9F000E0864 /* LaunchScreen.storyboard */; };
-		AB18671C1F779D9F000E0864 /* FlockingBehaviorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB18671B1F779D9F000E0864 /* FlockingBehaviorTests.swift */; };
-		AB1867271F779D9F000E0864 /* FlockingBehaviorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1867261F779D9F000E0864 /* FlockingBehaviorUITests.swift */; };
 		AB28D3961F7838A700BB1542 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB28D3951F7838A700BB1542 /* Constants.swift */; };
 		AB6349491F77A639002F5587 /* SteeringAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6349481F77A639002F5587 /* SteeringAgent.swift */; };
 		AB63494E1F77A746002F5587 /* SteeringBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB63494D1F77A746002F5587 /* SteeringBehavior.swift */; };
@@ -42,14 +127,21 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		AB1867181F779D9F000E0864 /* PBXContainerItemProxy */ = {
+		724FE3DD1FADCCDB00E659E6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = AB1866F51F779D9F000E0864 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = AB1866FC1F779D9F000E0864;
-			remoteInfo = FlockingBehavior;
+			remoteGlobalIDString = 725848371FADC26900D4E15D;
+			remoteInfo = RVOExample1;
 		};
-		AB1867231F779D9F000E0864 /* PBXContainerItemProxy */ = {
+		724FE3DF1FADCCF000E659E6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AB1866F51F779D9F000E0864 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 725848651FADC27A00D4E15D;
+			remoteInfo = RVOExample2;
+		};
+		AB1867181F779D9F000E0864 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = AB1866F51F779D9F000E0864 /* Project object */;
 			proxyType = 1;
@@ -59,13 +151,23 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		723CE1D41FA7D2B2001CF1DC /* RVOSimpleSimulator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RVOSimpleSimulator.swift; sourceTree = "<group>"; };
 		7246E8491F7FF2B400343083 /* Updatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Updatable.swift; sourceTree = "<group>"; };
+		725847FB1FADB7B800D4E15D /* RVOExample2Scene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RVOExample2Scene.swift; sourceTree = "<group>"; };
+		725847FD1FADB7F600D4E15D /* RVOExample2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RVOExample2ViewController.swift; sourceTree = "<group>"; };
+		725848051FADC13900D4E15D /* RVOExample2.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RVOExample2.storyboard; sourceTree = "<group>"; };
+		725848341FADC21C00D4E15D /* FlockingBehavior copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "FlockingBehavior copy-Info.plist"; path = "/Users/quocdungchu/Projects/flocking_behavior/FlockingBehavior copy-Info.plist"; sourceTree = "<absolute>"; };
+		725848631FADC26900D4E15D /* RVOExample1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RVOExample1.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		725848641FADC26A00D4E15D /* FlockingBehavior copy2-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "FlockingBehavior copy2-Info.plist"; path = "/Users/quocdungchu/Projects/flocking_behavior/FlockingBehavior copy2-Info.plist"; sourceTree = "<absolute>"; };
+		725848911FADC27A00D4E15D /* RVOExample2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RVOExample2.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		725848921FADC27C00D4E15D /* RVOExample1 copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "RVOExample1 copy-Info.plist"; path = "/Users/quocdungchu/Projects/flocking_behavior/RVOExample1 copy-Info.plist"; sourceTree = "<absolute>"; };
 		726340501F9B3918009D91A4 /* ObstacleBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObstacleBuilder.swift; sourceTree = "<group>"; };
 		726340521F9B3923009D91A4 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
-		726340531F9B3923009D91A4 /* TestingAppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestingAppDelegate.swift; sourceTree = "<group>"; };
 		726340581F9B5579009D91A4 /* AgentKTree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgentKTree.swift; sourceTree = "<group>"; };
 		7263405A1F9B55CB009D91A4 /* Agent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Agent.swift; sourceTree = "<group>"; };
 		7263405C1F9BAFA1009D91A4 /* AgentKTreeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgentKTreeTests.swift; sourceTree = "<group>"; };
+		729271E61FADCEBB00F92E27 /* TestingAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingAppDelegate.swift; sourceTree = "<group>"; };
+		729271E81FAE1CB400F92E27 /* RVOSimulator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RVOSimulator.swift; sourceTree = "<group>"; };
 		72A184961F7FE49100BB16DB /* SteeringManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SteeringManager.swift; sourceTree = "<group>"; };
 		72A184981F7FE4F100BB16DB /* SteeringGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SteeringGroup.swift; sourceTree = "<group>"; };
 		72B0CE731F921B3E0082CF46 /* Obstacle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Obstacle.swift; sourceTree = "<group>"; };
@@ -74,9 +176,19 @@
 		72B0CE7B1F92271F0082CF46 /* PointLineRelativePositionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointLineRelativePositionTests.swift; sourceTree = "<group>"; };
 		72B0CE7D1F925D550082CF46 /* ObstacleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObstacleTests.swift; sourceTree = "<group>"; };
 		72B0CE811F92654A0082CF46 /* ObstacleKTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObstacleKTree.swift; sourceTree = "<group>"; };
-		72B0CE831F927A440082CF46 /* RVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RVO.swift; sourceTree = "<group>"; };
+		72B0CE831F927A440082CF46 /* RVOConstans.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RVOConstans.swift; sourceTree = "<group>"; };
 		72B0CE851F927E4E0082CF46 /* ObstacleKTreeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObstacleKTreeTests.swift; sourceTree = "<group>"; };
 		72B0CE871F92AFAF0082CF46 /* MathTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathTests.swift; sourceTree = "<group>"; };
+		72B453291FA610B6005CDE8A /* RVOExample1.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RVOExample1.storyboard; sourceTree = "<group>"; };
+		72B4532B1FA61162005CDE8A /* RVOExample1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RVOExample1ViewController.swift; sourceTree = "<group>"; };
+		72B4532F1FA61328005CDE8A /* RVOExample1Scene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RVOExample1Scene.swift; sourceTree = "<group>"; };
+		72B453311FA6137D005CDE8A /* RVOAgentNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RVOAgentNode.swift; sourceTree = "<group>"; };
+		72B453351FA629BB005CDE8A /* RVOAvoidanceNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RVOAvoidanceNode.swift; sourceTree = "<group>"; };
+		72C58F4F1FAA41CA0077FB2B /* RVOOptimalSimulator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RVOOptimalSimulator.swift; sourceTree = "<group>"; };
+		72E5812F1FA9B6C900E0A127 /* RVOSimulatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RVOSimulatorTests.swift; sourceTree = "<group>"; };
+		72FF33C31FA47F1500076D3B /* Line.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
+		72FF33C51FA5CE9C00076D3B /* AgentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgentTests.swift; sourceTree = "<group>"; };
+		72FF33C71FA5E4F400076D3B /* LineComputerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineComputerTests.swift; sourceTree = "<group>"; };
 		AB1866FD1F779D9F000E0864 /* FlockingBehavior.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlockingBehavior.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB1867001F779D9F000E0864 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AB1867021F779D9F000E0864 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -88,11 +200,7 @@
 		AB1867101F779D9F000E0864 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AB1867121F779D9F000E0864 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AB1867171F779D9F000E0864 /* FlockingBehaviorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlockingBehaviorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		AB18671B1F779D9F000E0864 /* FlockingBehaviorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlockingBehaviorTests.swift; sourceTree = "<group>"; };
 		AB18671D1F779D9F000E0864 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AB1867221F779D9F000E0864 /* FlockingBehaviorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlockingBehaviorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		AB1867261F779D9F000E0864 /* FlockingBehaviorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlockingBehaviorUITests.swift; sourceTree = "<group>"; };
-		AB1867281F779D9F000E0864 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AB28D3951F7838A700BB1542 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		AB6349481F77A639002F5587 /* SteeringAgent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SteeringAgent.swift; sourceTree = "<group>"; };
 		AB63494D1F77A746002F5587 /* SteeringBehavior.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SteeringBehavior.swift; sourceTree = "<group>"; };
@@ -100,6 +208,20 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		725848561FADC26900D4E15D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		725848841FADC27A00D4E15D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		AB1866FA1F779D9F000E0864 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -114,17 +236,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		AB18671F1F779D9F000E0864 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		72B0CE721F921B200082CF46 /* RVO */ = {
+		725847FF1FADB86000D4E15D /* Example1 */ = {
+			isa = PBXGroup;
+			children = (
+				72B453291FA610B6005CDE8A /* RVOExample1.storyboard */,
+				72B4532B1FA61162005CDE8A /* RVOExample1ViewController.swift */,
+				72B4532F1FA61328005CDE8A /* RVOExample1Scene.swift */,
+			);
+			name = Example1;
+			sourceTree = "<group>";
+		};
+		725848001FADB87800D4E15D /* Core */ = {
 			isa = PBXGroup;
 			children = (
 				7263405A1F9B55CB009D91A4 /* Agent.swift */,
@@ -132,7 +257,56 @@
 				726340501F9B3918009D91A4 /* ObstacleBuilder.swift */,
 				72B0CE731F921B3E0082CF46 /* Obstacle.swift */,
 				72B0CE811F92654A0082CF46 /* ObstacleKTree.swift */,
-				72B0CE831F927A440082CF46 /* RVO.swift */,
+				72B0CE831F927A440082CF46 /* RVOConstans.swift */,
+			);
+			name = Core;
+			sourceTree = "<group>";
+		};
+		725848011FADB88900D4E15D /* Examples */ = {
+			isa = PBXGroup;
+			children = (
+				725848041FADB8EE00D4E15D /* Nodes */,
+				725847FF1FADB86000D4E15D /* Example1 */,
+				725848031FADB8BD00D4E15D /* Example2 */,
+			);
+			name = Examples;
+			sourceTree = "<group>";
+		};
+		725848021FADB89900D4E15D /* Simulator */ = {
+			isa = PBXGroup;
+			children = (
+				723CE1D41FA7D2B2001CF1DC /* RVOSimpleSimulator.swift */,
+				72C58F4F1FAA41CA0077FB2B /* RVOOptimalSimulator.swift */,
+				729271E81FAE1CB400F92E27 /* RVOSimulator.swift */,
+			);
+			name = Simulator;
+			sourceTree = "<group>";
+		};
+		725848031FADB8BD00D4E15D /* Example2 */ = {
+			isa = PBXGroup;
+			children = (
+				725847FD1FADB7F600D4E15D /* RVOExample2ViewController.swift */,
+				725847FB1FADB7B800D4E15D /* RVOExample2Scene.swift */,
+				725848051FADC13900D4E15D /* RVOExample2.storyboard */,
+			);
+			name = Example2;
+			sourceTree = "<group>";
+		};
+		725848041FADB8EE00D4E15D /* Nodes */ = {
+			isa = PBXGroup;
+			children = (
+				72B453311FA6137D005CDE8A /* RVOAgentNode.swift */,
+				72B453351FA629BB005CDE8A /* RVOAvoidanceNode.swift */,
+			);
+			name = Nodes;
+			sourceTree = "<group>";
+		};
+		72B0CE721F921B200082CF46 /* RVO */ = {
+			isa = PBXGroup;
+			children = (
+				725848001FADB87800D4E15D /* Core */,
+				725848021FADB89900D4E15D /* Simulator */,
+				725848011FADB88900D4E15D /* Examples */,
 			);
 			name = RVO;
 			sourceTree = "<group>";
@@ -142,8 +316,10 @@
 			children = (
 				AB1866FF1F779D9F000E0864 /* FlockingBehavior */,
 				AB18671A1F779D9F000E0864 /* FlockingBehaviorTests */,
-				AB1867251F779D9F000E0864 /* FlockingBehaviorUITests */,
 				AB1866FE1F779D9F000E0864 /* Products */,
+				725848341FADC21C00D4E15D /* FlockingBehavior copy-Info.plist */,
+				725848641FADC26A00D4E15D /* FlockingBehavior copy2-Info.plist */,
+				725848921FADC27C00D4E15D /* RVOExample1 copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -152,7 +328,8 @@
 			children = (
 				AB1866FD1F779D9F000E0864 /* FlockingBehavior.app */,
 				AB1867171F779D9F000E0864 /* FlockingBehaviorTests.xctest */,
-				AB1867221F779D9F000E0864 /* FlockingBehaviorUITests.xctest */,
+				725848631FADC26900D4E15D /* RVOExample1.app */,
+				725848911FADC27A00D4E15D /* RVOExample2.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -164,7 +341,6 @@
 				AB63494A1F77A65C002F5587 /* Math */,
 				AB6349471F77A619002F5587 /* Core */,
 				AB1867001F779D9F000E0864 /* AppDelegate.swift */,
-				726340531F9B3923009D91A4 /* TestingAppDelegate.swift */,
 				726340521F9B3923009D91A4 /* main.swift */,
 				AB63494F1F77AB5D002F5587 /* AgentNode.swift */,
 				AB1867021F779D9F000E0864 /* GameScene.sks */,
@@ -183,24 +359,18 @@
 		AB18671A1F779D9F000E0864 /* FlockingBehaviorTests */ = {
 			isa = PBXGroup;
 			children = (
-				AB18671B1F779D9F000E0864 /* FlockingBehaviorTests.swift */,
 				AB18671D1F779D9F000E0864 /* Info.plist */,
 				72B0CE7B1F92271F0082CF46 /* PointLineRelativePositionTests.swift */,
 				7263405C1F9BAFA1009D91A4 /* AgentKTreeTests.swift */,
+				72FF33C51FA5CE9C00076D3B /* AgentTests.swift */,
 				72B0CE7D1F925D550082CF46 /* ObstacleTests.swift */,
 				72B0CE851F927E4E0082CF46 /* ObstacleKTreeTests.swift */,
 				72B0CE871F92AFAF0082CF46 /* MathTests.swift */,
+				72FF33C71FA5E4F400076D3B /* LineComputerTests.swift */,
+				72E5812F1FA9B6C900E0A127 /* RVOSimulatorTests.swift */,
+				729271E61FADCEBB00F92E27 /* TestingAppDelegate.swift */,
 			);
 			path = FlockingBehaviorTests;
-			sourceTree = "<group>";
-		};
-		AB1867251F779D9F000E0864 /* FlockingBehaviorUITests */ = {
-			isa = PBXGroup;
-			children = (
-				AB1867261F779D9F000E0864 /* FlockingBehaviorUITests.swift */,
-				AB1867281F779D9F000E0864 /* Info.plist */,
-			);
-			path = FlockingBehaviorUITests;
 			sourceTree = "<group>";
 		};
 		AB6349471F77A619002F5587 /* Core */ = {
@@ -220,6 +390,7 @@
 			children = (
 				72B0CE771F92269B0082CF46 /* Vector.swift */,
 				72B0CE791F9226BE0082CF46 /* Math.swift */,
+				72FF33C31FA47F1500076D3B /* Line.swift */,
 			);
 			name = Math;
 			sourceTree = "<group>";
@@ -227,6 +398,40 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		725848371FADC26900D4E15D /* RVOExample1 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 725848601FADC26900D4E15D /* Build configuration list for PBXNativeTarget "RVOExample1" */;
+			buildPhases = (
+				725848381FADC26900D4E15D /* Sources */,
+				725848561FADC26900D4E15D /* Frameworks */,
+				725848571FADC26900D4E15D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RVOExample1;
+			productName = FlockingBehavior;
+			productReference = 725848631FADC26900D4E15D /* RVOExample1.app */;
+			productType = "com.apple.product-type.application";
+		};
+		725848651FADC27A00D4E15D /* RVOExample2 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7258488E1FADC27A00D4E15D /* Build configuration list for PBXNativeTarget "RVOExample2" */;
+			buildPhases = (
+				725848661FADC27A00D4E15D /* Sources */,
+				725848841FADC27A00D4E15D /* Frameworks */,
+				725848851FADC27A00D4E15D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RVOExample2;
+			productName = FlockingBehavior;
+			productReference = 725848911FADC27A00D4E15D /* RVOExample2.app */;
+			productType = "com.apple.product-type.application";
+		};
 		AB1866FC1F779D9F000E0864 /* FlockingBehavior */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = AB18672B1F779D9F000E0864 /* Build configuration list for PBXNativeTarget "FlockingBehavior" */;
@@ -256,29 +461,13 @@
 			);
 			dependencies = (
 				AB1867191F779D9F000E0864 /* PBXTargetDependency */,
+				724FE3DE1FADCCDB00E659E6 /* PBXTargetDependency */,
+				724FE3E01FADCCF000E659E6 /* PBXTargetDependency */,
 			);
 			name = FlockingBehaviorTests;
 			productName = FlockingBehaviorTests;
 			productReference = AB1867171F779D9F000E0864 /* FlockingBehaviorTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		AB1867211F779D9F000E0864 /* FlockingBehaviorUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = AB1867311F779D9F000E0864 /* Build configuration list for PBXNativeTarget "FlockingBehaviorUITests" */;
-			buildPhases = (
-				AB18671E1F779D9F000E0864 /* Sources */,
-				AB18671F1F779D9F000E0864 /* Frameworks */,
-				AB1867201F779D9F000E0864 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				AB1867241F779D9F000E0864 /* PBXTargetDependency */,
-			);
-			name = FlockingBehaviorUITests;
-			productName = FlockingBehaviorUITests;
-			productReference = AB1867221F779D9F000E0864 /* FlockingBehaviorUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
@@ -302,13 +491,6 @@
 						ProvisioningStyle = Automatic;
 						TestTargetID = AB1866FC1F779D9F000E0864;
 					};
-					AB1867211F779D9F000E0864 = {
-						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = 2U9LJ49V7G;
-						LastSwiftMigration = 0900;
-						ProvisioningStyle = Automatic;
-						TestTargetID = AB1866FC1F779D9F000E0864;
-					};
 				};
 			};
 			buildConfigurationList = AB1866F81F779D9F000E0864 /* Build configuration list for PBXProject "FlockingBehavior" */;
@@ -326,21 +508,52 @@
 			targets = (
 				AB1866FC1F779D9F000E0864 /* FlockingBehavior */,
 				AB1867161F779D9F000E0864 /* FlockingBehaviorTests */,
-				AB1867211F779D9F000E0864 /* FlockingBehaviorUITests */,
+				725848371FADC26900D4E15D /* RVOExample1 */,
+				725848651FADC27A00D4E15D /* RVOExample2 */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		725848571FADC26900D4E15D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				725848581FADC26900D4E15D /* Main.storyboard in Resources */,
+				725848591FADC26900D4E15D /* GameScene.sks in Resources */,
+				7258485A1FADC26900D4E15D /* RVOExample2.storyboard in Resources */,
+				7258485B1FADC26900D4E15D /* Assets.xcassets in Resources */,
+				7258485C1FADC26900D4E15D /* LaunchScreen.storyboard in Resources */,
+				7258485D1FADC26900D4E15D /* Actions.sks in Resources */,
+				7258485F1FADC26900D4E15D /* RVOExample1.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		725848851FADC27A00D4E15D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				725848861FADC27A00D4E15D /* Main.storyboard in Resources */,
+				725848871FADC27A00D4E15D /* GameScene.sks in Resources */,
+				725848881FADC27A00D4E15D /* RVOExample2.storyboard in Resources */,
+				725848891FADC27A00D4E15D /* Assets.xcassets in Resources */,
+				7258488A1FADC27A00D4E15D /* LaunchScreen.storyboard in Resources */,
+				7258488B1FADC27A00D4E15D /* Actions.sks in Resources */,
+				7258488D1FADC27A00D4E15D /* RVOExample1.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		AB1866FB1F779D9F000E0864 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				AB18670C1F779D9F000E0864 /* Main.storyboard in Resources */,
 				AB1867031F779D9F000E0864 /* GameScene.sks in Resources */,
+				725848061FADC13900D4E15D /* RVOExample2.storyboard in Resources */,
 				AB18670E1F779D9F000E0864 /* Assets.xcassets in Resources */,
 				AB1867111F779D9F000E0864 /* LaunchScreen.storyboard in Resources */,
 				AB1867051F779D9F000E0864 /* Actions.sks in Resources */,
+				72B4532A1FA610B6005CDE8A /* RVOExample1.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -351,39 +564,113 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		AB1867201F779D9F000E0864 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		725848381FADC26900D4E15D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				725848391FADC26900D4E15D /* RVOExample2Scene.swift in Sources */,
+				7258483A1FADC26900D4E15D /* GameScene.swift in Sources */,
+				7258483B1FADC26900D4E15D /* Agent.swift in Sources */,
+				7258483C1FADC26900D4E15D /* main.swift in Sources */,
+				7258483D1FADC26900D4E15D /* Vector.swift in Sources */,
+				7258483E1FADC26900D4E15D /* RVOSimpleSimulator.swift in Sources */,
+				7258483F1FADC26900D4E15D /* RVOAvoidanceNode.swift in Sources */,
+				725848401FADC26900D4E15D /* Math.swift in Sources */,
+				725848411FADC26900D4E15D /* RVOExample1ViewController.swift in Sources */,
+				725848421FADC26900D4E15D /* SteeringAgent.swift in Sources */,
+				725848431FADC26900D4E15D /* ObstacleBuilder.swift in Sources */,
+				725848441FADC26900D4E15D /* Obstacle.swift in Sources */,
+				725848451FADC26900D4E15D /* SteeringManager.swift in Sources */,
+				725848461FADC26900D4E15D /* Updatable.swift in Sources */,
+				725848471FADC26900D4E15D /* RVOOptimalSimulator.swift in Sources */,
+				725848481FADC26900D4E15D /* SteeringGroup.swift in Sources */,
+				725848491FADC26900D4E15D /* AgentKTree.swift in Sources */,
+				7258484A1FADC26900D4E15D /* Line.swift in Sources */,
+				729271EA1FAE1E1800F92E27 /* RVOSimulator.swift in Sources */,
+				7258484B1FADC26900D4E15D /* GameViewController.swift in Sources */,
+				7258484C1FADC26900D4E15D /* ObstacleKTree.swift in Sources */,
+				7258484D1FADC26900D4E15D /* RVOExample2ViewController.swift in Sources */,
+				7258484E1FADC26900D4E15D /* SteeringBehavior.swift in Sources */,
+				7258484F1FADC26900D4E15D /* RVOConstans.swift in Sources */,
+				725848501FADC26900D4E15D /* AppDelegate.swift in Sources */,
+				725848521FADC26900D4E15D /* RVOAgentNode.swift in Sources */,
+				725848531FADC26900D4E15D /* AgentNode.swift in Sources */,
+				725848541FADC26900D4E15D /* RVOExample1Scene.swift in Sources */,
+				725848551FADC26900D4E15D /* Constants.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		725848661FADC27A00D4E15D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				725848671FADC27A00D4E15D /* RVOExample2Scene.swift in Sources */,
+				725848681FADC27A00D4E15D /* GameScene.swift in Sources */,
+				725848691FADC27A00D4E15D /* Agent.swift in Sources */,
+				7258486A1FADC27A00D4E15D /* main.swift in Sources */,
+				7258486B1FADC27A00D4E15D /* Vector.swift in Sources */,
+				7258486C1FADC27A00D4E15D /* RVOSimpleSimulator.swift in Sources */,
+				7258486D1FADC27A00D4E15D /* RVOAvoidanceNode.swift in Sources */,
+				7258486E1FADC27A00D4E15D /* Math.swift in Sources */,
+				7258486F1FADC27A00D4E15D /* RVOExample1ViewController.swift in Sources */,
+				725848701FADC27A00D4E15D /* SteeringAgent.swift in Sources */,
+				725848711FADC27A00D4E15D /* ObstacleBuilder.swift in Sources */,
+				725848721FADC27A00D4E15D /* Obstacle.swift in Sources */,
+				725848731FADC27A00D4E15D /* SteeringManager.swift in Sources */,
+				725848741FADC27A00D4E15D /* Updatable.swift in Sources */,
+				725848751FADC27A00D4E15D /* RVOOptimalSimulator.swift in Sources */,
+				725848761FADC27A00D4E15D /* SteeringGroup.swift in Sources */,
+				725848771FADC27A00D4E15D /* AgentKTree.swift in Sources */,
+				725848781FADC27A00D4E15D /* Line.swift in Sources */,
+				729271EB1FAE1E1900F92E27 /* RVOSimulator.swift in Sources */,
+				725848791FADC27A00D4E15D /* GameViewController.swift in Sources */,
+				7258487A1FADC27A00D4E15D /* ObstacleKTree.swift in Sources */,
+				7258487B1FADC27A00D4E15D /* RVOExample2ViewController.swift in Sources */,
+				7258487C1FADC27A00D4E15D /* SteeringBehavior.swift in Sources */,
+				7258487D1FADC27A00D4E15D /* RVOConstans.swift in Sources */,
+				7258487E1FADC27A00D4E15D /* AppDelegate.swift in Sources */,
+				725848801FADC27A00D4E15D /* RVOAgentNode.swift in Sources */,
+				725848811FADC27A00D4E15D /* AgentNode.swift in Sources */,
+				725848821FADC27A00D4E15D /* RVOExample1Scene.swift in Sources */,
+				725848831FADC27A00D4E15D /* Constants.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		AB1866F91F779D9F000E0864 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				725847FC1FADB7B800D4E15D /* RVOExample2Scene.swift in Sources */,
 				AB1867071F779D9F000E0864 /* GameScene.swift in Sources */,
 				7263405B1F9B55CB009D91A4 /* Agent.swift in Sources */,
 				726340541F9B3923009D91A4 /* main.swift in Sources */,
 				72B0CE781F92269B0082CF46 /* Vector.swift in Sources */,
+				723CE1D51FA7D2B2001CF1DC /* RVOSimpleSimulator.swift in Sources */,
+				72B453361FA629BB005CDE8A /* RVOAvoidanceNode.swift in Sources */,
 				72B0CE7A1F9226BE0082CF46 /* Math.swift in Sources */,
+				72B4532C1FA61162005CDE8A /* RVOExample1ViewController.swift in Sources */,
 				AB6349491F77A639002F5587 /* SteeringAgent.swift in Sources */,
 				726340511F9B3919009D91A4 /* ObstacleBuilder.swift in Sources */,
 				72B0CE741F921B3E0082CF46 /* Obstacle.swift in Sources */,
 				72A184971F7FE49200BB16DB /* SteeringManager.swift in Sources */,
 				7246E84A1F7FF2B500343083 /* Updatable.swift in Sources */,
+				72C58F501FAA41CA0077FB2B /* RVOOptimalSimulator.swift in Sources */,
 				72A184991F7FE4F100BB16DB /* SteeringGroup.swift in Sources */,
 				726340591F9B557A009D91A4 /* AgentKTree.swift in Sources */,
+				72FF33C41FA47F1500076D3B /* Line.swift in Sources */,
+				729271E91FAE1CB400F92E27 /* RVOSimulator.swift in Sources */,
 				AB1867091F779D9F000E0864 /* GameViewController.swift in Sources */,
 				72B0CE821F92654A0082CF46 /* ObstacleKTree.swift in Sources */,
+				725847FE1FADB7F600D4E15D /* RVOExample2ViewController.swift in Sources */,
 				AB63494E1F77A746002F5587 /* SteeringBehavior.swift in Sources */,
-				72B0CE841F927A440082CF46 /* RVO.swift in Sources */,
+				72B0CE841F927A440082CF46 /* RVOConstans.swift in Sources */,
 				AB1867011F779D9F000E0864 /* AppDelegate.swift in Sources */,
-				726340551F9B3923009D91A4 /* TestingAppDelegate.swift in Sources */,
+				72B453321FA6137D005CDE8A /* RVOAgentNode.swift in Sources */,
 				AB6349501F77AB5D002F5587 /* AgentNode.swift in Sources */,
+				72B453301FA61328005CDE8A /* RVOExample1Scene.swift in Sources */,
 				AB28D3961F7838A700BB1542 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -393,34 +680,34 @@
 			buildActionMask = 2147483647;
 			files = (
 				72B0CE7E1F925D550082CF46 /* ObstacleTests.swift in Sources */,
+				72E581301FA9B6C900E0A127 /* RVOSimulatorTests.swift in Sources */,
 				72B0CE881F92AFAF0082CF46 /* MathTests.swift in Sources */,
-				AB18671C1F779D9F000E0864 /* FlockingBehaviorTests.swift in Sources */,
+				72FF33C81FA5E4F400076D3B /* LineComputerTests.swift in Sources */,
 				72B0CE861F927E4E0082CF46 /* ObstacleKTreeTests.swift in Sources */,
+				72FF33C61FA5CE9C00076D3B /* AgentTests.swift in Sources */,
+				729271E71FADCEBB00F92E27 /* TestingAppDelegate.swift in Sources */,
 				72B0CE7C1F92271F0082CF46 /* PointLineRelativePositionTests.swift in Sources */,
 				7263405D1F9BAFA1009D91A4 /* AgentKTreeTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		AB18671E1F779D9F000E0864 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				AB1867271F779D9F000E0864 /* FlockingBehaviorUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		724FE3DE1FADCCDB00E659E6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 725848371FADC26900D4E15D /* RVOExample1 */;
+			targetProxy = 724FE3DD1FADCCDB00E659E6 /* PBXContainerItemProxy */;
+		};
+		724FE3E01FADCCF000E659E6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 725848651FADC27A00D4E15D /* RVOExample2 */;
+			targetProxy = 724FE3DF1FADCCF000E659E6 /* PBXContainerItemProxy */;
+		};
 		AB1867191F779D9F000E0864 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = AB1866FC1F779D9F000E0864 /* FlockingBehavior */;
 			targetProxy = AB1867181F779D9F000E0864 /* PBXContainerItemProxy */;
-		};
-		AB1867241F779D9F000E0864 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = AB1866FC1F779D9F000E0864 /* FlockingBehavior */;
-			targetProxy = AB1867231F779D9F000E0864 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -444,6 +731,62 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		725848611FADC26900D4E15D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = "FlockingBehavior copy2-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.quoc.FlockingBehavior;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		725848621FADC26900D4E15D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = "FlockingBehavior copy2-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.quoc.FlockingBehavior;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
+		7258488F1FADC27A00D4E15D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = "RVOExample1 copy-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.quoc.FlockingBehavior;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		725848901FADC27A00D4E15D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = "RVOExample1 copy-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.quoc.FlockingBehavior;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
 		AB1867291F779D9F000E0864 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -599,39 +942,27 @@
 			};
 			name = Release;
 		};
-		AB1867321F779D9F000E0864 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				DEVELOPMENT_TEAM = 2U9LJ49V7G;
-				INFOPLIST_FILE = FlockingBehaviorUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.quoc.FlockingBehaviorUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.0;
-				TEST_TARGET_NAME = FlockingBehavior;
-			};
-			name = Debug;
-		};
-		AB1867331F779D9F000E0864 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				DEVELOPMENT_TEAM = 2U9LJ49V7G;
-				INFOPLIST_FILE = FlockingBehaviorUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.quoc.FlockingBehaviorUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.0;
-				TEST_TARGET_NAME = FlockingBehavior;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		725848601FADC26900D4E15D /* Build configuration list for PBXNativeTarget "RVOExample1" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				725848611FADC26900D4E15D /* Debug */,
+				725848621FADC26900D4E15D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7258488E1FADC27A00D4E15D /* Build configuration list for PBXNativeTarget "RVOExample2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7258488F1FADC27A00D4E15D /* Debug */,
+				725848901FADC27A00D4E15D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		AB1866F81F779D9F000E0864 /* Build configuration list for PBXProject "FlockingBehavior" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -655,15 +986,6 @@
 			buildConfigurations = (
 				AB18672F1F779D9F000E0864 /* Debug */,
 				AB1867301F779D9F000E0864 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		AB1867311F779D9F000E0864 /* Build configuration list for PBXNativeTarget "FlockingBehaviorUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				AB1867321F779D9F000E0864 /* Debug */,
-				AB1867331F779D9F000E0864 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

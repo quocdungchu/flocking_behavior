@@ -11,7 +11,7 @@ import XCTest
 
 class ObstacleKTreeTests: XCTestCase {
     
-    func testFindingOptimalSplit() {
+    func testFindingOptimalPivot() {
         let obstacleBuilder = ObstacleBuilder()
 
         obstacleBuilder.addObstacle(with: [
@@ -26,12 +26,12 @@ class ObstacleKTreeTests: XCTestCase {
             Vector(-1,0),
         ])
         
-        let optimalSplit = ObstacleKTree.findOptimalSplitIndex(obstacles: obstacleBuilder.obstacles)
+        let optimalPivot = ObstacleKTree.findOptimalPivotIndex(obstacles: obstacleBuilder.obstacles)
         
-        XCTAssertNotNil(optimalSplit)
-        XCTAssertEqual(optimalSplit!.leftCount, 3)
-        XCTAssertEqual(optimalSplit!.rightCount, 2)
-        XCTAssertEqual(optimalSplit!.index, 0)
+        XCTAssertNotNil(optimalPivot)
+        XCTAssertEqual(optimalPivot!.leftCount, 3)
+        XCTAssertEqual(optimalPivot!.rightCount, 2)
+        XCTAssertEqual(optimalPivot!.index, 0)
     }
     
     func testQueryingObstacle(){
@@ -58,6 +58,5 @@ class ObstacleKTreeTests: XCTestCase {
         
         XCTAssertEqual(queriesObstacles.count, 1)
         XCTAssertEqual(queriesObstacles[0].point, Vector(1,1))
-
     }
 }
