@@ -13,6 +13,7 @@ class RVOExample1Scene: SKScene {
         static let scale: Float = 60.0
         static let timeNoCollision: Double = 6.0
         static let timeStep: Double = 0.25
+        static let agentColor = UIColor.green
     }
     var agentAvoidanceNode: RVOAvoidanceNode!
     var simulator: RVOSimulator!
@@ -56,7 +57,7 @@ class RVOExample1Scene: SKScene {
         )
         
         agentNodes = simulator.agents.map {
-            RVOAgentNode(agent: $0, scale: Constants.scale)
+            RVOAgentNode(agent: $0, scale: Constants.scale, color: Constants.agentColor)
         }
         
         agentAvoidanceNode = RVOAvoidanceNode(

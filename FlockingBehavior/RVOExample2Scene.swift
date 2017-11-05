@@ -11,6 +11,11 @@ import SpriteKit
 
 class RVOExample2Scene: SKScene {
     
+    enum Constants {
+        static let scale: Float = 10.0
+        static let agentColor = UIColor.green
+    }
+    
     var simulator: RVOOptimalSimulator!
     var agentNodes = [RVOAgentNode]()
     
@@ -80,7 +85,7 @@ class RVOExample2Scene: SKScene {
     private func addNodes() {
         
         agentNodes = simulator.agents.map {
-            RVOAgentNode(agent: $0)
+            RVOAgentNode(agent: $0, scale: Constants.scale, color: Constants.agentColor)
         }
         
         agentNodes.forEach {
