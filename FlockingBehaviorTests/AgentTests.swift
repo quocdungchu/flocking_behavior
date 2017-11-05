@@ -40,7 +40,7 @@ class AgentTests: XCTestCase {
     }
     
     func testAvoidanceCollisionTwoAgent1(){
-        let simulator = RVOSimpleSimulator(timeNoCollision: 25.0)
+        let simulator = RVOSimpleSimulator(timeNoCollision: 2.0)
         simulator.add(
             agent: Agent(
                 position: Vector(5.0, 0.0),
@@ -63,7 +63,7 @@ class AgentTests: XCTestCase {
         
         var isCollided = false
         
-        for _ in 0...100 {
+        for _ in 0...200 {
             simulator.computeAgents(timeStep: 1.0)
             isCollided = isCollided || simulator.isCollided
         }
@@ -73,7 +73,7 @@ class AgentTests: XCTestCase {
     }
     
     func testAvoidanceCollisionTwoAgent2(){
-        let simulator = RVOSimpleSimulator(timeNoCollision: 25.0)
+        let simulator = RVOSimpleSimulator(timeNoCollision: 2.0)
         simulator.add(
             agent: Agent(
                 position: Vector(5.0, 0.0),
@@ -96,7 +96,7 @@ class AgentTests: XCTestCase {
         
         var isCollided = false
         
-        for _ in 0...100 {
+        for _ in 0...200 {
             simulator.computeAgents(timeStep: 1.0)
             isCollided = isCollided || simulator.isCollided
         }
@@ -106,7 +106,7 @@ class AgentTests: XCTestCase {
     }
     
     func testAvoidanceCollisionEightAgent(){
-        let simulator = RVOSimpleSimulator(timeNoCollision: 25.0)
+        let simulator = RVOSimpleSimulator(timeNoCollision: 2.0)
         simulator.addAgentInCircle(radius: 5.0, numberOfAgents: 5, agentRadius: 1.0, agentMaxSpeed: 1.0)
         
         var isCollided = false

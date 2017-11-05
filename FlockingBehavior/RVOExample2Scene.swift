@@ -45,9 +45,9 @@ class RVOExample2Scene: SKScene {
     
     private func addNodesInCircle() {
         simulator = RVOOptimalSimulator(
-            maxNeightborDistance: 3,
+            maxNeightborDistance: 4,
             neighborsLeafSize: 10,
-            timeNoCollision: 2.0
+            timeNoCollision: 10.0
         )
         
         simulator.addAgentInCircle(
@@ -68,9 +68,9 @@ class RVOExample2Scene: SKScene {
     
     private func addNodesInBlock() {
         simulator = RVOOptimalSimulator(
-            maxNeightborDistance: 15,
+            maxNeightborDistance: 10,
             neighborsLeafSize: 10,
-            timeNoCollision: 4.0
+            timeNoCollision: 10.0
         )
         
         let blockDefinition = RVOSimulatorBlockDefinition(numberAgentInHorizontal: 4, numberAgentInVertical: 4, distanceBetweenAgent: 5.0)
@@ -94,16 +94,10 @@ class RVOExample2Scene: SKScene {
     }
     
     private func addNodesInBlockAndOneDestination() {
-//        simulator = RVOOptimalSimulator(
-//            maxNeightborDistance: 15,
-//            neighborsLeafSize: 10,
-//            timeNoCollision: 4.0
-//        )
-        
-        simulator = RVOSimpleSimulator(
-            //maxNeightborDistance: 15,
-            //neighborsLeafSize: 10,
-            timeNoCollision: 4.0
+        simulator = RVOOptimalSimulator(
+            maxNeightborDistance: 10,
+            neighborsLeafSize: 10,
+            timeNoCollision: 10.0
         )
         
         let blockDefinition = RVOSimulatorBlockDefinition(numberAgentInHorizontal: 4, numberAgentInVertical: 4, distanceBetweenAgent: 5.0)

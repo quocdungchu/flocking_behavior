@@ -10,8 +10,8 @@ import SpriteKit
 
 class RVOExample1Scene: SKScene {
     enum Constants {
-        static let scale: Float = 60.0
-        static let timeNoCollision: Double = 6.0
+        static let scale: Float = 40.0
+        static let timeNoCollision: Double = 2.0
         static let timeStep: Double = 0.25
         static let agentColor = UIColor.green
     }
@@ -44,15 +44,36 @@ class RVOExample1Scene: SKScene {
     }
     
     private func addNodes(){
-        let simulator = RVOSimpleSimulator(
-            timeNoCollision: Constants.timeNoCollision
+//        self.simulator = RVOSimpleSimulator(
+//            timeNoCollision: Constants.timeNoCollision
+//        )
+//
+//        simulator.addAgentInCircle(
+//            radius: 5.0,
+//            numberOfAgents: 5,
+//            agentRadius: 1.0,
+//            agentMaxSpeed: 1.0
+//        )
+        
+        self.simulator = RVOSimpleSimulator(timeNoCollision: 6.0)
+        simulator.add(
+            agent: Agent(
+                position: Vector(5.0, 0.0),
+                radius: 1.0,
+                maxSpeed: 0.5,
+                velocity: Vector(-0.5, 0.0)
+            ),
+            destination: Vector(-5.0, 0)
         )
         
-        simulator.addAgentInCircle(
-            radius: 5.0,
-            numberOfAgents: 2,
-            agentRadius: 1.0,
-            agentMaxSpeed: 1.0
+        simulator.add(
+            agent: Agent(
+                position: Vector(0.0, 0.0),
+                radius: 1.0,
+                maxSpeed: 0.0,
+                velocity: Vector(0.0, 0.0)
+            ),
+            destination: Vector(0.0, 0)
         )
         
         agentNodes = simulator.agents.map {

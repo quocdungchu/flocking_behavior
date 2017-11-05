@@ -56,23 +56,13 @@ extension RVOSimulator {
             )
             
             computedVelocities.append(agentComputed)
+            
+            agent.update(computedVelocity: agentComputed, timeStep: timeStep)
         }
         
-        for i in 0..<agents.count {
-            agents[i].update(computedVelocity: computedVelocities[i], timeStep: timeStep)
-        }
-        
-        for i in 0..<agents.count {
-            switch behaviors[i] {
-            case .idle:
-                break
-                
-            case .goal(let to):
-                if (agents[i].position - to).length <= RVOConstants.epsilon {
-                    behaviors[i] = .idle
-                }
-            }
-        }
+//        for i in 0..<agents.count {
+//            agents[i].update(computedVelocity: computedVelocities[i], timeStep: timeStep)
+//        }
         
         computeCount += 1
     }
