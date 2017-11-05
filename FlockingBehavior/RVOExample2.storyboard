@@ -19,10 +19,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Kif-nz-Ary">
-                                <rect key="frame" x="138" y="40" width="99" height="29"/>
+                                <rect key="frame" x="21.5" y="40" width="332" height="29"/>
                                 <segments>
                                     <segment title="Circle"/>
                                     <segment title="Block"/>
+                                    <segment title="One destination"/>
                                 </segments>
                                 <connections>
                                     <action selector="tapOnSegmentWithSender:" destination="gOY-k8-k1h" eventType="valueChanged" id="sLK-8s-qLb"/>

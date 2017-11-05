@@ -12,7 +12,8 @@ class RVOSimpleSimulator {
     
     let timeNoCollision: Double
     var agents = [Agent]()
-    var destinations = [Vector]()    
+    var destinations = [Vector]()
+    var behaviors = [RVOAgentBehavior]()
     var computeCount: Int = 0
     
     init(timeNoCollision: Double) {

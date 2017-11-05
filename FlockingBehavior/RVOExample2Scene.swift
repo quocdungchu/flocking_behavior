@@ -16,7 +16,7 @@ class RVOExample2Scene: SKScene {
         static let agentColor = UIColor.green
     }
     
-    var simulator: RVOOptimalSimulator!
+    var simulator: RVOSimulator!
     var agentNodes = [RVOAgentNode]()
     
     var previousTime: Double?
@@ -34,6 +34,12 @@ class RVOExample2Scene: SKScene {
     func resetInBlock(){
         removeNodes()
         addNodesInBlock()
+        update()
+    }
+    
+    func resetInBlockAndOneDestination(){
+        removeNodes()
+        addNodesInBlockAndOneDestination()
         update()
     }
     
@@ -76,6 +82,39 @@ class RVOExample2Scene: SKScene {
             agentDefinition: agentDefinition,
             agentBlockPositions: [Vector(10.0, -10.0), Vector(-30.0, -10.0)],
             destinationBlockPositions: [Vector(-30.0, -10.0), Vector(10.0, -10.0)]
+        )
+        
+        agentNodes = simulator.agents.map {
+            RVOAgentNode(agent: $0, scale: Constants.scale, color: Constants.agentColor)
+        }
+        
+        agentNodes.forEach {
+            self.addChild($0)
+        }
+    }
+    
+    private func addNodesInBlockAndOneDestination() {
+//        simulator = RVOOptimalSimulator(
+//            maxNeightborDistance: 15,
+//            neighborsLeafSize: 10,
+//            timeNoCollision: 4.0
+//        )
+        
+        simulator = RVOSimpleSimulator(
+            //maxNeightborDistance: 15,
+            //neighborsLeafSize: 10,
+            timeNoCollision: 4.0
+        )
+        
+        let blockDefinition = RVOSimulatorBlockDefinition(numberAgentInHorizontal: 4, numberAgentInVertical: 4, distanceBetweenAgent: 5.0)
+        
+        let agentDefinition = RVOSimulatorAgentDefinition(radius: 1.0, maxSpeed: 1.0)
+        
+        simulator.addAgentInBlockAndOneDestination(
+            blockDefinition: blockDefinition,
+            agentDefinition: agentDefinition,
+            agentBlockPositions: [Vector(10.0, -10.0), Vector(-30.0, -10.0)],
+            destination: Vector(0.0, 0.0)
         )
         
         agentNodes = simulator.agents.map {

@@ -41,6 +41,9 @@ class RVOExample2ViewController: UIViewController {
         case 1:
             scene.resetInBlock()
             
+        case 2:
+            scene.resetInBlockAndOneDestination()
+            
         default:
             break
         }

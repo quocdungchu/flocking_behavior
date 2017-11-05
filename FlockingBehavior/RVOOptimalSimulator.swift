@@ -15,6 +15,7 @@ class RVOOptimalSimulator {
     let neighborsLeafSize: Int
     var agents = [Agent]()
     var destinations = [Vector]()
+    var behaviors = [RVOAgentBehavior]()
     var computeCount: Int = 0
     var agentKTree: AgentKTree!
     
