@@ -22,25 +22,22 @@ class RVOExample2Scene: SKScene {
     var previousTime: Double?
     
     override func didMove(to view: SKView) {
-        resetSimulatorInCircle()
-        addNodes()
+        addNodesInCircle()
     }
     
     func resetInCircle(){
         removeNodes()
-        resetSimulatorInCircle()
-        addNodes()
+        addNodesInCircle()
         update()
     }
     
     func resetInBlock(){
         removeNodes()
-        resetSimulatorInBlock()
-        addNodes()
+        addNodesInBlock()
         update()
     }
     
-    private func resetSimulatorInCircle() {
+    private func addNodesInCircle() {
         simulator = RVOOptimalSimulator(
             maxNeightborDistance: 3,
             neighborsLeafSize: 10,
@@ -53,9 +50,17 @@ class RVOExample2Scene: SKScene {
             agentRadius: 1.0,
             agentMaxSpeed: 1.0
         )
+        
+        agentNodes = simulator.agents.map {
+            RVOAgentNode(agent: $0, scale: Constants.scale, color: Constants.agentColor)
+        }
+        
+        agentNodes.forEach {
+            self.addChild($0)
+        }
     }
     
-    func resetSimulatorInBlock() {
+    private func addNodesInBlock() {
         simulator = RVOOptimalSimulator(
             maxNeightborDistance: 15,
             neighborsLeafSize: 10,
@@ -72,15 +77,6 @@ class RVOExample2Scene: SKScene {
             agentBlockPositions: [Vector(10.0, -10.0), Vector(-30.0, -10.0)],
             destinationBlockPositions: [Vector(-30.0, -10.0), Vector(10.0, -10.0)]
         )
-    }
-    
-    private func nextStep(timeStep: Double){
-        simulator.printVisualisationForDebug()
-        computeAgents(timeStep: timeStep)
-        update()
-    }
-    
-    private func addNodes() {
         
         agentNodes = simulator.agents.map {
             RVOAgentNode(agent: $0, scale: Constants.scale, color: Constants.agentColor)
@@ -89,6 +85,12 @@ class RVOExample2Scene: SKScene {
         agentNodes.forEach {
             self.addChild($0)
         }
+    }
+    
+    private func nextStep(timeStep: Double){
+        simulator.printVisualisationForDebug()
+        computeAgents(timeStep: timeStep)
+        update()
     }
     
     private func removeNodes(){
